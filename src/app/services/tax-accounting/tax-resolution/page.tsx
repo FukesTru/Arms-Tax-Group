@@ -15,7 +15,7 @@ export default function TaxResolutionPage() {
       crossLinks={[
         { label: 'Tax & Accounting Services', href: '/services/tax-accounting' },
         { label: 'Personal Tax Preparation', href: '/services/tax-accounting/personal-tax-preparation' },
-        { label: 'Business Tax Preparation', href: '/services/tax-accounting/business-tax-preparation' },
+        { label: 'Business & Corporate Tax Services', href: '/services/tax-accounting/business-tax-preparation' },
       ]}
     />
   );

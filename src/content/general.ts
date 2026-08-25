@@ -90,7 +90,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: 'Can we meet in person, or is everything remote?',
     answer:
-      'Either. Our office at 1426 White Plains Road in the Bronx is available for in-person appointments, and everything we do can also be handled entirely remotely. Tell us which you prefer and we will work that way.',
+      'Either. Our New York office is available for in-person appointments, and everything we do can also be handled entirely remotely. Tell us which you prefer and we will work that way.',
   },
 ];
 
@@ -131,6 +131,6 @@ export const bronxFaqs: FaqItem[] = [
   {
     question: 'Where exactly are you located?',
     answer:
-      'We are at 1426 White Plains Road in the Bronx, New York 10462. The map on this page will give you directions from wherever you are starting.',
+      'We are in New York, and we are finalizing our published office address — call or text us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
   },
 ];

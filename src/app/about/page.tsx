@@ -41,38 +41,39 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our Story" title="Why this practice exists" />
             <FadeUp delay={0.06} className="prose-body mt-6 space-y-5">
               <p>
-                {site.legalName} — operating as {site.brandName} — was founded by{' '}
-                {site.owner} around a single observation: the people who get
-                ahead financially are rarely the ones who earn the most. They
-                are the ones who understand what happens to the money after it
-                arrives.
+                {site.legalName} — operating as {site.brandName} — exists to
+                empower entrepreneurs. That word gets used loosely, so here is
+                what it means in practice: most people who set out to build
+                something are not short on drive. They are short on access —
+                to competent financial advice, to the right products and
+                services, and to someone who has already walked the path and
+                will tell them the truth about it.
               </p>
               <p>
-                That principle shaped how the firm was built. Rather than
-                offering tax preparation and stopping there, we assembled a
-                practice that follows the money the whole way through. We
-                prepare personal and business returns. We take on the years that
-                got away from people and the IRS notices that came with them. We
-                keep books current so business owners can see what is actually
-                happening. We help owners access capital when growth is on the
-                table, work on the credit profiles that gate it, and recover
-                funds that clients did not know were sitting unclaimed in a
-                state treasury.
+                Closing that gap is the work. We do it two ways, and they
+                reinforce each other. The first is education: we train and
+                develop independent business owners through real-world
+                instruction rather than theory, pairing each of them with
+                mentors who have built businesses themselves. The second is
+                financial services: tax preparation, IRS resolution,
+                bookkeeping, planning, funding, credit, and recovery work,
+                delivered by a team that understands what a growing business
+                actually runs into.
               </p>
               <p>
-                Our team brings deep roots in tax and financial services, and
-                the practice is deliberately structured so those disciplines sit
-                together rather than in separate silos. The bookkeeper knows
-                what the tax preparer needs. The person preparing your return
-                understands why the funding application matters. Nothing gets
-                lost in a handoff, because there is no handoff.
+                The two halves are not separate offerings that happen to share
+                a name. An entrepreneur we train needs books that hold up and a
+                return filed correctly. A client who comes to us for a return
+                often turns out to be building something and to need guidance
+                more than paperwork. Because the network and the practice sit
+                under one roof, neither group has to go looking elsewhere for
+                the other half.
               </p>
               <p>
-                We work from our office at {site.address.full} and remotely with
-                clients across the country. What has not changed as the practice
-                has grown is how we talk to people: plainly, without jargon, and
-                without pretending a situation is simpler or more dire than it
-                actually is.
+                We work with individuals, families, self-employed people, and
+                business owners from our New York office and remotely with
+                clients across the country — reaching out, as we have always
+                put it, to embrace your needs.
               </p>
             </FadeUp>
           </div>
@@ -92,6 +93,9 @@ export default function AboutPage() {
                 apply to every recommendation we make: does this actually leave
                 our client better off?
               </p>
+              <p className="mt-6 border-t border-white/15 pt-6 font-display text-[1.05rem] font-bold text-accent">
+                {site.brandLine}
+              </p>
               <Link href="/contact" className="btn-primary mt-8 w-full">
                 Get a Free Consultation
               </Link>
@@ -105,20 +109,22 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <SectionHeading
             eyebrow="What Makes Us Different"
-            title="One team, the whole financial picture"
-            intro="Most people assemble this from four separate providers who never speak to each other. We put it under one roof on purpose."
+            title="A network and a practice, not a storefront"
+            intro="Most people assemble this from four separate providers who never speak to each other — and none of them teach you anything. We put it under one roof on purpose."
           />
           <div className="lg:pt-2">
             <CheckList
               items={[
+                'A training network that develops independent business owners, not just a client list',
+                'Real-world instruction and mentor partnerships, rather than theory and a handbook',
+                'Access to competent financial advice, products, and services in one place',
                 'Personal and business tax handled together, so the two returns agree',
                 'IRS resolution in-house — back taxes and notices are not somebody else’s problem',
                 'Bookkeeping that feeds directly into your return instead of arriving as a surprise',
                 'Funding and credit support for when compliance is not the constraint, capital is',
                 'Unclaimed funds recovery — money you are already owed, found and claimed',
-                'Nationwide remote service backed by a real, physical local office',
+                'Nationwide remote service backed by a real local office',
                 'Year-round availability, not a storefront that closes on April 16',
-                'Plain-language explanations of every number before anything is filed',
               ]}
             />
           </div>
@@ -164,17 +170,19 @@ export default function AboutPage() {
               */}
               <div className="prose-body mt-5 space-y-4">
                 <p>
-                  {site.owner} founded {site.brandName} to give individuals and
-                  business owners something that is genuinely hard to find: one
-                  team that understands the entire financial picture, from the
-                  return you file in April to the capital you need in September.
+                  {site.owner} founded {site.brandName} to give entrepreneurs
+                  something that is genuinely hard to find: access to competent
+                  financial advice, and the training to eventually not need to
+                  ask for it. The firm reflects that — a financial services
+                  practice and a development network for independent business
+                  owners, run as one thing.
                 </p>
                 <p>
-                  He leads the practice from its Bronx office, working directly
-                  with clients on tax preparation, resolution, and the funding
-                  and credit questions that follow. Clients describe the same
-                  thing consistently — that he explains the numbers rather than
-                  just delivering them.
+                  He leads the practice directly, working with clients on tax
+                  preparation, resolution, and the funding and credit questions
+                  that follow, and with the owners coming up through the
+                  network. Clients describe the same thing consistently — that
+                  he explains the numbers rather than just delivering them.
                 </p>
               </div>
               <div className="mt-7 flex flex-wrap gap-3">

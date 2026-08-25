@@ -7,7 +7,7 @@ import ReviewsSection from '@/components/ReviewsSection';
 import Section, { SectionHeading } from '@/components/Section';
 import { breadcrumbSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { site, testimonials } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title: 'Client Testimonials | The Arms Corporation',
@@ -19,18 +19,21 @@ export const metadata = pageMetadata({
 /*
   GUARDRAIL — do not modify without client sign-off:
 
-  This page contains NO fabricated reviews, star ratings, or review counts, and
-  emits NO Review or AggregateRating schema. The Google Business Profile is not
-  set up yet and no client-approved testimonials have been supplied.
+  The testimonials below are quoted verbatim from the client's own live site
+  (thearmscorp.co). They are direct testimonials, NOT a Google Business Profile
+  feed — so this page renders NO star ratings and NO review count beside them,
+  and emits NO Review or AggregateRating schema. The Business Profile is still
+  not set up; rating markup requires verifiable reviews, which these are not.
 
-  To populate it:
-    1. Add real, client-approved quotes to site.testimonials in src/lib/site.ts
-       — these render automatically in the cards below.
-    2. Once the Google Business Profile is live, set
-       site.googleBusinessProfile.live = true and fill in reviewUrl. That
-       activates the widget slot and the "leave a review" call to action.
-    3. Only after real, verifiable reviews exist should Review/AggregateRating
-       schema be considered.
+  One quote is held at status 'pending-attribution' because its attribution
+  could not be recovered from the source site. It renders with a visible
+  review chip rather than being published as though it were finished, and it
+  is excluded from the homepage rotation. Supply the attribution in
+  src/lib/site.ts and flip its status to 'live'.
+
+  Once the Google Business Profile goes live, set
+  site.googleBusinessProfile.live = true and fill in reviewUrl to activate the
+  widget slot and the "leave a review" call to action below.
 */
 
 const trail = [
@@ -49,11 +52,16 @@ export default function TestimonialsPage() {
       <Hero
         eyebrow="Testimonials"
         title="What Our Clients Say"
-        subtitle="The most useful thing we can tell you about working with us is what it has been like for the people who already do."
+        subtitle="The most useful thing we can tell you about working with us is what it has been like for the people who already have — some of them for over twenty years."
         breadcrumbs={trail}
       />
 
-      <ReviewsSection tone="light" />
+      <ReviewsSection
+        tone="light"
+        items={testimonials}
+        heading="In our clients' own words"
+        intro="These are real testimonials from people who have worked with us, quoted exactly as they gave them."
+      />
 
       {/* Google Business Profile widget slot */}
       <Section tone="tint">
@@ -93,11 +101,12 @@ export default function TestimonialsPage() {
           ) : (
             <div className="rounded-2xl border border-dashed border-ink-900/20 bg-white p-8 text-center">
               <p className="text-[0.98rem] leading-[1.75] text-ink-600">
-                Our Google Business Profile is not live yet, so there is nothing
-                to show here — and we would rather leave the space honest than
-                fill it with numbers we cannot stand behind. When the profile is
-                published, reviews will appear in this spot and you will be able
-                to leave one of your own.
+                The testimonials above came to us directly. Our Google Business
+                Profile is not published yet, so we are not showing a star
+                rating or a review count anywhere — we would rather leave the
+                space honest than fill it with numbers we cannot stand behind.
+                When the profile goes live, Google reviews will appear in this
+                spot and you will be able to leave one of your own.
               </p>
               <p className="mt-5 text-[0.98rem] leading-relaxed text-ink-600">
                 Worked with us already?{' '}

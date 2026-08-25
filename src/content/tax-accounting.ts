@@ -170,35 +170,38 @@ export const personalTaxPreparation: ServicePageContent = {
 
 export const businessTaxPreparation: ServicePageContent = {
   href: '/services/tax-accounting/business-tax-preparation',
-  h1: 'Business Tax Preparation',
+  h1: 'Business & Corporate Tax Services',
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
-    'Returns for LLCs, corporations, and partnerships — filed accurately, with the deduction strategy your entity structure actually allows.',
+    'Corporate tax services for C-corps and S-corps, plus returns for LLCs and partnerships — filed accurately, with the deduction strategy your entity structure actually allows.',
   metaTitle:
-    'Business Tax Preparation | Bronx, NY & Nationwide | The Arms Corporation',
+    'Corporate Tax Services & Business Tax Preparation | The Arms Corporation',
   metaDescription:
-    'Tax preparation for LLCs, corporations, and small businesses — accurate filing and deduction strategy from The Arms Corporation. Bronx, NY and nationwide.',
-  trustPoints: ['LLC, S-Corp & Partnership', 'Quarterly Estimates', 'Multi-State Filing'],
-  introHeading: 'Filing that reflects how your business actually runs',
+    'Corporate tax services for C-corps and S-corps, plus LLC and partnership tax preparation from The Arms Corporation. Bronx, NY office, serving nationwide.',
+  trustPoints: ['Corporate Tax Services', 'C-Corp & S-Corp Compliance', 'Multi-State Filing'],
+  introHeading: 'Corporate tax services, and everything below them',
   intro: [
     'A business return is only as good as the records behind it and the structure it is filed under. Two businesses with identical revenue can owe very different amounts depending on how they are organized, which expenses were captured during the year, and whether anyone was paying attention to estimated payments along the way.',
-    'We prepare returns for single-member and multi-member LLCs, S-corporations, C-corporations, partnerships, and sole proprietors filing on Schedule C. That work starts before the forms: reviewing your books for gaps, confirming that owner compensation and distributions were handled consistently, checking whether your entity election still fits the business you have now, and identifying deductions that were available but never recorded.',
-    'If you are behind on filings, that is fixable and we would rather hear about it early. If you are current and simply want the return handled properly, we will do that and use what we learn to tell you where next year could go better. Many of our business clients pair this with bookkeeping or quarterly planning so the return is close to finished before the deadline arrives — but neither is a requirement.',
+    'Corporate tax services are the core of this practice. For C-corporations that means the corporate return, corporate estimated payments, and the compliance calendar that comes with the structure — along with the question that decides much of the bill, which is how earnings leave the company as salary rather than distributions. For S-corporations it means the corporate filing, shareholder K-1s, basis tracking, and reasonable-compensation analysis, an area that draws IRS attention when owners take too little salary against too much distribution.',
+    'We prepare returns across the rest of the spectrum too: single-member and multi-member LLCs, partnerships, and sole proprietors filing on Schedule C. That work starts before the forms — reviewing your books for gaps, confirming owner compensation and distributions were handled consistently, checking whether your entity election still fits the business you have now, and identifying deductions that were available but never recorded.',
+    'If you are behind on corporate filings, that is fixable and we would rather hear about it early, since corporate penalties accrue per return and per shareholder. If you are current and simply want it handled properly, we will do that and tell you where next year could go better.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
-    'Entity returns and the surrounding compliance work most small businesses need in the same season.',
+    'Corporate tax services and the surrounding compliance work most businesses need in the same season.',
   handles: [
+    'C-corporation returns, corporate estimated payments, and compliance calendars',
+    'S-corporation returns, shareholder K-1s, and basis tracking',
+    'Reasonable-compensation analysis for S-corp owner salary',
     'LLC returns — single-member and multi-member',
-    'S-corporation and C-corporation returns',
     'Partnership returns and K-1 preparation',
     'Sole proprietor and Schedule C filings',
-    'Quarterly estimated tax calculations',
+    'Corporate and business quarterly estimated tax calculations',
     'Payroll tax filing support and reconciliation',
-    'Multi-state business filings and nexus review',
+    'Multi-state corporate filings and nexus review',
     'Depreciation schedules and asset tracking',
     'Deduction strategy and expense categorization review',
-    'Late and unfiled business returns',
+    'Late and unfiled corporate and business returns',
   ],
   processHeading: 'Three steps to a filed business return',
   processIntro:
@@ -219,9 +222,19 @@ export const businessTaxPreparation: ServicePageContent = {
   ],
   faqs: [
     {
-      question: 'What is the deadline for business returns?',
+      question: 'What is the deadline for corporate and business returns?',
       answer:
-        'It depends on your entity type and fiscal year. Partnerships and S-corporations generally face an earlier deadline than C-corporations and individual filers, and extensions shift the filing date without shifting when payment is due. Tell us your structure and we will confirm the dates that apply to you.',
+        'It depends on your entity type and fiscal year. Partnerships and S-corporations generally face an earlier deadline than C-corporations and individual filers, and extensions shift the filing date without shifting when payment is due. Corporate penalties can accrue per return and per shareholder, so a missed S-corp deadline gets expensive faster than people expect. Tell us your structure and we will confirm the dates that apply to you.',
+    },
+    {
+      question: 'What do your corporate tax services actually include?',
+      answer:
+        'For a C-corporation: the corporate return, corporate estimated payments, and the compliance calendar the structure carries. For an S-corporation: the corporate filing, shareholder K-1s, basis tracking, and reasonable-compensation analysis. In both cases we also look at how money leaves the company, because the split between salary and distributions drives much of what you end up owing.',
+    },
+    {
+      question: 'How much salary do I have to take from my S-corp?',
+      answer:
+        'The standard is reasonable compensation for the work you actually perform — there is no fixed percentage, despite the rules of thumb circulating online. Paying yourself too little salary against large distributions is one of the more reliable ways to draw IRS attention. We look at your role, your industry, and your numbers, and document the reasoning behind the figure we land on.',
     },
     {
       question: 'Do you handle payroll taxes?',

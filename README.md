@@ -99,17 +99,60 @@ wherever an FAQ block appears, `LocalBusiness` on the Bronx office and contact p
 
 ---
 
+## ⚠️ Blocking: unresolved office address
+
+**The client's intake form and current live site give different addresses, in two
+different cities.** Nothing on the site guesses between them.
+
+| Source | Address |
+|---|---|
+| Client intake form | 1426 White Plains Road, Bronx, NY 10462 |
+| Current live site (thearmscorp.co) | 50 Main St, Suite 1000, White Plains, NY 10606 |
+
+While `site.address.status` is `'unconfirmed'`, the street address is suppressed
+everywhere it would otherwise appear — footer, Contact page, Bronx office page,
+Who We Serve, `LocalBusiness` and organization schema (no `address`, no `geo`),
+and the Google Maps embed — and a visible amber review flag is shown on the
+Contact and office pages instead.
+
+The raw values sit behind `site.address.candidates` and are only reachable through
+`lib/address.ts`, so TypeScript makes it a compile error to render an address
+without handling the unconfirmed case. Nothing here relies on remembering.
+
+**To resolve:** in `src/lib/site.ts`, set `address.status` to `'confirmed'` and
+`address.confirmed` to `'intake'` or `'liveSite'`. Every suppressed element,
+the maps embed, and the schema restore themselves; the flags disappear.
+
+**This is bigger than a street address.** The two candidates are in different
+cities. If the answer is White Plains, the following also need rewriting, and none
+of it is done automatically:
+
+- `/who-we-serve/bronx-ny` — the slug, title, H1, body copy, and its
+  "tax preparation Bronx NY" SEO target
+- Every "Bronx, NY" reference sitewide — hero trust points, CTA trust badges,
+  several meta descriptions and page titles, the footer link label, and the
+  Who We Serve copy
+- The homepage About preview and About page, which describe a Bronx practice
+
+The build currently keeps the Bronx framing because that is what the client's own
+intake form says. Confirm before launch.
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several
 carry legal exposure.
 
 - **No star ratings, review counts, or Google review badges anywhere.** The Google Business
-  Profile is not set up yet. `ReviewsSection` renders an honest "coming soon" panel while
-  `site.testimonials` is empty.
-- **No `Review` or `AggregateRating` schema.** Do not add it until real, verifiable reviews
-  exist.
-- **No fabricated testimonials.** Real, client-approved quotes go in `site.testimonials`.
+  Profile is still not set up. The testimonials on the site are direct client testimonials,
+  not a Google feed, so no rating or count is shown beside them.
+- **No `Review` or `AggregateRating` schema.** Direct testimonials are not verifiable
+  reviews. Do not add rating markup until the Business Profile is live.
+- **No fabricated testimonials.** The three on the site are quoted verbatim from
+  thearmscorp.co and live in `testimonials` in `src/lib/site.ts`.
+- **No invented attribution.** One testimonial is held at `status: 'pending-attribution'`
+  because its attribution could not be recovered — thearmscorp.co is unreachable from the
+  build environment (egress-blocked). It renders with a visible review chip and is excluded
+  from the homepage rotation rather than being published as if finished.
 - **No professional credentials** (CPA, EA, "IRS certified") anywhere on the site — none
   were confirmed in the intake.
 - **No specific years-in-business claim.** Trust language is general until the client
@@ -135,10 +178,20 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
 - [ ] **Years in business / experience claim** — publish a number only once confirmed.
 - [ ] **Credentials** — is Leval Moore a CPA, Enrolled Agent, or licensed preparer? This
       determines what the site may legally claim, and what disclaimers it needs.
+- [ ] **Office address** — see the blocking section above. Two conflicting addresses in two
+      different cities; resolve in `src/lib/site.ts`.
+- [ ] **Third testimonial's attribution** — supply the name and location exactly as shown on
+      thearmscorp.co, then set its `status` to `'live'` in `src/lib/site.ts`.
+- [ ] **Testimonial wording** — the Roger Swayze quote names "Alpha Financial" and spells the
+      owner "Laval Moore", both of which differ from the branding used everywhere else on
+      this site. It is published verbatim as it appears on the client's live site. Confirm
+      that is intended.
+- [ ] **Owner name spelling** — intake says "Leval Moore"; the live site's testimonial says
+      "Laval". The site currently shows both. Confirm which is correct.
 - [ ] **Google Business Profile** — once live, set `site.googleBusinessProfile.live = true`
       and fill in `reviewUrl`. That activates the widget slot and review CTA.
-- [ ] **Testimonials** — need written approval to reuse quotes from `thearmscorp.co`, or new
-      ones. Add to `site.testimonials`.
+- [ ] **Written approval to republish testimonials** — confirm the client has the right to
+      reuse these quotes on the new site.
 - [ ] **Lending & credit** — confirm whether Arms Capital Partners and Arms Credit Solutions
       are direct providers or referral partners. The funding page currently states we are
       **not** a direct lender; correct it if that is wrong, as it changes required

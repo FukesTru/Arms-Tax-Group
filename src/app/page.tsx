@@ -12,7 +12,8 @@ import { homeFaqs, houseProcess } from '@/content/general';
 import { faqSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
-import { site } from '@/lib/site';
+import { addressPendingCopy, officeAddress } from '@/lib/address';
+import { liveTestimonials, site } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title:
@@ -36,7 +37,7 @@ export default function HomePage() {
             <span className="text-accent">Bronx, NY &amp; Nationwide</span>
           </>
         }
-        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions — from a Bronx-based team serving clients nationwide."
+        subtitle="Reaching out to embrace YOUR needs — with personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions from a Bronx-based team serving clients nationwide."
         trustPoints={[
           'Nationwide Remote Service',
           'Bronx, NY Office',
@@ -67,30 +68,30 @@ export default function HomePage() {
           <FadeUp>
             <p className="eyebrow mb-3">Our Story</p>
             <h2 className="text-[1.75rem] leading-tight sm:text-[2.1rem]">
-              Built on a single idea about money
+              Built to empower entrepreneurs
             </h2>
             <div className="prose-body mt-6 space-y-5">
               <p>
-                {site.brandName} was founded by {site.owner} on a conviction
-                that shows up in every engagement we take: earning more matters
-                far less than keeping more. Plenty of people raise their income
-                and end up no further ahead, because nobody was paying attention
-                to what happened to it along the way.
+                {site.brandName} was founded by {site.owner} to close a
+                specific gap. Most people building something are not short on
+                drive — they are short on access: to competent financial
+                advice, to the right products and services, and to someone who
+                has already done it and will tell them the truth.
               </p>
               <p>
-                So we built a practice that covers the whole picture. Personal
-                and business tax preparation. IRS resolution for the years that
-                got away from you. Bookkeeping that keeps the numbers honest.
-                Funding and credit work for when you are ready to grow, and
-                recovery work for money you are already owed and did not know
-                about.
+                So we work on both sides of that. We train and develop
+                independent business owners through real-world instruction and
+                mentor partnerships, and we run a full financial services
+                practice — tax preparation, IRS resolution, bookkeeping,
+                planning, funding, credit, and recovery — for the people
+                coming up through that network and for clients who simply need
+                the work done well.
               </p>
               <p>
-                We work with individuals, families, self-employed people, and
-                business owners from our office at {site.address.street} in the
-                Bronx — and remotely with clients across the country. Same team,
-                same standard, whether you are down the block or three time
-                zones away.
+                The two halves reinforce each other. An entrepreneur we train
+                needs books that hold up and a return filed correctly. A client
+                who came for a return often turns out to be building something
+                and to need guidance more than paperwork.
               </p>
             </div>
 
@@ -123,8 +124,8 @@ export default function HomePage() {
                 },
                 {
                   stat: '1',
-                  label: 'Team, start to finish',
-                  detail: 'No handoffs between disconnected providers.',
+                  label: 'Network and practice',
+                  detail: 'Training and financial services, run as one thing.',
                 },
                 {
                   stat: '12',
@@ -175,8 +176,9 @@ export default function HomePage() {
             {
               title: 'Bronx, NY Office',
               href: '/who-we-serve/bronx-ny',
-              body: `Walk-in appointments at ${site.address.street}. In-person tax preparation, document drop-off, and face-to-face consultations for clients who prefer them.`,
-              meta: site.address.full,
+              body: 'Walk-in appointments at our New York office. In-person tax preparation, document drop-off, and face-to-face consultations for clients who prefer them.',
+              // Address suppressed while the conflict is open — see lib/site.ts
+              meta: officeAddress ? officeAddress.full : addressPendingCopy.short,
               cta: 'Visit the Bronx office',
             },
             {
@@ -233,7 +235,10 @@ export default function HomePage() {
         </FadeUp>
       </Section>
 
-      <ReviewsSection />
+      <ReviewsSection
+        items={liveTestimonials.slice(0, 2)}
+        showViewAll
+      />
 
       <FAQ
         faqs={homeFaqs}

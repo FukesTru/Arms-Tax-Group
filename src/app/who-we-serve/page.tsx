@@ -9,6 +9,7 @@ import { whoWeServeFaqs } from '@/content/general';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
+import OfficeAddress from '@/components/OfficeAddress';
 
 export const metadata = pageMetadata({
   title: 'Nationwide Tax & Financial Services | The Arms Corporation',
@@ -47,7 +48,7 @@ const clientTypes = [
     title: 'Small Business Owners',
     body: 'LLCs, sole proprietors, and partnerships that need books kept, returns filed, capital accessed, and someone to ask before making a decision.',
     services: [
-      { label: 'Business Tax Preparation', href: '/services/tax-accounting/business-tax-preparation' },
+      { label: 'Business & Corporate Tax Services', href: '/services/tax-accounting/business-tax-preparation' },
       { label: 'Bookkeeping & Accounting', href: '/services/tax-accounting/bookkeeping-accounting' },
     ],
   },
@@ -55,7 +56,7 @@ const clientTypes = [
     title: 'Corporations & Startups',
     body: 'S-corps and C-corps with payroll, multi-state activity, entity questions, and growth plans that need funding behind them.',
     services: [
-      { label: 'Business Tax Preparation', href: '/services/tax-accounting/business-tax-preparation' },
+      { label: 'Business & Corporate Tax Services', href: '/services/tax-accounting/business-tax-preparation' },
       { label: 'Small Business Loans & Funding', href: '/services/business-financial-solutions/business-loans-funding' },
     ],
   },
@@ -128,7 +129,7 @@ export default function WhoWeServePage() {
             <div className="mt-5 flex-1 space-y-4 text-[1.02rem] leading-[1.7] text-white/65">
               <p>
                 For clients who would rather hand over a folder and talk it
-                through in person, our office on White Plains Road is open for
+                through in person, our New York office is open for
                 appointments. In-person tax preparation, document drop-off, and
                 face-to-face consultations across every service we offer.
               </p>
@@ -143,7 +144,10 @@ export default function WhoWeServePage() {
                 <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
                   Address
                 </dt>
-                <dd className="mt-1 text-white/85">{site.address.full}</dd>
+                <dd className="mt-1 text-white/85">
+                  {/* Suppressed while the address conflict is open */}
+                  <OfficeAddress tone="dark" />
+                </dd>
               </div>
               <div>
                 <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">

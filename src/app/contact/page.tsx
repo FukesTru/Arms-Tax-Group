@@ -15,7 +15,10 @@ import {
   localBusinessSchema,
 } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
-import { mapsDirectionsUrl, site } from '@/lib/site';
+import { mapsDirectionsUrl } from '@/lib/address';
+import { site } from '@/lib/site';
+import OfficeAddress from '@/components/OfficeAddress';
+import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
   title: 'Contact Us | Free Consultation | The Arms Corporation',
@@ -48,6 +51,12 @@ const contactMethods = [
     href: `mailto:${site.email}`,
     detail: 'Please do not attach tax documents — we will send a secure link.',
   },
+  {
+    label: 'Fax',
+    value: site.fax.display,
+    href: null,
+    detail: 'For documents you would rather not send electronically.',
+  },
 ];
 
 export default function ContactPage() {
@@ -73,6 +82,8 @@ export default function ContactPage() {
 
       {/* Form + contact details */}
       <Section>
+        <AddressConflictFlag className="mb-12" />
+
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div id="consultation-form" className="scroll-mt-28">
             <SectionHeading
@@ -95,10 +106,12 @@ export default function ContactPage() {
 
             <FadeUp delay={0.08} className="mt-7">
               <ul className="divide-y divide-ink-900/10 border-y border-ink-900/10">
-                {contactMethods.map((method) => (
-                  <li key={method.href}>
-                    <a
-                      href={method.href}
+                {contactMethods.map((method) => {
+                  const Tag = method.href ? 'a' : 'div';
+                  return (
+                  <li key={method.label}>
+                    <Tag
+                      {...(method.href ? { href: method.href } : {})}
                       className="group flex items-start justify-between gap-5 py-5"
                     >
                       <span>
@@ -112,15 +125,18 @@ export default function ContactPage() {
                           {method.detail}
                         </span>
                       </span>
-                      <span
-                        className="mt-6 shrink-0 text-accent transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      >
-                        →
-                      </span>
-                    </a>
+                      {method.href && (
+                        <span
+                          className="mt-6 shrink-0 text-accent transition-transform group-hover:translate-x-1"
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      )}
+                    </Tag>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             </FadeUp>
 
@@ -128,11 +144,10 @@ export default function ContactPage() {
               <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-accent">
                 Visit Us
               </p>
-              <address className="mt-4 not-italic text-[1.02rem] leading-relaxed text-white/85">
-                {site.address.street}
-                <br />
-                {site.address.city}, {site.address.state} {site.address.zip}
-              </address>
+              <div className="mt-4 text-[1.02rem] leading-relaxed text-white/85">
+                {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                <OfficeAddress tone="dark" />
+              </div>
               <div className="mt-5 border-t border-white/10 pt-5">
                 {/* UNCONFIRMED hours — see src/lib/site.ts */}
                 <p className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
@@ -144,14 +159,16 @@ export default function ContactPage() {
                   what to bring.
                 </p>
               </div>
-              <a
-                href={mapsDirectionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-light mt-6 w-full"
-              >
-                Get Directions
-              </a>
+              {mapsDirectionsUrl && (
+                <a
+                  href={mapsDirectionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-light mt-6 w-full"
+                >
+                  Get Directions
+                </a>
+              )}
             </FadeUp>
 
             <FadeUp delay={0.18} className="mt-6">

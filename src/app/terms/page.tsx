@@ -2,6 +2,7 @@ import JsonLd from '@/components/JsonLd';
 import LegalPage, { type LegalSection } from '@/components/LegalPage';
 import { breadcrumbSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
+import { legalContactLine, legalState } from '@/lib/address';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
@@ -96,13 +97,13 @@ const sections: LegalSection[] = [
   {
     heading: 'Governing Law',
     paragraphs: [
-      `These terms are governed by the laws of the State of ${site.address.stateName}, without regard to its conflict of law provisions. Any dispute arising out of or relating to these terms or your use of this website shall be subject to the exclusive jurisdiction of the state and federal courts located in ${site.address.stateName}.`,
+      `These terms are governed by the laws of the State of ${legalState}, without regard to its conflict of law provisions. Any dispute arising out of or relating to these terms or your use of this website shall be subject to the exclusive jurisdiction of the state and federal courts located in ${legalState}.`,
     ],
   },
   {
     heading: 'Contact Information',
     paragraphs: [
-      `Questions about these terms can be directed to ${site.email}, ${site.phone.display}, or ${site.address.full}.`,
+      `Questions about these terms can be directed to ${site.email}, ${site.phone.display}, or ${legalContactLine}.`,
     ],
   },
 ];

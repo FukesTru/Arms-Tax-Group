@@ -2,6 +2,7 @@ import JsonLd from '@/components/JsonLd';
 import LegalPage, { type LegalSection } from '@/components/LegalPage';
 import { breadcrumbSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
+import { legalContactLine } from '@/lib/address';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
@@ -119,7 +120,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Contact Us',
     paragraphs: [
-      `If you have questions about this policy or about how your information is handled, contact us at ${site.email}, call ${site.phone.display}, or write to us at ${site.address.full}.`,
+      `If you have questions about this policy or about how your information is handled, contact us at ${site.email}, call ${site.phone.display}, or fax ${site.fax.display}. Postal address: ${legalContactLine}.`,
     ],
   },
 ];

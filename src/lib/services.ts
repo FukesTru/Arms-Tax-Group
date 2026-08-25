@@ -48,10 +48,11 @@ export const categories: ServiceCategory[] = [
         icon: 'receipt',
       },
       {
-        title: 'Business Tax Preparation',
-        shortTitle: 'Business Tax Prep',
+        title: 'Business & Corporate Tax Services',
+        shortTitle: 'Corporate Tax',
         href: '/services/tax-accounting/business-tax-preparation',
-        blurb: 'LLC, S-corp, C-corp, and partnership returns with deduction strategy.',
+        blurb:
+          'Corporate tax services for C-corps and S-corps, plus LLC and partnership returns.',
         icon: 'building',
       },
       {
@@ -143,6 +144,6 @@ export const whoWeServeLinks = [
   {
     title: 'Bronx, NY Office',
     href: '/who-we-serve/bronx-ny',
-    blurb: 'Walk-in appointments at our White Plains Road office.',
+    blurb: 'Walk-in appointments at our New York office.',
   },
 ];

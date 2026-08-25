@@ -1,17 +1,28 @@
+import { officeAddress } from './address';
 import { site } from './site';
 import { allServices, categories } from './services';
 
 const ORG_ID = `${site.url}/#organization`;
 const BRONX_ID = `${site.url}/who-we-serve/bronx-ny#localbusiness`;
 
-const postalAddress = {
-  '@type': 'PostalAddress',
-  streetAddress: site.address.street,
-  addressLocality: site.address.city,
-  addressRegion: site.address.state,
-  postalCode: site.address.zip,
-  addressCountry: site.address.country,
-};
+/**
+ * PostalAddress, or null while the address conflict is unresolved.
+ *
+ * Structured data is exactly where a wrong address does the most damage — it
+ * is what feeds map results and business listings — so we emit no address at
+ * all rather than guess between the intake and the live site. Resolving the
+ * conflict in lib/site.ts restores it everywhere automatically.
+ */
+const postalAddress = officeAddress
+  ? {
+      '@type': 'PostalAddress',
+      streetAddress: officeAddress.street,
+      addressLocality: officeAddress.city,
+      addressRegion: officeAddress.state,
+      postalCode: officeAddress.zip,
+      addressCountry: officeAddress.country,
+    }
+  : null;
 
 /**
  * Organization-level AccountingService. Rendered once, in the root layout.
@@ -32,11 +43,12 @@ export function organizationSchema() {
     email: site.email,
     slogan: site.tagline,
     description:
-      'Personal and business tax preparation, IRS resolution, bookkeeping, tax planning, business funding, credit solutions, and unclaimed funds recovery from a Bronx, NY firm serving clients nationwide.',
-    address: postalAddress,
+      'Personal and business tax preparation, IRS resolution, bookkeeping, tax planning, business funding, credit solutions, and unclaimed funds recovery from a New York firm serving clients nationwide.',
+    ...(postalAddress ? { address: postalAddress } : {}),
+    faxNumber: site.fax.e164,
     areaServed: [
       { '@type': 'Country', name: 'United States' },
-      { '@type': 'City', name: 'Bronx' },
+      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
     ],
     founder: { '@type': 'Person', name: site.owner },
     ...(site.social.length > 0
@@ -71,15 +83,21 @@ export function localBusinessSchema() {
     parentOrganization: { '@id': ORG_ID },
     url: `${site.url}/who-we-serve/bronx-ny`,
     telephone: site.phone.e164,
+    faxNumber: site.fax.e164,
     email: site.email,
-    address: postalAddress,
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: site.address.latitude,
-      longitude: site.address.longitude,
-    },
+    // Address and geo are omitted while the address conflict is open.
+    ...(postalAddress ? { address: postalAddress } : {}),
+    ...(officeAddress
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: officeAddress.latitude,
+            longitude: officeAddress.longitude,
+          },
+        }
+      : {}),
     areaServed: [
-      { '@type': 'City', name: 'Bronx' },
+      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
       { '@type': 'Country', name: 'United States' },
     ],
     // NOTE: openingHoursSpecification is intentionally omitted until the
@@ -107,7 +125,7 @@ export function serviceSchema({
     provider: { '@id': ORG_ID },
     areaServed: [
       { '@type': 'Country', name: 'United States' },
-      { '@type': 'City', name: 'Bronx' },
+      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
     ],
   };
 }

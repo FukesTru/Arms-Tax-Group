@@ -11,7 +11,10 @@ import { bronxFaqs } from '@/content/general';
 import { breadcrumbSchema, faqSchema, localBusinessSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
-import { mapsDirectionsUrl, site } from '@/lib/site';
+import { mapsDirectionsUrl } from '@/lib/address';
+import { site } from '@/lib/site';
+import OfficeAddress from '@/components/OfficeAddress';
+import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
   title: 'Tax Preparation Office in Bronx, NY | The Arms Corporation',
@@ -36,24 +39,26 @@ export default function BronxOfficePage() {
       <Hero
         eyebrow="Bronx, New York"
         title="Tax & Financial Services in the Bronx"
-        subtitle={`Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions — in person at ${site.address.street}, or remotely if that's easier.`}
+        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions — in person at our New York office, or remotely if that is easier."
         trustPoints={['Walk-In Appointments', 'All 9 Services On Site', 'Free Consultation']}
         breadcrumbs={trail}
       />
 
       {/* Intro + contact block */}
       <Section>
+        <AddressConflictFlag className="mb-12" />
+
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <SectionHeading
               eyebrow="The Office"
-              title="A local firm, on White Plains Road"
+              title="A local firm, rooted in the community"
             />
             <FadeUp delay={0.06} className="prose-body mt-6 space-y-5">
               <p>
-                Our office sits at {site.address.full}, and it is where this
-                practice started. Clients across the Bronx — and from Manhattan,
-                Westchester, and the surrounding boroughs — come in to have
+                Our office is where this practice started. Clients across the
+                Bronx — and from Manhattan, Westchester, and the surrounding
+                boroughs — come in to have
                 their returns prepared, hand over a year of receipts, work
                 through an IRS letter that arrived unexpectedly, or sit down and
                 talk about a business idea before committing money to it.
@@ -79,14 +84,16 @@ export default function BronxOfficePage() {
               <a href={site.phone.href} className="btn-primary">
                 Call {site.phone.display}
               </a>
-              <a
-                href={mapsDirectionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-dark"
-              >
-                Get Directions
-              </a>
+              {mapsDirectionsUrl && (
+                <a
+                  href={mapsDirectionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-dark"
+                >
+                  Get Directions
+                </a>
+              )}
             </FadeUp>
           </div>
 
@@ -99,11 +106,8 @@ export default function BronxOfficePage() {
                     Address
                   </dt>
                   <dd className="mt-1.5">
-                    <address className="not-italic leading-relaxed text-white/85">
-                      {site.address.street}
-                      <br />
-                      {site.address.city}, {site.address.state} {site.address.zip}
-                    </address>
+                    {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                    <OfficeAddress className="text-white/85" tone="dark" />
                   </dd>
                 </div>
                 <div>
@@ -125,6 +129,12 @@ export default function BronxOfficePage() {
                       {site.text.display}
                     </a>
                   </dd>
+                </div>
+                <div>
+                  <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
+                    Fax
+                  </dt>
+                  <dd className="mt-1.5 text-white/85">{site.fax.display}</dd>
                 </div>
                 <div>
                   <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">

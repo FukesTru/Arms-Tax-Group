@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { categories, whoWeServeLinks } from '@/lib/services';
 import { site } from '@/lib/site';
 import Logo from './Logo';
+import OfficeAddress from './OfficeAddress';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -19,7 +20,10 @@ export default function Footer() {
               solutions for individuals and businesses. Based in Bronx, NY —
               serving clients nationwide.
             </p>
-            <p className="mt-4 font-display text-[0.92rem] font-semibold italic text-accent">
+            <p className="mt-4 font-display text-[0.98rem] font-bold text-accent">
+              {site.brandLine}
+            </p>
+            <p className="mt-2 text-[0.88rem] italic text-white/55">
               &ldquo;{site.tagline}&rdquo;
             </p>
 
@@ -115,11 +119,8 @@ export default function Footer() {
             </h2>
             <ul className="mt-5 space-y-3.5 text-[0.92rem]">
               <li>
-                <address className="not-italic leading-relaxed">
-                  {site.address.street}
-                  <br />
-                  {site.address.city}, {site.address.state} {site.address.zip}
-                </address>
+                {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                <OfficeAddress tone="dark" />
               </li>
               <li>
                 <a href={site.phone.href} className="transition-colors hover:text-accent">
@@ -130,6 +131,9 @@ export default function Footer() {
                 <a href={site.text.href} className="transition-colors hover:text-accent">
                   Text {site.text.display}
                 </a>
+              </li>
+              <li>
+                <span>Fax {site.fax.display}</span>
               </li>
               <li>
                 <a

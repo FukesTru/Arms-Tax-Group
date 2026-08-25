@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-700 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold tracking-tight text-ink-900;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white;
+  }
+
+  .on-dark :focus-visible {
+    @apply ring-offset-ink-900;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Accent underline used beneath every page H1 */
+  .accent-rule {
+    @apply mt-6 block h-1 w-20 rounded-full bg-accent;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-[0.18em] text-accent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-display text-[0.95rem] font-bold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-600 hover:shadow-card-hover active:bg-accent-700;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/25 bg-white/5 text-white hover:border-white/50 hover:bg-white/10;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-ink-900/15 bg-white text-ink-900 hover:border-ink-900/40 hover:bg-ink-900/[0.03];
+  }
+
+  .prose-body p {
+    @apply text-[1.05rem] leading-[1.75] text-ink-600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

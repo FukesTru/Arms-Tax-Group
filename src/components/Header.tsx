@@ -102,6 +102,15 @@ export default function Header() {
             className="hidden items-center gap-1 lg:flex"
             aria-label="Main navigation"
           >
+            <Link
+              href="/"
+              className={`rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
+                isActive('/') ? 'text-accent' : 'text-white/85 hover:text-white'
+              }`}
+            >
+              Home
+            </Link>
+
             <div
               className="relative"
               onMouseEnter={() => openWithHover('services')}
@@ -282,6 +291,13 @@ export default function Header() {
           className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-white/10 bg-ink-900 pb-8 lg:hidden"
         >
           <nav className="container-x pt-5" aria-label="Mobile navigation">
+            <Link
+              href="/"
+              className="mb-5 block border-b border-white/10 pb-4 font-display text-base font-semibold text-white"
+            >
+              Home
+            </Link>
+
             {categories.map((category) => (
               <div key={category.key} className="mb-6">
                 <Link

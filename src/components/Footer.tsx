@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid gap-10 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
             <Link href="/" aria-label={`${site.brandName} — home`}>
-              <Logo className="h-10 w-auto text-white" />
+              <Logo variant="onDark" size={72} />
             </Link>
             <p className="mt-5 max-w-xs text-[0.92rem] leading-relaxed">
               Tax preparation, IRS resolution, bookkeeping, funding, and credit
@@ -98,11 +98,6 @@ export default function Footer() {
               <li>
                 <Link href="/services" className="text-[0.92rem] transition-colors hover:text-accent">
                   All Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/testimonials" className="text-[0.92rem] transition-colors hover:text-accent">
-                  Testimonials
                 </Link>
               </li>
               <li>

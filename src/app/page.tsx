@@ -5,7 +5,6 @@ import FadeUp from '@/components/FadeUp';
 import Hero from '@/components/Hero';
 import JsonLd from '@/components/JsonLd';
 import ProcessSteps from '@/components/ProcessSteps';
-import ReviewsSection from '@/components/ReviewsSection';
 import Section, { SectionHeading } from '@/components/Section';
 import { CategoryCards } from '@/components/ServiceCards';
 import { homeFaqs, houseProcess } from '@/content/general';
@@ -13,7 +12,7 @@ import { faqSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 import { addressPendingCopy, officeAddress } from '@/lib/address';
-import { liveTestimonials, site } from '@/lib/site';
+import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title:
@@ -234,11 +233,6 @@ export default function HomePage() {
           </p>
         </FadeUp>
       </Section>
-
-      <ReviewsSection
-        items={liveTestimonials.slice(0, 2)}
-        showViewAll
-      />
 
       <FAQ
         faqs={homeFaqs}

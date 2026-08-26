@@ -221,9 +221,9 @@ export default function AboutPage() {
               href: '/who-we-serve',
             },
             {
-              title: 'Testimonials',
-              body: 'What working with us is like, in our clients’ own words.',
-              href: '/testimonials',
+              title: 'Contact',
+              body: 'A free consultation is the fastest way to judge whether we fit.',
+              href: '/contact',
             },
           ].map((card, index) => (
             <FadeUp key={card.href} delay={index * 0.07}>

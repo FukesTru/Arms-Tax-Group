@@ -11,10 +11,9 @@ export const site = {
   brandName: 'The Arms Corporation',
 
   /**
-   * UNCONFIRMED SPELLING: the intake form gives "Leval Moore". The client's
-   * live site spells it "Laval Moore" inside a published testimonial (quoted
-   * verbatim below). Confirm which is correct — the site currently shows both
-   * spellings, ours in body copy and theirs inside the quote.
+   * UNCONFIRMED SPELLING: the intake form gives "Leval Moore"; the client's
+   * live site spells it "Laval Moore". This site uses the intake spelling
+   * throughout. Confirm which is correct before launch.
    */
   owner: 'Leval Moore',
 
@@ -113,76 +112,11 @@ export const site = {
    */
   social: [] as { label: string; href: string }[],
 
-  /**
-   * Google Business Profile is not set up yet. Leave false until it is live —
-   * this gates the reviews widget placement and any review CTA sitewide.
-   * Never enable alongside fabricated ratings or review counts.
-   */
-  googleBusinessProfile: {
-    live: false,
-    reviewUrl: '',
-    placeId: '',
-  },
-
   analytics: {
     // Placeholder — swap in the real GA4 measurement ID at launch.
     ga4MeasurementId: 'G-XXXXXXXXXX',
   },
 } as const;
 
-export type Testimonial = {
-  /** Quoted verbatim from the client's live site. Do not paraphrase. */
-  quote: string;
-  /** Null means the source attribution has not been recovered yet. */
-  author: string | null;
-  location?: string;
-  /**
-   * 'live' renders normally. 'pending-attribution' renders with a visible
-   * build-review chip and is held back from the homepage rotation.
-   */
-  status: 'live' | 'pending-attribution';
-  /** Shown to reviewers only, never to visitors. */
-  reviewNote?: string;
-};
-
-/**
- * Real client testimonials, quoted verbatim from thearmscorp.co.
- *
- * GUARDRAIL: these are direct testimonials, not a Google Business Profile
- * feed. Never render star ratings or a review count alongside them, and do
- * not add Review/AggregateRating schema — see the note in lib/schema.ts.
- */
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "I have been a loyal client of Laval Moore's tax company, Alpha Financial, for over 20 years, and I can confidently say they are the best in the business. Their exceptional accounting services have been instrumental in keeping my finances organized and running smoothly year after year. Their attention to detail, professionalism, and dedication have consistently exceeded my expectations.",
-    author: 'Roger Swayze',
-    location: 'Arkansas',
-    status: 'live',
-    reviewNote:
-      'Quoted verbatim. Note it names "Alpha Financial" and spells the owner "Laval" — both differ from the branding used elsewhere on this site. Confirm with the client whether to publish as-is.',
-  },
-  {
-    quote:
-      'I highly recommend The Arms Corporation for its exceptional financial and tax services. Their professionalism, timeliness, and personalized approach have truly impressed my company. They cater to your needs and deliver outstanding results. Don’t hesitate to work with them!',
-    author: 'Dr. Benjamin McGainey',
-    location: 'New York',
-    status: 'live',
-  },
-  {
-    quote:
-      'I have known Mr. Moore for the past 20 years, during which time he has consistently prepared my personal and business taxes. His work has always been highly professional, and I would highly recommend him for many more years to come.',
-    author: null,
-    status: 'pending-attribution',
-    reviewNote:
-      'Attribution could not be recovered — thearmscorp.co is unreachable from the build environment. Supply the name and location exactly as shown on the source site, then set status to "live".',
-  },
-];
-
-/** Attributed testimonials, safe to display without a review chip. */
-export const liveTestimonials = testimonials.filter((t) => t.status === 'live');
-
 /** True while any content on the site is awaiting client confirmation. */
-export const hasOpenReviewFlags =
-  site.address.status === 'unconfirmed' ||
-  testimonials.some((t) => t.status !== 'live');
+export const hasOpenReviewFlags = site.address.status === 'unconfirmed';

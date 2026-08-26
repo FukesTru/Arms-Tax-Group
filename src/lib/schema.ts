@@ -27,9 +27,9 @@ const postalAddress = officeAddress
 /**
  * Organization-level AccountingService. Rendered once, in the root layout.
  *
- * Deliberately omits aggregateRating / review — the Google Business Profile
- * is not live and no client-approved testimonials exist. Never add rating
- * markup without real, verifiable reviews.
+ * Deliberately omits aggregateRating / review. The site carries no reviews or
+ * testimonials at all, and the Google Business Profile is not live. Never add
+ * rating markup without real, verifiable reviews behind it.
  */
 export function organizationSchema() {
   return {

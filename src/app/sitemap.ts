@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/who-we-serve', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/who-we-serve/bronx-ny', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/contact', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/testimonials', priority: 0.6, changeFrequency: 'monthly' },
     { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
   ];

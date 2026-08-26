@@ -94,7 +94,7 @@ export default function Header() {
             className="shrink-0"
             aria-label={`${site.brandName} — home`}
           >
-            <Logo className="h-9 w-auto text-white" />
+            <Logo variant="onDark" size={60} priority />
           </Link>
 
           {/* Desktop navigation */}
@@ -350,14 +350,6 @@ export default function Header() {
                   className="block py-2.5 font-display text-base font-semibold text-white"
                 >
                   About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/testimonials"
-                  className="block py-2.5 font-display text-base font-semibold text-white"
-                >
-                  Testimonials
                 </Link>
               </li>
               <li>

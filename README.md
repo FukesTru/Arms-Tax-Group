@@ -1,6 +1,6 @@
 # Arms Tax Group Inc — The Arms Corporation
 
-Twenty-page marketing site for **Arms Tax Group Inc**, operating as **The Arms Corporation** —
+Nineteen-page marketing site for **Arms Tax Group Inc**, operating as **The Arms Corporation** —
 a Bronx, NY tax, accounting, and financial services firm serving clients nationwide.
 
 Built with Next.js (App Router), TypeScript, Tailwind CSS, and Framer Motion.
@@ -23,7 +23,7 @@ npm run lint
 
 ```
 src/
-  app/                      # one directory per route (20 pages + API + sitemap/robots)
+  app/                      # one directory per route (19 pages + API + sitemap/robots)
     api/contact/route.ts    # consultation form handler — NOT yet wired to a real inbox
     sitemap.ts robots.ts    # generated at /sitemap.xml and /robots.txt
   components/               # header, footer, hero, FAQ, CTA bands, cards, forms
@@ -63,10 +63,9 @@ value there updates it everywhere, including the structured data.
 | 14 | Business Consulting | `/services/business-financial-solutions/business-consulting` |
 | 15 | Who We Serve (hub) | `/who-we-serve` |
 | 16 | Bronx, NY Office | `/who-we-serve/bronx-ny` |
-| 17 | Testimonials | `/testimonials` |
-| 18 | Contact | `/contact` |
-| 19 | Privacy Policy | `/privacy-policy` |
-| 20 | Terms of Service | `/terms` |
+| 17 | Contact | `/contact` |
+| 18 | Privacy Policy | `/privacy-policy` |
+| 19 | Terms of Service | `/terms` |
 
 Plus a styled 404 at `not-found`.
 
@@ -142,17 +141,12 @@ intake form says. Confirm before launch.
 These were applied deliberately. **Do not undo them without client sign-off** — several
 carry legal exposure.
 
-- **No star ratings, review counts, or Google review badges anywhere.** The Google Business
-  Profile is still not set up. The testimonials on the site are direct client testimonials,
-  not a Google feed, so no rating or count is shown beside them.
-- **No `Review` or `AggregateRating` schema.** Direct testimonials are not verifiable
-  reviews. Do not add rating markup until the Business Profile is live.
-- **No fabricated testimonials.** The three on the site are quoted verbatim from
-  thearmscorp.co and live in `testimonials` in `src/lib/site.ts`.
-- **No invented attribution.** One testimonial is held at `status: 'pending-attribution'`
-  because its attribution could not be recovered — thearmscorp.co is unreachable from the
-  build environment (egress-blocked). It renders with a visible review chip and is excluded
-  from the homepage rotation rather than being published as if finished.
+- **No reviews or testimonials anywhere.** The testimonials section, the `/testimonials`
+  page, and the Google Business Profile widget slot were all removed at the client's
+  request. No star ratings, review counts, or Google badge appear on any page.
+- **No `Review` or `AggregateRating` schema.** Nothing on the site claims social proof.
+  If testimonials are reinstated later, they must be real and client-approved, and rating
+  markup still requires verifiable reviews rather than direct quotes.
 - **No professional credentials** (CPA, EA, "IRS certified") anywhere on the site — none
   were confirmed in the intake.
 - **No specific years-in-business claim.** Trust language is general until the client
@@ -180,25 +174,28 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       determines what the site may legally claim, and what disclaimers it needs.
 - [ ] **Office address** — see the blocking section above. Two conflicting addresses in two
       different cities; resolve in `src/lib/site.ts`.
-- [ ] **Third testimonial's attribution** — supply the name and location exactly as shown on
-      thearmscorp.co, then set its `status` to `'live'` in `src/lib/site.ts`.
-- [ ] **Testimonial wording** — the Roger Swayze quote names "Alpha Financial" and spells the
-      owner "Laval Moore", both of which differ from the branding used everywhere else on
-      this site. It is published verbatim as it appears on the client's live site. Confirm
-      that is intended.
-- [ ] **Owner name spelling** — intake says "Leval Moore"; the live site's testimonial says
-      "Laval". The site currently shows both. Confirm which is correct.
-- [ ] **Google Business Profile** — once live, set `site.googleBusinessProfile.live = true`
-      and fill in `reviewUrl`. That activates the widget slot and review CTA.
-- [ ] **Written approval to republish testimonials** — confirm the client has the right to
-      reuse these quotes on the new site.
+- [ ] **Owner name spelling** — intake says "Leval Moore"; the client's live site spells it
+      "Laval". The site uses the intake spelling throughout. Confirm which is correct.
 - [ ] **Lending & credit** — confirm whether Arms Capital Partners and Arms Credit Solutions
       are direct providers or referral partners. The funding page currently states we are
       **not** a direct lender; correct it if that is wrong, as it changes required
       disclosures.
 - [ ] **EIN** — confirm the client wants it kept off the public site (current behavior).
-- [ ] **Logo** — the transparent PNG has not been received. `src/components/Logo.tsx` renders
-      a placeholder wordmark; drop the file at `public/logo.png` and swap the component body.
+- [ ] **⚠️ Logo file — `public/logo.png` is a PLACEHOLDER, not the client's asset.** The
+      logo was supplied as an image in conversation and could not be written to disk, so the
+      committed file is an approximate reconstruction used to verify layout. It is close but
+      **not** pixel-identical (roof angle, letter spacing, and bar/text alignment all differ).
+      **Overwrite `public/logo.png` with the client's real file before launch.** No code
+      change is needed — `src/components/Logo.tsx` reads that path at 512x512.
+- [ ] **Logo colour conflict** — the logo is black and crimson (about `#A81E3C`). The site's
+      accent is `#FF6536` orange. The two clash wherever they meet, most visibly in the
+      header. Decide whether the palette should follow the logo's crimson, or the logo gets
+      an orange-compatible variant.
+- [ ] **Logo legibility at small sizes** — it is a square lockup with fine serif lettering.
+      In the 80px sticky header it renders at 60px, where "A.R.M.S." is small and "CORP." is
+      barely legible. Consider asking the client for a horizontal variant for the header.
+- [ ] **Favicon and OG image** — both still use the old placeholder mark. Regenerate from the
+      real logo once it lands (`public/favicon.svg`, `public/og-image.png`).
 - [ ] **Founder photo** — the About page uses an "LM" monogram placeholder.
 - [ ] **Founder bio** — the About page bio is written copy; replace with the client's own.
 - [ ] **Legal review** — Privacy Policy and Terms are general placeholder content and have

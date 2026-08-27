@@ -159,6 +159,39 @@ nobody confirmed. That tile is now "Nationwide / Remote". Only "9 — Services u
 is a real, checkable number. If the client has genuine metrics — clients served, returns
 filed, dollars recovered — these tiles are the place for them.
 
+## Images
+
+Every image slot is declared in `src/lib/images.ts` and rendered through
+`SiteImage`, so swapping artwork for photography is a one-line change per slot
+with no layout code touched.
+
+**The slots currently hold brand artwork, not photographs.** No stock-photo
+source is reachable from the build environment — Unsplash, Pexels, Pixabay and
+Wikimedia are all blocked by the egress proxy — so rather than embed photo URLs
+that could not be previewed before shipping to a client site, these ship as SVG
+illustrations drawn to match the logo geometry and palette.
+
+| Slot | Used on | Asset |
+|---|---|---|
+| `taxAccounting` | Homepage category card, Services hub | `/images/tax-accounting.svg` |
+| `businessFinancial` | Homepage category card, Services hub | `/images/business-financial.svg` |
+| `ourStory` | About page | `/images/our-story.svg` |
+| `nationwide` | Homepage "Who We Serve" | `/images/nationwide.svg` |
+
+**To use real photos:** drop the file in `/public/images/`, point the slot's
+`src` at it, and rewrite its `alt` to describe the actual photo. `SiteImage`
+switches to `next/image` automatically for raster files, so you get resizing,
+AVIF/WebP and lazy loading for free.
+
+Two cautions when sourcing photography:
+
+- Unsplash photos are free for commercial use under the Unsplash License, but
+  **do not use photos of people in a way that implies they are staff or clients
+  of the firm** — that is the same fabrication problem as inventing a
+  testimonial.
+- The founder photo slot on the About page is still an "LM" monogram. Replace it
+  with a real photograph of Leval Moore, never a stock person.
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several

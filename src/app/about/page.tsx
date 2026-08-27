@@ -6,6 +6,8 @@ import Hero from '@/components/Hero';
 import JsonLd from '@/components/JsonLd';
 import Section, { SectionHeading } from '@/components/Section';
 import { aboutPageSchema, breadcrumbSchema } from '@/lib/schema';
+import { images } from '@/lib/images';
+import SiteImage from '@/components/SiteImage';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
@@ -79,7 +81,15 @@ export default function AboutPage() {
           </div>
 
           <FadeUp delay={0.12}>
-            <div className="rounded-2xl bg-ink-900 p-8 lg:sticky lg:top-28">
+            <div className="overflow-hidden rounded-2xl border border-ink-900/10 shadow-card">
+              <SiteImage
+                asset={images.ourStory}
+                className="h-auto w-full"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+            </div>
+
+            <div className="mt-6 rounded-2xl bg-ink-900 p-8">
               <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-accent">
                 Our Mission
               </p>

@@ -9,6 +9,8 @@ import ProcessSteps from '@/components/ProcessSteps';
 import Section, { SectionHeading } from '@/components/Section';
 import { houseProcess, servicesHubFaqs } from '@/content/general';
 import { breadcrumbSchema, faqSchema, itemListSchema } from '@/lib/schema';
+import { images } from '@/lib/images';
+import SiteImage from '@/components/SiteImage';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 
@@ -60,13 +62,18 @@ export default function ServicesPage() {
               className="overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card"
             >
               <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="relative bg-ink-900 p-8 md:p-10">
+                <div className="relative overflow-hidden bg-ink-900 p-8 md:p-10">
+                  <SiteImage
+                    asset={
+                      category.key === 'tax-accounting'
+                        ? images.taxAccounting
+                        : images.businessFinancial
+                    }
+                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                  />
                   <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      backgroundImage:
-                        'radial-gradient(ellipse 90% 80% at 20% 10%, rgba(168,30,60,0.3), transparent 65%)',
-                    }}
+                    className="absolute inset-0 bg-gradient-to-br from-ink-900/90 via-ink-900/85 to-ink-900/60"
                     aria-hidden="true"
                   />
                   <div className="relative">

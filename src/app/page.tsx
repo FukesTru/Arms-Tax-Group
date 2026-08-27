@@ -9,6 +9,8 @@ import Section, { SectionHeading } from '@/components/Section';
 import { CategoryCards } from '@/components/ServiceCards';
 import { homeFaqs, houseProcess } from '@/content/general';
 import { faqSchema } from '@/lib/schema';
+import { images } from '@/lib/images';
+import SiteImage from '@/components/SiteImage';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 import { addressPendingCopy, officeAddress } from '@/lib/address';
@@ -178,7 +180,15 @@ export default function HomePage() {
           tone="dark"
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <FadeUp delay={0.06} className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+          <SiteImage
+            asset={images.nationwide}
+            className="h-[220px] w-full object-cover md:h-[300px]"
+            sizes="100vw"
+          />
+        </FadeUp>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
           {[
             {
               title: 'Bronx, NY Office',

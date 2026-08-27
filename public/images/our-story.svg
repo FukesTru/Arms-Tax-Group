@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img">
+  <defs>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FCF2F4"/><stop offset="100%" stop-color="#F6DDE3"/>
+    </linearGradient>
+    <clipPath id="sclip"><rect width="800" height="600" rx="0"/></clipPath>
+  </defs>
+  <g clip-path="url(#sclip)">
+    <rect width="800" height="600" fill="url(#sg)"/>
+    <g stroke="#10060B" stroke-opacity="0.06" stroke-width="1">
+      <path d="M0 75H800M0 150H800M0 225H800M0 300H800M0 375H800M0 450H800M0 525H800"/>
+      <path d="M100 0V600M200 0V600M300 0V600M400 0V600M500 0V600M600 0V600M700 0V600"/>
+    </g>
+    <!-- oversized roof, echoing the logo mark -->
+    <g transform="translate(400 330)">
+      <polygon points="0,-210 -300,0 -300,-58 0,-268" fill="#10060B"/>
+      <polygon points="0,-210 300,0 300,-58 0,-268" fill="#A81E3C"/>
+      <rect x="150" y="-206" width="62" height="92" fill="#A81E3C"/>
+      <rect x="-300" y="70"  width="600" height="34" rx="4" fill="#A81E3C"/>
+      <rect x="-300" y="150" width="600" height="34" rx="4" fill="#A81E3C"/>
+      <!-- pillars under the roof -->
+      <g fill="#10060B" fill-opacity="0.85">
+        <rect x="-232" y="-58" width="40" height="128" rx="4"/>
+        <rect x="-116" y="-58" width="40" height="128" rx="4"/>
+        <rect x="0"    y="-58" width="40" height="128" rx="4"/>
+        <rect x="116"  y="-58" width="40" height="128" rx="4"/>
+        <rect x="192"  y="-58" width="40" height="128" rx="4"/>
+      </g>
+    </g>
+  </g>
+</svg>

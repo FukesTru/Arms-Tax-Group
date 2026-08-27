@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { images } from '@/lib/images';
 import type { ServiceCategory, ServiceLink } from '@/lib/services';
+import SiteImage from './SiteImage';
 import FadeUp from './FadeUp';
 import Icon from './Icon';
 
@@ -14,23 +16,30 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
           delay={index * 0.1}
           className="group flex flex-col overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover"
         >
-          <div className="relative overflow-hidden bg-ink-900 px-7 py-9">
+          <div className="relative overflow-hidden bg-ink-900">
+            {/* Artwork sits behind the card header — swap the manifest entry
+                for a photograph and this becomes a photo card. */}
+            <SiteImage
+              asset={
+                category.key === 'tax-accounting'
+                  ? images.taxAccounting
+                  : images.businessFinancial
+              }
+              className="absolute inset-0 h-full w-full object-cover opacity-90"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
             <div
-              className="pointer-events-none absolute inset-0 opacity-60"
-              style={{
-                backgroundImage:
-                  'radial-gradient(ellipse 70% 90% at 90% 10%, rgba(168,30,60,0.35), transparent 65%)',
-              }}
+              className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/80 to-ink-900/25"
               aria-hidden="true"
             />
-            <div className="relative">
+            <div className="relative px-7 pb-9 pt-40">
               <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-white">
                 <Icon name={category.services[0].icon} className="h-5 w-5" />
               </span>
               <h3 className="mt-5 !text-white text-[1.35rem] leading-snug">
                 {category.title}
               </h3>
-              <p className="mt-3 text-[0.96rem] leading-relaxed text-white/65">
+              <p className="mt-3 text-[0.96rem] leading-relaxed text-white/70">
                 {category.blurb}
               </p>
             </div>

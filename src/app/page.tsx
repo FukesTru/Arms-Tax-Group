@@ -36,7 +36,7 @@ export default function HomePage() {
         title={
           <>
             Tax &amp; Financial Solutions for Individuals and Businesses —{' '}
-            <span className="text-accent">Bronx, NY &amp; Nationwide</span>
+            <span className="text-accent-bright">Bronx, NY &amp; Nationwide</span>
           </>
         }
         subtitle="Reaching out to embrace YOUR needs — with personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions from a Bronx-based team serving clients nationwide."

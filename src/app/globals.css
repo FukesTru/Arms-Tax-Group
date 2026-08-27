@@ -43,6 +43,17 @@
     @apply font-display text-xs font-bold uppercase tracking-[0.18em] text-accent;
   }
 
+  /* On dark surfaces the standard accent is too dim for small text
+     (4.00:1). The bright tone measures 5.11:1 there. */
+  .on-dark .eyebrow,
+  .on-dark .accent-text {
+    @apply text-accent-bright;
+  }
+
+  .accent-text {
+    @apply text-accent;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-display text-[0.95rem] font-bold transition-all duration-200;
   }

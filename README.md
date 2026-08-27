@@ -75,11 +75,32 @@ Plus a styled 404 at `not-found`.
 
 | Token | Value |
 |---|---|
-| Background (dark) | `#10060B` — Tailwind `ink` |
-| Accent | `#A81E3C` — Tailwind `accent`, taken from the logo |
+| Background (dark) | `#0D0B0D` — Tailwind `ink`, near-neutral |
+| Accent | `#D8244D` — Tailwind `accent`, for buttons and light surfaces |
+| Accent (bright) | `#F03A5F` — Tailwind `accent-bright`, dark surfaces only |
 | White | `#FFFFFF` |
 | Headings | Space Grotesk (`font-display`) |
 | Body | Inter (`font-sans`) |
+
+**The palette was tuned twice.** First the accent moved off the intake's
+`#FF6536` orange to the logo's crimson. That version read as dull, and measuring
+it showed why: the background `#10060B` was a maroon-tinted near-black sitting
+only **17 degrees** from the accent hue, the accent measured just **2.77:1**
+against the field it sat on, and at **L39%** there was no luminous value anywhere
+on the page. Red on a red ground is mud. The current palette fixes all three:
+
+- **Ink desaturated** from `#10060B` (H330, S45%) to `#0D0B0D` (S8%), so the
+  accent reads as a colour rather than blending into the ground.
+- **Accent brightened** from `#A81E3C` (L39%) to `#D8244D` (L49%).
+- **A second accent tone added.** `accent-bright` `#F03A5F` is for accent text on
+  dark surfaces, where the standard tone measures only 4.00:1. `.on-dark .eyebrow`
+  switches to it automatically in `globals.css`. Never put white text on it
+  (3.84:1), and never use it as small text on white.
+
+Measured contrast, all passing AA: white on button 4.91:1, eyebrow on white
+4.91:1, eyebrow on the `accent-50` tint 4.66:1, accent text on dark 5.11:1. The
+tint was lightened to `#FFF7F9` specifically because it measured 4.49:1 at its
+previous value — a hair under.
 
 **Accent changed from the intake's `#FF6536`.** The intake specified an orange accent, but
 it was supplied before the logo and conflicts with it: the logo's crimson, the orange, and

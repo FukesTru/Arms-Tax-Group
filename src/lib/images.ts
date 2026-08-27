@@ -32,6 +32,13 @@ export type SiteImageAsset = {
 };
 
 export const images = {
+  heroLanding: {
+    src: '/images/hero-landing.svg',
+    alt: 'Illustration of a prepared tax return, a confirmation card and a rising bar chart.',
+    width: 720,
+    height: 580,
+    isArtwork: true,
+  },
   taxAccounting: {
     src: '/images/tax-accounting.svg',
     alt: 'Illustration of a prepared tax return beside a rising bar chart.',

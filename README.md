@@ -173,6 +173,7 @@ illustrations drawn to match the logo geometry and palette.
 
 | Slot | Used on | Asset |
 |---|---|---|
+| `heroLanding` | Homepage hero (right column, hidden below `lg`) | `/images/hero-landing.svg` |
 | `taxAccounting` | Homepage category card, Services hub | `/images/tax-accounting.svg` |
 | `businessFinancial` | Homepage category card, Services hub | `/images/business-financial.svg` |
 | `ourStory` | About page | `/images/our-story.svg` |

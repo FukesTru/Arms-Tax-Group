@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import type { SiteImageAsset } from '@/lib/images';
 import { site } from '@/lib/site';
+import SiteImage from './SiteImage';
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 import FadeUp from './FadeUp';
 
@@ -14,6 +16,11 @@ type HeroProps = {
   primaryCta?: { label: string; href: string };
   /** Taller treatment reserved for the homepage. */
   size?: 'default' | 'large';
+  /**
+   * Optional artwork shown beside the copy on large screens. Hidden below
+   * lg so it never competes with the headline on a phone.
+   */
+  image?: SiteImageAsset;
 };
 
 export default function Hero({
@@ -24,6 +31,7 @@ export default function Hero({
   breadcrumbs,
   primaryCta = { label: 'Get a Free Consultation', href: '/contact' },
   size = 'default',
+  image,
 }: HeroProps) {
   return (
     <section
@@ -48,7 +56,18 @@ export default function Hero({
       <div className="container-x relative">
         {breadcrumbs && <Breadcrumbs trail={breadcrumbs} />}
 
-        <FadeUp className={size === 'large' ? 'max-w-4xl' : 'max-w-3xl'}>
+        <div
+          className={
+            image
+              ? 'grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12'
+              : ''
+          }
+        >
+        <FadeUp
+          className={
+            image ? '' : size === 'large' ? 'max-w-4xl' : 'max-w-3xl'
+          }
+        >
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
 
           <h1
@@ -113,6 +132,18 @@ export default function Hero({
             </a>
           </div>
         </FadeUp>
+
+        {image && (
+          <FadeUp delay={0.12} className="hidden lg:block">
+            <SiteImage
+              asset={image}
+              priority
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 45vw, 0px"
+            />
+          </FadeUp>
+        )}
+        </div>
       </div>
     </section>
   );

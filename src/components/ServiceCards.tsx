@@ -19,7 +19,7 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
               className="pointer-events-none absolute inset-0 opacity-60"
               style={{
                 backgroundImage:
-                  'radial-gradient(ellipse 70% 90% at 90% 10%, rgba(255,101,54,0.35), transparent 65%)',
+                  'radial-gradient(ellipse 70% 90% at 90% 10%, rgba(168,30,60,0.35), transparent 65%)',
               }}
               aria-hidden="true"
             />

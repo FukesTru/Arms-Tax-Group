@@ -70,14 +70,18 @@ export default function Header() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
-  const solid = scrolled || mobileOpen || openMenu !== null;
+  // The header is a solid light bar rather than transparent-over-hero. The
+  // client's logo is black lettering on a light ground, so a dark bar forced
+  // it onto a white chip that read as a sticker; on a light bar it sits
+  // natively. Scroll only deepens the shadow now.
+  const lifted = scrolled || mobileOpen || openMenu !== null;
 
   return (
     <header
-      className={`on-dark fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        solid
-          ? 'bg-ink-900/95 shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur'
-          : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-white transition-shadow duration-300 ${
+        lifted
+          ? 'border-ink-900/10 shadow-[0_2px_16px_rgba(16,6,11,0.10)]'
+          : 'border-ink-900/[0.07]'
       }`}
     >
       <a
@@ -94,7 +98,7 @@ export default function Header() {
             className="shrink-0"
             aria-label={`${site.brandName} — home`}
           >
-            <Logo variant="onDark" size={60} priority />
+            <Logo variant="onLight" size={58} priority />
           </Link>
 
           {/* Desktop navigation */}
@@ -105,7 +109,7 @@ export default function Header() {
             <Link
               href="/"
               className={`rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
-                isActive('/') ? 'text-accent' : 'text-white/85 hover:text-white'
+                isActive('/') ? 'text-accent' : 'text-ink-700 hover:text-ink-900'
               }`}
             >
               Home
@@ -121,7 +125,7 @@ export default function Header() {
                 className={`flex items-center gap-1.5 rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
                   isActive('/services')
                     ? 'text-accent'
-                    : 'text-white/85 hover:text-white'
+                    : 'text-ink-700 hover:text-ink-900'
                 }`}
                 aria-expanded={openMenu === 'services'}
                 aria-haspopup="true"
@@ -188,7 +192,7 @@ export default function Header() {
                 className={`flex items-center gap-1.5 rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
                   isActive('/who-we-serve')
                     ? 'text-accent'
-                    : 'text-white/85 hover:text-white'
+                    : 'text-ink-700 hover:text-ink-900'
                 }`}
                 aria-expanded={openMenu === 'who'}
                 aria-haspopup="true"
@@ -224,7 +228,7 @@ export default function Header() {
             <Link
               href="/about"
               className={`rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
-                isActive('/about') ? 'text-accent' : 'text-white/85 hover:text-white'
+                isActive('/about') ? 'text-accent' : 'text-ink-700 hover:text-ink-900'
               }`}
             >
               About
@@ -234,7 +238,7 @@ export default function Header() {
               className={`rounded-md px-3.5 py-2 font-display text-[0.94rem] font-semibold transition-colors ${
                 isActive('/contact')
                   ? 'text-accent'
-                  : 'text-white/85 hover:text-white'
+                  : 'text-ink-700 hover:text-ink-900'
               }`}
             >
               Contact
@@ -245,7 +249,7 @@ export default function Header() {
           <div className="hidden items-center gap-4 lg:flex">
             <a
               href={site.phone.href}
-              className="font-display text-[0.94rem] font-bold text-white transition-colors hover:text-accent"
+              className="font-display text-[0.94rem] font-bold text-ink-900 transition-colors hover:text-accent"
             >
               {site.phone.display}
             </a>
@@ -257,7 +261,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-lg text-white lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-ink-900 lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -288,12 +292,12 @@ export default function Header() {
       {mobileOpen && (
         <div
           id="mobile-menu"
-          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-white/10 bg-ink-900 pb-8 lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-ink-900/10 bg-white pb-8 lg:hidden"
         >
           <nav className="container-x pt-5" aria-label="Mobile navigation">
             <Link
               href="/"
-              className="mb-5 block border-b border-white/10 pb-4 font-display text-base font-semibold text-white"
+              className="mb-5 block border-b border-ink-900/10 pb-4 font-display text-base font-semibold text-ink-900"
             >
               Home
             </Link>
@@ -311,7 +315,7 @@ export default function Header() {
                     <li key={service.href}>
                       <Link
                         href={service.href}
-                        className="flex items-center gap-3 rounded-lg py-2.5 text-[0.95rem] font-medium text-white/85"
+                        className="flex items-center gap-3 rounded-lg py-2.5 text-[0.95rem] font-medium text-ink-700"
                       >
                         <Icon
                           name={service.icon}
@@ -334,7 +338,7 @@ export default function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="block rounded-lg py-2.5 text-[0.95rem] font-medium text-white/85"
+                      className="block rounded-lg py-2.5 text-[0.95rem] font-medium text-ink-700"
                     >
                       {link.title}
                     </Link>
@@ -343,11 +347,11 @@ export default function Header() {
               </ul>
             </div>
 
-            <ul className="mb-7 space-y-0.5 border-t border-white/10 pt-4">
+            <ul className="mb-7 space-y-0.5 border-t border-ink-900/10 pt-4">
               <li>
                 <Link
                   href="/about"
-                  className="block py-2.5 font-display text-base font-semibold text-white"
+                  className="block py-2.5 font-display text-base font-semibold text-ink-900"
                 >
                   About
                 </Link>
@@ -355,7 +359,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/contact"
-                  className="block py-2.5 font-display text-base font-semibold text-white"
+                  className="block py-2.5 font-display text-base font-semibold text-ink-900"
                 >
                   Contact
                 </Link>
@@ -366,7 +370,7 @@ export default function Header() {
               <Link href="/contact" className="btn-primary w-full">
                 Get a Free Consultation
               </Link>
-              <a href={site.phone.href} className="btn-outline-light w-full">
+              <a href={site.phone.href} className="btn-outline-dark w-full">
                 Call {site.phone.display}
               </a>
             </div>

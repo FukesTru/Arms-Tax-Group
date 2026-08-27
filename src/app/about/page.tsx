@@ -146,7 +146,7 @@ export default function AboutPage() {
                 className="pointer-events-none absolute inset-0"
                 style={{
                   backgroundImage:
-                    'radial-gradient(ellipse 80% 80% at 50% 20%, rgba(255,101,54,0.3), transparent 65%)',
+                    'radial-gradient(ellipse 80% 80% at 50% 20%, rgba(168,30,60,0.3), transparent 65%)',
                 }}
                 aria-hidden="true"
               />

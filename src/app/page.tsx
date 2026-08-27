@@ -117,9 +117,13 @@ export default function HomePage() {
                   detail: 'Tax, accounting, funding, credit, and recovery.',
                 },
                 {
-                  stat: '50',
-                  label: 'States served',
-                  detail: 'Remote filing and support nationwide.',
+                  // Deliberately not a number. The intake confirms a nationwide
+                  // remote service area; it does NOT confirm clients served in
+                  // any specific count of states. Do not restore "50" unless
+                  // the client can stand behind it.
+                  stat: 'Nationwide',
+                  label: 'Remote',
+                  detail: 'Every service handled online or by phone.',
                 },
                 {
                   stat: '1',
@@ -137,7 +141,11 @@ export default function HomePage() {
                   delay={0.12 + index * 0.06}
                   className="rounded-xl border border-ink-900/10 bg-white p-6 shadow-card"
                 >
-                  <p className="font-display text-[2.4rem] font-extrabold leading-none text-accent">
+                  <p
+                    className={`font-display font-extrabold leading-none text-accent ${
+                      item.stat.length > 3 ? 'text-[1.6rem]' : 'text-[2.4rem]'
+                    }`}
+                  >
                     {item.stat}
                   </p>
                   <p className="mt-3 font-display text-[0.98rem] font-bold text-ink-900">

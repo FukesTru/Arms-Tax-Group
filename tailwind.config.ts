@@ -16,12 +16,20 @@ const config: Config = {
           700: '#26161C',
           600: '#3A2830',
         },
+        /**
+         * Taken from the client's logo (the crimson in the roof and bars).
+         *
+         * The intake form specified #FF6536 orange, but that was supplied
+         * before the logo and clashes with it — the logo's crimson, the orange,
+         * and the maroon-tinted #10060B read as three competing reds. The logo
+         * is the fixed point, so the palette follows it.
+         */
         accent: {
-          DEFAULT: '#FF6536',
-          600: '#F04E1C',
-          700: '#CC3F14',
-          100: '#FFE7DF',
-          50: '#FFF3EE',
+          DEFAULT: '#A81E3C',
+          600: '#8E1832',
+          700: '#741428',
+          100: '#F6DDE3',
+          50: '#FCF2F4',
         },
       },
       fontFamily: {
@@ -37,7 +45,7 @@ const config: Config = {
       },
       backgroundImage: {
         'hero-grain':
-          'radial-gradient(ellipse 80% 60% at 15% 0%, rgba(255,101,54,0.16), transparent 60%), radial-gradient(ellipse 60% 50% at 95% 20%, rgba(255,101,54,0.08), transparent 60%)',
+          'radial-gradient(ellipse 80% 60% at 15% 0%, rgba(168,30,60,0.16), transparent 60%), radial-gradient(ellipse 60% 50% at 95% 20%, rgba(168,30,60,0.08), transparent 60%)',
       },
     },
   },

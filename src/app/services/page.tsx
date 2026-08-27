@@ -65,7 +65,7 @@ export default function ServicesPage() {
                     className="pointer-events-none absolute inset-0"
                     style={{
                       backgroundImage:
-                        'radial-gradient(ellipse 90% 80% at 20% 10%, rgba(255,101,54,0.3), transparent 65%)',
+                        'radial-gradient(ellipse 90% 80% at 20% 10%, rgba(168,30,60,0.3), transparent 65%)',
                     }}
                     aria-hidden="true"
                   />

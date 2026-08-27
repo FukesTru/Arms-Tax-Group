@@ -76,15 +76,29 @@ Plus a styled 404 at `not-found`.
 | Token | Value |
 |---|---|
 | Background (dark) | `#10060B` — Tailwind `ink` |
-| Accent | `#FF6536` — Tailwind `accent` |
+| Accent | `#A81E3C` — Tailwind `accent`, taken from the logo |
 | White | `#FFFFFF` |
 | Headings | Space Grotesk (`font-display`) |
 | Body | Inter (`font-sans`) |
 
-Every page uses a dark hero with an `#FF6536` accent underline beneath the H1,
-scroll-triggered fade-up animations, breadcrumbs on inner pages, a sticky header that goes
-transparent-over-hero → solid on scroll, and a floating "Text Us" bubble routed to the SMS
-line. All animation respects `prefers-reduced-motion`.
+**Accent changed from the intake's `#FF6536`.** The intake specified an orange accent, but
+it was supplied before the logo and conflicts with it: the logo's crimson, the orange, and
+the maroon-tinted `#10060B` read as three competing reds, and the black-lettered logo had to
+sit on a white chip against the dark header, which read as a sticker on a brown bar. The
+logo is the fixed point, so the accent now matches its crimson. Two consequences worth
+knowing:
+
+- The header is a **solid light bar** rather than transparent-over-hero, so the logo sits
+  natively with no chip. Heroes and the footer stay dark.
+- Contrast improved substantially. White text on the old orange measured **2.93:1, which
+  fails WCAG AA** — that affected every "Get a Free Consultation" button on the site. The
+  crimson measures **7.20:1** and passes.
+
+Reverting is a single token in `tailwind.config.ts` plus the header's surface classes.
+
+Every page uses a dark hero with a crimson accent underline beneath the H1, scroll-triggered
+fade-up animations, breadcrumbs on inner pages, a sticky header, and a floating "Text Us"
+bubble routed to the SMS line. All animation respects `prefers-reduced-motion`.
 
 ---
 
@@ -135,6 +149,15 @@ of it is done automatically:
 
 The build currently keeps the Bronx framing because that is what the client's own
 intake form says. Confirm before launch.
+
+## A note on the homepage stat tiles
+
+Three of the four tiles are rhetorical, not data: "1 — Network and practice" and "12 —
+Months a year" are figures of speech, and the fourth previously read "50 — States served",
+which was invented from the intake's "nationwide" service area and implied a track record
+nobody confirmed. That tile is now "Nationwide / Remote". Only "9 — Services under one roof"
+is a real, checkable number. If the client has genuine metrics — clients served, returns
+filed, dollars recovered — these tiles are the place for them.
 
 ## Content guardrails
 
@@ -187,10 +210,10 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       **not** pixel-identical (roof angle, letter spacing, and bar/text alignment all differ).
       **Overwrite `public/logo.png` with the client's real file before launch.** No code
       change is needed — `src/components/Logo.tsx` reads that path at 512x512.
-- [ ] **Logo colour conflict** — the logo is black and crimson (about `#A81E3C`). The site's
-      accent is `#FF6536` orange. The two clash wherever they meet, most visibly in the
-      header. Decide whether the palette should follow the logo's crimson, or the logo gets
-      an orange-compatible variant.
+- [ ] **Confirm the accent change with the client.** The palette now follows the logo's
+      crimson (`#A81E3C`) rather than the `#FF6536` orange named in the intake, because the
+      two could not coexist and the orange failed contrast. If the client insists on orange,
+      it needs a darker shade to pass AA, and the logo needs a variant that works beside it.
 - [ ] **Logo legibility at small sizes** — it is a square lockup with fine serif lettering.
       In the 80px sticky header it renders at 60px, where "A.R.M.S." is small and "CORP." is
       barely legible. Consider asking the client for a horizontal variant for the header.

@@ -5,7 +5,7 @@ export const taxAccountingCategory: ServicePageContent = {
   h1: 'Tax & Accounting Services',
   eyebrow: 'Service Category',
   heroSubtitle:
-    'Filing, resolution, and record-keeping for individuals and businesses — handled accurately, explained plainly, and available year-round.',
+    'Filing, resolution, and record-keeping for individuals and businesses. Handled accurately, explained plainly, and available year-round.',
   metaTitle:
     'Tax & Accounting Services | Bronx, NY & Nationwide | The Arms Corporation',
   metaDescription:
@@ -13,7 +13,7 @@ export const taxAccountingCategory: ServicePageContent = {
   trustPoints: ['Individuals & Businesses', 'Nationwide Remote Filing', 'Year-Round Support'],
   introHeading: 'Tax work that accounts for the whole picture',
   intro: [
-    'Most people meet their tax preparer once a year, hand over a folder, and hope for the best. We work differently. Whether you are filing a straightforward W-2 return or closing the books on a multi-member LLC, we start by understanding how you actually earn, spend, and plan — because that context is what separates a return that is merely filed from one that is filed correctly.',
+    'Most people meet their tax preparer once a year, hand over a folder, and hope for the best. We work differently. Whether you are filing a straightforward W-2 return or closing the books on a multi-member LLC, we start by understanding how you actually earn, spend, and plan. Because that context is what separates a return that is merely filed from one that is filed correctly.',
     'Our tax and accounting practice covers the full arc of the work: preparing and filing individual and business returns, cleaning up years you fell behind on, representing you when the IRS sends a notice, keeping your books current month to month, and building a strategy so next April is predictable rather than stressful. Because all of it happens under one roof, nothing gets lost between a bookkeeper who does not talk to your preparer and a preparer who has never seen your ledger.',
     'We serve clients from our Bronx office and remotely across the country. You will always know what we are doing, why it matters for your situation, and what it means for the number at the bottom of the page.',
   ],
@@ -42,7 +42,7 @@ export const taxAccountingCategory: ServicePageContent = {
     },
     {
       title: 'Document Collection',
-      body: 'You share your documents securely — online from anywhere, or in person at our Bronx office. We tell you exactly what is required and what is not.',
+      body: 'You share your documents securely, online from anywhere, or in person at our Bronx office. We tell you exactly what is required and what is not.',
     },
     {
       title: 'Preparation & Filing',
@@ -50,14 +50,14 @@ export const taxAccountingCategory: ServicePageContent = {
     },
     {
       title: 'Review & Year-Round Support',
-      body: 'We walk you through the outcome in plain language and stay reachable after filing season — for notices, questions, and next year’s planning.',
+      body: 'We walk you through the outcome in plain language and stay reachable after filing season, for notices, questions, and next year’s planning.',
     },
   ],
   faqs: [
     {
       question: 'Do I need to come to the Bronx office to work with you?',
       answer:
-        'No. Everything in our tax and accounting practice can be handled remotely — documents are shared securely online, and we review your return with you by phone or video before filing. Our Bronx office is there for clients who prefer to sit down in person, not a requirement for the rest.',
+        'No. Everything in our tax and accounting practice can be handled remotely. Documents are shared securely online, and we review your return with you by phone or video before filing. Our Bronx office is there for clients who prefer to sit down in person, not a requirement for the rest.',
     },
     {
       question: 'Can you handle both my personal return and my business return?',
@@ -77,10 +77,10 @@ export const taxAccountingCategory: ServicePageContent = {
     {
       question: 'Is bookkeeping something I need if my business is small?',
       answer:
-        'It depends less on size than on activity. If money is moving through a business account regularly, current books make your return faster, cheaper, and more defensible — and they let you see how the business is actually doing before year end rather than after it.',
+        'It depends less on size than on activity. If money is moving through a business account regularly, current books make your return faster, cheaper, and more defensible, and they let you see how the business is actually doing before year end rather than after it.',
     },
     {
-      question: 'When should I reach out — is there a deadline I should know about?',
+      question: 'When should I reach out, is there a deadline I should know about?',
       answer:
         'Sooner is always better, but the honest answer is that it depends on the work. Returns have filing deadlines, IRS notices have response windows printed on them, and planning work is most valuable before the year closes. Bring us the date on your paperwork and we will tell you what it actually means.',
     },
@@ -101,7 +101,7 @@ export const personalTaxPreparation: ServicePageContent = {
   introHeading: 'Your return, prepared by someone who read it',
   intro: [
     'A personal tax return looks simple until your life stops being simple. You picked up 1099 work on the side. You moved states in June. A child started college, a parent moved in, a rental property came into the picture, or you cashed out an investment and are not sure what it did to your bill. Any one of those turns a fifteen-minute filing into something that deserves real attention.',
-    'We prepare individual and family returns for clients in every one of those situations. That means gathering the right documents rather than every document, applying the credits and deductions you actually qualify for, and catching the mismatches — a missing form, an incorrect basis, a state you owe in and did not realize — before the IRS catches them for you.',
+    'We prepare individual and family returns for clients in every one of those situations. That means gathering the right documents rather than every document, applying the credits and deductions you actually qualify for, and catching the mismatches (a missing form, an incorrect basis, a state you owe in and did not realize) before the IRS catches them for you.',
     'Before anything is filed, we walk you through the return: what you owe or are getting back, where the number came from, and what you could do differently next year. If a notice shows up months later, you call us and we handle it. We file for clients across the country from our Bronx, New York office, so where you live has no bearing on whether we can help.',
   ],
   handleHeading: 'What we handle',
@@ -119,7 +119,7 @@ export const personalTaxPreparation: ServicePageContent = {
   ],
   processHeading: 'Three steps to a filed return',
   processIntro:
-    'No office visit required — though you are welcome to come by if you prefer to do it in person.',
+    'No office visit required, though you are welcome to come by if you prefer to do it in person.',
   process: [
     {
       title: 'Share Your Documents',
@@ -131,14 +131,14 @@ export const personalTaxPreparation: ServicePageContent = {
     },
     {
       title: 'Walkthrough & E-File',
-      body: 'We explain the outcome in plain language, answer your questions, then e-file once you approve — and keep a copy on hand for the year ahead.',
+      body: 'We explain the outcome in plain language, answer your questions, then e-file once you approve, and keep a copy on hand for the year ahead.',
     },
   ],
   faqs: [
     {
       question: 'What documents do I need to get started?',
       answer:
-        'For most people: photo ID, Social Security numbers for everyone on the return, all W-2s and 1099s, last year’s return if you have it, and records for anything you plan to deduct. Your situation may add to that list — after our first conversation we send you a checklist built around your circumstances rather than a generic one.',
+        'For most people: photo ID, Social Security numbers for everyone on the return, all W-2s and 1099s, last year’s return if you have it, and records for anything you plan to deduct. Your situation may add to that list. After our first conversation we send you a checklist built around your circumstances rather than a generic one.',
     },
     {
       question: 'Can you file prior-year or amended returns?',
@@ -148,7 +148,7 @@ export const personalTaxPreparation: ServicePageContent = {
     {
       question: 'Do you work with clients outside New York?',
       answer:
-        'Yes — we prepare and file returns for clients nationwide. Documents are shared securely online and we review everything with you by phone or video. Living in another state changes nothing about how the process works.',
+        'Yes, we prepare and file returns for clients nationwide. Documents are shared securely online and we review everything with you by phone or video. Living in another state changes nothing about how the process works.',
     },
     {
       question: 'I have both a W-2 job and 1099 income. Is that a problem?',
@@ -163,7 +163,7 @@ export const personalTaxPreparation: ServicePageContent = {
     {
       question: 'What happens if I get a letter from the IRS after filing?',
       answer:
-        'Send it to us. Most notices are routine — a matching issue, a math adjustment, a request for a document — and we respond on your behalf. If it turns out to be something larger, our tax resolution service picks it up from there.',
+        'Send it to us. Most notices are routine (a matching issue, a math adjustment, a request for a document), and we respond on your behalf. If it turns out to be something larger, our tax resolution service picks it up from there.',
     },
   ],
 };
@@ -173,7 +173,7 @@ export const businessTaxPreparation: ServicePageContent = {
   h1: 'Business & Corporate Tax Services',
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
-    'Corporate tax services for C-corps and S-corps, plus returns for LLCs and partnerships — filed accurately, with the deduction strategy your entity structure actually allows.',
+    'Corporate tax services for C-corps and S-corps, plus returns for LLCs and partnerships. Filed accurately, with the deduction strategy your entity structure actually allows.',
   metaTitle:
     'Corporate Tax Services & Business Tax Preparation | The Arms Corporation',
   metaDescription:
@@ -182,8 +182,8 @@ export const businessTaxPreparation: ServicePageContent = {
   introHeading: 'Corporate tax services, and everything below them',
   intro: [
     'A business return is only as good as the records behind it and the structure it is filed under. Two businesses with identical revenue can owe very different amounts depending on how they are organized, which expenses were captured during the year, and whether anyone was paying attention to estimated payments along the way.',
-    'Corporate tax services are the core of this practice. For C-corporations that means the corporate return, corporate estimated payments, and the compliance calendar that comes with the structure — along with the question that decides much of the bill, which is how earnings leave the company as salary rather than distributions. For S-corporations it means the corporate filing, shareholder K-1s, basis tracking, and reasonable-compensation analysis, an area that draws IRS attention when owners take too little salary against too much distribution.',
-    'We prepare returns across the rest of the spectrum too: single-member and multi-member LLCs, partnerships, and sole proprietors filing on Schedule C. That work starts before the forms — reviewing your books for gaps, confirming owner compensation and distributions were handled consistently, checking whether your entity election still fits the business you have now, and identifying deductions that were available but never recorded.',
+    'Corporate tax services are the core of this practice. For C-corporations that means the corporate return, corporate estimated payments, and the compliance calendar that comes with the structure. Along with the question that decides much of the bill, which is how earnings leave the company as salary rather than distributions. For S-corporations it means the corporate filing, shareholder K-1s, basis tracking, and reasonable-compensation analysis, an area that draws IRS attention when owners take too little salary against too much distribution.',
+    'We prepare returns across the rest of the spectrum too: single-member and multi-member LLCs, partnerships, and sole proprietors filing on Schedule C. That work starts before the forms: reviewing your books for gaps, confirming owner compensation and distributions were handled consistently, checking whether your entity election still fits the business you have now, and identifying deductions that were available but never recorded.',
     'If you are behind on corporate filings, that is fixable and we would rather hear about it early, since corporate penalties accrue per return and per shareholder. If you are current and simply want it handled properly, we will do that and tell you where next year could go better.',
   ],
   handleHeading: 'What we handle',
@@ -193,7 +193,7 @@ export const businessTaxPreparation: ServicePageContent = {
     'C-corporation returns, corporate estimated payments, and compliance calendars',
     'S-corporation returns, shareholder K-1s, and basis tracking',
     'Reasonable-compensation analysis for S-corp owner salary',
-    'LLC returns — single-member and multi-member',
+    'LLC returns. Single-member and multi-member',
     'Partnership returns and K-1 preparation',
     'Sole proprietor and Schedule C filings',
     'Corporate and business quarterly estimated tax calculations',
@@ -209,7 +209,7 @@ export const businessTaxPreparation: ServicePageContent = {
   process: [
     {
       title: 'Books & Records Review',
-      body: 'We look at what you have — accounting file, bank statements, spreadsheets — identify the gaps, and tell you what we need to close them.',
+      body: 'We look at what you have (accounting file, bank statements, spreadsheets) identify the gaps, and tell you what we need to close them.',
     },
     {
       title: 'Preparation & Strategy Check',
@@ -234,7 +234,7 @@ export const businessTaxPreparation: ServicePageContent = {
     {
       question: 'How much salary do I have to take from my S-corp?',
       answer:
-        'The standard is reasonable compensation for the work you actually perform — there is no fixed percentage, despite the rules of thumb circulating online. Paying yourself too little salary against large distributions is one of the more reliable ways to draw IRS attention. We look at your role, your industry, and your numbers, and document the reasoning behind the figure we land on.',
+        'The standard is reasonable compensation for the work you actually perform. There is no fixed percentage, despite the rules of thumb circulating online. Paying yourself too little salary against large distributions is one of the more reliable ways to draw IRS attention. We look at your role, your industry, and your numbers, and document the reasoning behind the figure we land on.',
     },
     {
       question: 'Do you handle payroll taxes?',
@@ -249,7 +249,7 @@ export const businessTaxPreparation: ServicePageContent = {
     {
       question: 'My bookkeeping is a mess. Can you still file for me?',
       answer:
-        'Yes — and you would not be the first. We can work from bank and credit card statements to rebuild what is missing. It takes more time than filing from clean books, which is why many clients move to monthly bookkeeping afterward, but a messy year is not a reason to delay filing.',
+        'Yes, and you would not be the first. We can work from bank and credit card statements to rebuild what is missing. It takes more time than filing from clean books, which is why many clients move to monthly bookkeeping afterward, but a messy year is not a reason to delay filing.',
     },
     {
       question: 'Should my LLC elect S-corporation treatment?',
@@ -269,7 +269,7 @@ export const taxResolution: ServicePageContent = {
   h1: 'Tax Resolution & IRS Representation',
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
-    'Back taxes, IRS notices, liens, and levies — reviewed carefully, explained honestly, and worked through with you rather than around you.',
+    'Back taxes, IRS notices, liens, and levies. Reviewed carefully, explained honestly, and worked through with you rather than around you.',
   metaTitle:
     'IRS Tax Resolution Services | Bronx, NY & Nationwide | The Arms Corporation',
   metaDescription:
@@ -277,9 +277,9 @@ export const taxResolution: ServicePageContent = {
   trustPoints: ['Back Taxes & Unfiled Returns', 'Notices & Examinations', 'Payment Options'],
   introHeading: 'The envelope is not going away. It is also not the end of anything.',
   intro: [
-    'An IRS notice is designed to get your attention, and it works. But the letters that look most alarming are frequently the most routine, and the situations that feel unrecoverable usually have more paths through them than people expect. What genuinely makes things worse is time — response windows close, penalties compound, and options that were available in month one are narrower by month twelve.',
+    'An IRS notice is designed to get your attention, and it works. But the letters that look most alarming are frequently the most routine, and the situations that feel unrecoverable usually have more paths through them than people expect. What genuinely makes things worse is time. Response windows close, penalties compound, and options that were available in month one are narrower by month twelve.',
     'We start by finding out what the IRS actually has on file for you, which is often different from what you think. That means pulling transcripts, identifying which years are unfiled versus merely unpaid, confirming whether the assessed amount is even correct, and reading the notice for what it specifically requires and by when.',
-    'From there we lay out the realistic options for your circumstances — filing the missing returns, disputing an amount that is wrong, requesting an installment agreement you can genuinely afford, asking for penalty relief where the facts support it — and explain the trade-offs of each. Some paths are faster; some cost less; some are only available if you act now. We will tell you which is which, including when the honest answer is that a particular option is unlikely to apply to you.',
+    'From there we lay out the realistic options for your circumstances. Filing the missing returns, disputing an amount that is wrong, requesting an installment agreement you can genuinely afford, asking for penalty relief where the facts support it, and explain the trade-offs of each. Some paths are faster; some cost less; some are only available if you act now. We will tell you which is which, including when the honest answer is that a particular option is unlikely to apply to you.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -290,7 +290,7 @@ export const taxResolution: ServicePageContent = {
     'Examinations and documentation requests',
     'Installment agreements and payment arrangements',
     'Penalty abatement requests where the facts support one',
-    'Liens and levies — reviewing your options and responding',
+    'Liens and levies: reviewing your options and responding',
     'Wage garnishment notices',
     'Account transcript review and balance verification',
   ],
@@ -300,7 +300,7 @@ export const taxResolution: ServicePageContent = {
   process: [
     {
       title: 'Case Review',
-      body: 'We read the notice, pull your transcripts, and establish what is actually outstanding — which years, which amounts, and what deadline is running.',
+      body: 'We read the notice, pull your transcripts, and establish what is actually outstanding, which years, which amounts, and what deadline is running.',
     },
     {
       title: 'Strategy & Options',
@@ -308,7 +308,7 @@ export const taxResolution: ServicePageContent = {
     },
     {
       title: 'Filing & Resolution',
-      body: 'We prepare the missing returns, submit the requests, and correspond with the IRS on your behalf — keeping you updated at each stage.',
+      body: 'We prepare the missing returns, submit the requests, and correspond with the IRS on your behalf, keeping you updated at each stage.',
     },
   ],
   faqs: [
@@ -320,7 +320,7 @@ export const taxResolution: ServicePageContent = {
     {
       question: 'Can you stop a levy or garnishment?',
       answer:
-        'No one can promise a particular outcome, and you should be skeptical of anyone who does. What we can do is review the notice, confirm whether the underlying assessment is correct, and help you respond within the window the IRS has given — which is when the options are widest. Coming to us early materially affects what is still on the table.',
+        'No one can promise a particular outcome, and you should be skeptical of anyone who does. What we can do is review the notice, confirm whether the underlying assessment is correct, and help you respond within the window the IRS has given, which is when the options are widest. Coming to us early materially affects what is still on the table.',
     },
     {
       question: 'How long does resolution take?',
@@ -335,12 +335,12 @@ export const taxResolution: ServicePageContent = {
     {
       question: 'What if I cannot afford to pay what I owe?',
       answer:
-        'That is a large part of why this service exists. Payment arrangements, relief requests, and other options exist precisely because the IRS recognizes people cannot always pay in full immediately. Which of them apply depends on your income, assets, and the specifics of the debt — we review your circumstances and tell you honestly what looks realistic.',
+        'That is a large part of why this service exists. Payment arrangements, relief requests, and other options exist precisely because the IRS recognizes people cannot always pay in full immediately. Which of them apply depends on your income, assets, and the specifics of the debt. We review your circumstances and tell you honestly what looks realistic.',
     },
     {
       question: 'Is the amount on my notice always correct?',
       answer:
-        'Not necessarily. Assessments based on substitute returns — ones the IRS prepares when you have not filed — often omit deductions and credits you were entitled to, which inflates the balance. Verifying the number is a standard part of our case review, and it sometimes changes the picture significantly.',
+        'Not necessarily. Assessments based on substitute returns (ones the IRS prepares when you have not filed) often omit deductions and credits you were entitled to, which inflates the balance. Verifying the number is a standard part of our case review, and it sometimes changes the picture significantly.',
     },
   ],
   disclaimer:
@@ -352,7 +352,7 @@ export const bookkeepingAccounting: ServicePageContent = {
   h1: 'Bookkeeping & Accounting Services',
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
-    'Monthly books, clean reconciliations, and reporting that tells you how the business is doing — before the year is over.',
+    'Monthly books, clean reconciliations, and reporting that tells you how the business is doing, before the year is over.',
   metaTitle: 'Bookkeeping & Accounting Services | The Arms Corporation',
   metaDescription:
     'Monthly bookkeeping, account reconciliation, and clean, tax-ready financial records for small businesses from The Arms Corporation. Bronx, NY and nationwide.',
@@ -360,7 +360,7 @@ export const bookkeepingAccounting: ServicePageContent = {
   introHeading: 'Books you can make decisions from',
   intro: [
     'Bookkeeping has a reputation as a chore you do for the tax preparer. It is genuinely more useful than that. Current books answer questions you cannot otherwise answer: whether last quarter was actually profitable, which expenses have quietly grown, whether you can afford to hire, and how much of the money in the account is really yours versus already owed.',
-    'We handle monthly bookkeeping for small businesses — categorizing transactions, reconciling bank and credit card accounts, tracking receivables and payables, and producing profit and loss statements and balance sheets you can actually read. When something looks unusual, we ask about it during the month rather than discovering it in March.',
+    'We handle monthly bookkeeping for small businesses. Categorizing transactions, reconciling bank and credit card accounts, tracking receivables and payables, and producing profit and loss statements and balance sheets you can actually read. When something looks unusual, we ask about it during the month rather than discovering it in March.',
     'If your records have fallen behind, cleanup is its own engagement and a common one. We rebuild from statements, sort out what was misclassified, and get you to a current, reconciled starting point. From there, staying current is a routine monthly rhythm rather than an annual scramble.',
     'The practical payoff arrives at filing time: your return is prepared from books that are already reconciled, which makes it faster, cheaper, and far easier to defend if anyone asks questions later.',
   ],
@@ -423,7 +423,7 @@ export const bookkeepingAccounting: ServicePageContent = {
     {
       question: 'Can you handle bookkeeping for a business outside New York?',
       answer:
-        'Yes. Bookkeeping is fully remote work — we access your records securely, deliver reports electronically, and review them with you by phone or video. Your location makes no practical difference.',
+        'Yes. Bookkeeping is fully remote work. We access your records securely, deliver reports electronically, and review them with you by phone or video. Your location makes no practical difference.',
     },
   ],
 };
@@ -433,17 +433,17 @@ export const taxPlanning: ServicePageContent = {
   h1: 'Tax Planning & Consulting',
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
-    'Year-round strategy instead of an annual surprise — decisions made while you can still influence the outcome.',
+    'Year-round strategy instead of an annual surprise, decisions made while you can still influence the outcome.',
   metaTitle: 'Tax Planning & Consulting | The Arms Corporation',
   metaDescription:
-    'Year-round tax strategy to reduce liability and plan ahead, from The Arms Corporation — serving individuals and businesses in Bronx, NY and nationwide.',
+    'Year-round tax strategy to reduce liability and plan ahead, from The Arms Corporation. Serving individuals and businesses in Bronx, NY and nationwide.',
   trustPoints: ['Quarterly Strategy', 'Entity Structure Review', 'Year-End Planning'],
   introHeading: 'By April, most of the decisions have already been made',
   intro: [
-    'Tax preparation is a report on choices you already made. Tax planning is the part where you still have choices. The difference between the two is often thousands of dollars, and it comes down almost entirely to timing — a retirement contribution made before December 31, an equipment purchase moved by a few weeks, an entity election filed in the right window, an estimated payment sized correctly instead of guessed at.',
+    'Tax preparation is a report on choices you already made. Tax planning is the part where you still have choices. The difference between the two is often thousands of dollars, and it comes down almost entirely to timing. A retirement contribution made before December 31, an equipment purchase moved by a few weeks, an entity election filed in the right window, an estimated payment sized correctly instead of guessed at.',
     'We work with individuals and business owners throughout the year rather than only at filing time. That means looking at where your income is trending, what is deductible and when, whether your business structure still fits your profit level, how a major purchase or sale will land, and what a change in income means for your estimated payments.',
     'For business owners, planning frequently focuses on owner compensation, entity structure, timing of income and expenses, and retirement vehicles that shift the picture meaningfully. For individuals, it tends to center on investment timing, life changes, side income, and the credits and deductions that require action before year end rather than after.',
-    'The goal is straightforward: when you file, nothing in the number should be a surprise — because you decided it in advance.',
+    'The goal is straightforward: when you file, nothing in the number should be a surprise, because you decided it in advance.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -460,7 +460,7 @@ export const taxPlanning: ServicePageContent = {
   ],
   processHeading: 'How planning engagements work',
   processIntro:
-    'A planning relationship is a rhythm, not a one-time meeting — though it can start as one.',
+    'A planning relationship is a rhythm, not a one-time meeting, though it can start as one.',
   process: [
     {
       title: 'Baseline Review',
@@ -479,7 +479,7 @@ export const taxPlanning: ServicePageContent = {
     {
       question: 'When is the best time to start tax planning?',
       answer:
-        'Earlier in the year gives you more room, but any point before December is genuinely useful — year-end planning alone often finds real savings. What planning cannot do is change a year that has already closed, which is why waiting until you file is waiting too long.',
+        'Earlier in the year gives you more room, but any point before December is genuinely useful, year-end planning alone often finds real savings. What planning cannot do is change a year that has already closed, which is why waiting until you file is waiting too long.',
     },
     {
       question: 'Is this only worth it for high earners?',

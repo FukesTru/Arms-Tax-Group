@@ -38,7 +38,7 @@ export default function ReviewFlag({
         >
           <path d="M8 1.8 15 14H1L8 1.8ZM8 6.5v3.2M8 11.8h.01" />
         </svg>
-        Needs client confirmation — {title}
+        Needs client confirmation {title}
       </p>
       <div className="mt-2.5 text-[0.9rem] leading-[1.7] text-amber-900">
         {children}
@@ -57,8 +57,8 @@ export function AddressConflictFlag({ className = '' }: { className?: string }) 
     <ReviewFlag title="office address" className={className}>
       <p>
         Two different addresses are on record, in two different cities. The
-        street address is suppressed sitewide — footer, Contact page, office
-        page, Google Maps embed, and <code>LocalBusiness</code> schema — until
+        street address is suppressed sitewide. Footer, Contact page, office
+        page, Google Maps embed, and <code>LocalBusiness</code> schema. Until
         the client confirms which is current.
       </p>
       <ul className="mt-3 space-y-1.5">

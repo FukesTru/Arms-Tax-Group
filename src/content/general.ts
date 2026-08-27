@@ -4,7 +4,7 @@ import type { FaqItem, ProcessStep } from './types';
 export const houseProcess: ProcessStep[] = [
   {
     title: 'Free Consultation',
-    body: 'Call, text, or send the form. Tell us what is going on — we will tell you what it involves and whether we are the right fit. No cost, no pressure.',
+    body: 'Call, text, or send the form. Tell us what is going on. We will tell you what it involves and whether we are the right fit. No cost, no pressure.',
   },
   {
     title: 'Document Review',
@@ -12,7 +12,7 @@ export const houseProcess: ProcessStep[] = [
   },
   {
     title: 'We Handle It',
-    body: 'Preparation, filing, resolution, bookkeeping, or a funding application — our team does the work and keeps you posted as it moves.',
+    body: 'Preparation, filing, resolution, bookkeeping, or a funding application, our team does the work and keeps you posted as it moves.',
   },
   {
     title: 'Results & Ongoing Support',
@@ -24,7 +24,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Do you work with clients outside New York?',
     answer:
-      'Yes — we serve clients nationwide. Tax preparation, resolution, bookkeeping, funding, and credit work are all handled remotely: documents are shared securely online and we review everything with you by phone or video. Our Bronx office serves clients who prefer to meet in person, but it is an option rather than a requirement.',
+      'Yes, we serve clients nationwide. Tax preparation, resolution, bookkeeping, funding, and credit work are all handled remotely: documents are shared securely online and we review everything with you by phone or video. Our Bronx office serves clients who prefer to meet in person, but it is an option rather than a requirement.',
   },
   {
     question: 'What documents do I need to get started?',
@@ -39,7 +39,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'How much does it cost?',
     answer:
-      'Pricing depends on the complexity of the work — a single W-2 return and a multi-entity business with several years of catch-up filings are very different engagements. The consultation is free, and we quote the work before starting so you know what you are committing to.',
+      'Pricing depends on the complexity of the work. A single W-2 return and a multi-entity business with several years of catch-up filings are very different engagements. The consultation is free, and we quote the work before starting so you know what you are committing to.',
   },
   {
     question: 'Can you handle my personal and business taxes together?',
@@ -49,7 +49,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'What makes you different from a seasonal tax office?',
     answer:
-      'We are here after April. Notices arrive in July, funding opportunities appear in September, and planning decisions that matter have to be made before December. Being available year-round — and offering funding, credit, and recovery services alongside tax work — means you are not starting over with a new provider every time something comes up.',
+      'We are here after April. Notices arrive in July, funding opportunities appear in September, and planning decisions that matter have to be made before December. Being available year-round (and offering funding, credit, and recovery services alongside tax work) means you are not starting over with a new provider every time something comes up.',
   },
 ];
 
@@ -57,7 +57,7 @@ export const whoWeServeFaqs: FaqItem[] = [
   {
     question: 'How do I send documents securely?',
     answer:
-      'We provide secure electronic document sharing — you upload from your computer or phone and the files transmit encrypted. Please avoid sending tax documents as ordinary email attachments; if you would rather not send anything electronically at all, you are welcome to bring physical documents to our Bronx office.',
+      'We provide secure electronic document sharing. You upload from your computer or phone and the files transmit encrypted. Please avoid sending tax documents as ordinary email attachments; if you would rather not send anything electronically at all, you are welcome to bring physical documents to our Bronx office.',
   },
   {
     question: 'Do you serve clients outside New York?',
@@ -67,7 +67,7 @@ export const whoWeServeFaqs: FaqItem[] = [
   {
     question: 'Is remote service the same quality as meeting in person?',
     answer:
-      'The work is identical — the same team, the same review process, the same walkthrough before anything is filed. The only difference is whether the conversation happens across a desk or over a call. Many clients find remote service faster, since it does not require anyone to schedule travel.',
+      'The work is identical. The same team, the same review process, the same walkthrough before anything is filed. The only difference is whether the conversation happens across a desk or over a call. Many clients find remote service faster, since it does not require anyone to schedule travel.',
   },
   {
     question: 'Can I start remotely and come in later if I need to?',
@@ -80,12 +80,12 @@ export const contactFaqs: FaqItem[] = [
   {
     question: 'How quickly will I hear back?',
     answer:
-      'We aim to respond to consultation requests promptly during business days. If your matter is time-sensitive — an IRS notice with a response deadline, or a funding application on a clock — say so in your message or call directly, and we will prioritize it.',
+      'We aim to respond to consultation requests promptly during business days. If your matter is time-sensitive (an IRS notice with a response deadline, or a funding application on a clock) say so in your message or call directly, and we will prioritize it.',
   },
   {
     question: 'How do I send documents securely?',
     answer:
-      'Once we connect, we send you a secure upload link — please do not attach tax documents to a regular email. You can also bring physical documents to our Bronx office if you prefer to hand them over in person.',
+      'Once we connect, we send you a secure upload link, please do not attach tax documents to a regular email. You can also bring physical documents to our Bronx office if you prefer to hand them over in person.',
   },
   {
     question: 'Can we meet in person, or is everything remote?',
@@ -98,12 +98,12 @@ export const servicesHubFaqs: FaqItem[] = [
   {
     question: 'I am not sure which service I need. Where do I start?',
     answer:
-      'Start with the free consultation and describe the problem rather than trying to name the solution — "I got a letter from the IRS," "I need capital for a contract," "I have not filed in three years." Figuring out which service fits is our job.',
+      'Start with the free consultation and describe the problem rather than trying to name the solution: "I got a letter from the IRS," "I need capital for a contract," "I have not filed in three years." Figuring out which service fits is our job.',
   },
   {
     question: 'Can I use more than one service at a time?',
     answer:
-      'Yes, and many clients do. Bookkeeping feeding into tax preparation, credit work ahead of a funding application, or planning alongside filing — these combinations work well precisely because the same team is handling both sides.',
+      'Yes, and many clients do. Bookkeeping feeding into tax preparation, credit work ahead of a funding application, or planning alongside filing. These combinations work well precisely because the same team is handling both sides.',
   },
   {
     question: 'Do you work with both individuals and businesses?',
@@ -131,6 +131,6 @@ export const bronxFaqs: FaqItem[] = [
   {
     question: 'Where exactly are you located?',
     answer:
-      'We are in New York, and we are finalizing our published office address — call or text us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
+      'We are in New York, and we are finalizing our published office address. Call or text us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
   },
 ];

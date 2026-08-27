@@ -17,7 +17,7 @@ import { categories } from '@/lib/services';
 export const metadata = pageMetadata({
   title: 'Tax, Accounting & Financial Services | The Arms Corporation',
   description:
-    'Explore tax preparation, IRS resolution, bookkeeping, business funding, credit solutions, and more from The Arms Corporation — Bronx, NY and nationwide.',
+    'Explore tax preparation, IRS resolution, bookkeeping, business funding, credit solutions, and more from The Arms Corporation. Bronx, NY and nationwide.',
   path: '/services',
 });
 
@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <Hero
         eyebrow="Services"
         title="Tax, Accounting & Financial Services"
-        subtitle="Everything you need to manage, protect, and grow your finances — under one roof."
+        subtitle="Everything you need to manage, protect, and grow your finances, under one roof."
         trustPoints={['9 Services', 'Individuals & Businesses', 'Nationwide']}
         breadcrumbs={trail}
       />
@@ -78,7 +78,7 @@ export default function ServicesPage() {
                   />
                   <div className="relative">
                     <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-accent">
-                      0{index + 1} — Category
+                      0{index + 1}. Category
                     </p>
                     <h3 className="mt-4 !text-white text-[1.6rem] leading-snug">
                       {category.title}
@@ -141,7 +141,7 @@ export default function ServicesPage() {
 
       <CTABand
         title="Not sure where to start?"
-        body="Describe the problem rather than the service — figuring out which one fits is our job. The consultation is free."
+        body="Describe the problem rather than the service, figuring out which one fits is our job. The consultation is free."
       />
 
       <FAQ

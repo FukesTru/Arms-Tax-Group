@@ -38,7 +38,7 @@ export const categories: ServiceCategory[] = [
     shortTitle: 'Tax & Accounting',
     href: '/services/tax-accounting',
     blurb:
-      'Filing, resolution, and record-keeping for individuals and businesses — handled accurately and explained in plain English.',
+      'Filing, resolution, and record-keeping for individuals and businesses, handled accurately and explained in plain English.',
     services: [
       {
         title: 'Personal Tax Preparation',
@@ -84,7 +84,7 @@ export const categories: ServiceCategory[] = [
     shortTitle: 'Business & Financial',
     href: '/services/business-financial-solutions',
     blurb:
-      'Funding, credit, and recovery support that goes beyond filing — helping you grow what you have and reclaim what you are owed.',
+      'Funding, credit, and recovery support that goes beyond filing, helping you grow what you have and reclaim what you are owed.',
     services: [
       {
         title: 'Small Business Loans & Funding',

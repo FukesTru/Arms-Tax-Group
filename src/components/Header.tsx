@@ -96,7 +96,7 @@ export default function Header() {
           <Link
             href="/"
             className="shrink-0"
-            aria-label={`${site.brandName} — home`}
+            aria-label={`${site.brandName}. Home`}
           >
             <Logo variant="onLight" size={58} priority />
           </Link>

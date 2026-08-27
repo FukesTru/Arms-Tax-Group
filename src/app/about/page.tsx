@@ -2,6 +2,7 @@ import Link from 'next/link';
 import CTABand from '@/components/CTABand';
 import CheckList from '@/components/CheckList';
 import FadeUp from '@/components/FadeUp';
+import FounderPortrait from '@/components/FounderPortrait';
 import Hero from '@/components/Hero';
 import JsonLd from '@/components/JsonLd';
 import Section, { SectionHeading } from '@/components/Section';
@@ -14,7 +15,7 @@ import { site } from '@/lib/site';
 export const metadata = pageMetadata({
   title: 'About The Arms Corporation | Bronx, NY Tax & Financial Experts',
   description:
-    'Meet the team behind The Arms Corporation — Bronx, NY-based tax, accounting, IRS resolution, and financial services for individuals and businesses nationwide.',
+    'Meet the team behind The Arms Corporation. Bronx, NY-based tax, accounting, IRS resolution, and financial services for individuals and businesses nationwide.',
   path: '/about',
 });
 
@@ -43,10 +44,10 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our Story" title="Why this practice exists" />
             <FadeUp delay={0.06} className="prose-body mt-6 space-y-5">
               <p>
-                {site.legalName} — operating as {site.brandName} — exists to
+                {site.legalName} (operating as {site.brandName}) exists to
                 empower entrepreneurs. That word gets used loosely, so here is
                 what it means in practice: most people who set out to build
-                something are not short on drive. They are short on access —
+                something are not short on drive. They are short on access
                 to competent financial advice, to the right products and
                 services, and to someone who has already walked the path and
                 will tell them the truth about it.
@@ -74,7 +75,7 @@ export default function AboutPage() {
               <p>
                 We work with individuals, families, self-employed people, and
                 business owners from our New York office and remotely with
-                clients across the country — reaching out, as we have always
+                clients across the country, reaching out, as we have always
                 put it, to embrace your needs.
               </p>
             </FadeUp>
@@ -120,7 +121,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="What Makes Us Different"
             title="A network and a practice, not a storefront"
-            intro="Most people assemble this from four separate providers who never speak to each other — and none of them teach you anything. We put it under one roof on purpose."
+            intro="Most people assemble this from four separate providers who never speak to each other, and none of them teach you anything. We put it under one roof on purpose."
           />
           <div className="lg:pt-2">
             <CheckList
@@ -129,10 +130,10 @@ export default function AboutPage() {
                 'Real-world instruction and mentor partnerships, rather than theory and a handbook',
                 'Access to competent financial advice, products, and services in one place',
                 'Personal and business tax handled together, so the two returns agree',
-                'IRS resolution in-house — back taxes and notices are not somebody else’s problem',
+                'IRS resolution in-house. Back taxes and notices are not somebody else’s problem',
                 'Bookkeeping that feeds directly into your return instead of arriving as a surprise',
                 'Funding and credit support for when compliance is not the constraint, capital is',
-                'Unclaimed funds recovery — money you are already owed, found and claimed',
+                'Unclaimed funds recovery. Money you are already owed, found and claimed',
                 'Nationwide remote service backed by a real local office',
                 'Year-round availability, not a storefront that closes on April 16',
               ]}
@@ -151,7 +152,7 @@ export default function AboutPage() {
 
         <FadeUp delay={0.08} className="mt-11">
           <article className="grid gap-8 overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card md:grid-cols-[280px_1fr] md:gap-0">
-            <div className="relative flex min-h-[240px] items-center justify-center bg-ink-900 p-8">
+            <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-ink-900">
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
@@ -160,13 +161,8 @@ export default function AboutPage() {
                 }}
                 aria-hidden="true"
               />
-              {/*
-                Placeholder monogram — swap for the founder's photo once the
-                client supplies one (see the launch checklist in the README).
-              */}
-              <span className="relative flex h-28 w-28 items-center justify-center rounded-full border-2 border-accent font-display text-[2.4rem] font-extrabold text-white">
-                LM
-              </span>
+              {/* Renders the photograph when one is on disk, initials otherwise. */}
+              <FounderPortrait />
             </div>
 
             <div className="p-8 md:p-9">
@@ -183,7 +179,7 @@ export default function AboutPage() {
                   {site.owner} founded {site.brandName} to give entrepreneurs
                   something that is genuinely hard to find: access to competent
                   financial advice, and the training to eventually not need to
-                  ask for it. The firm reflects that — a financial services
+                  ask for it. The firm reflects that: a financial services
                   practice and a development network for independent business
                   owners, run as one thing.
                 </p>
@@ -191,7 +187,7 @@ export default function AboutPage() {
                   He leads the practice directly, working with clients on tax
                   preparation, resolution, and the funding and credit questions
                   that follow, and with the owners coming up through the
-                  network. Clients describe the same thing consistently — that
+                  network. Clients describe the same thing consistently: that
                   he explains the numbers rather than just delivering them.
                 </p>
               </div>
@@ -259,7 +255,7 @@ export default function AboutPage() {
       <CTABand
         tone="dark"
         title="Ready to work with us?"
-        body="Get a free consultation. We'll tell you what your situation involves — honestly, and before you commit to anything."
+        body="Get a free consultation. We'll tell you what your situation involves, honestly, and before you commit to anything."
         badges={[
           'Bronx, NY Based',
           'Nationwide Service',

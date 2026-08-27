@@ -35,11 +35,11 @@ export default function HomePage() {
         image={images.heroLanding}
         title={
           <>
-            Tax &amp; Financial Solutions for Individuals and Businesses —{' '}
+            Tax &amp; Financial Solutions for Individuals and Businesses in{' '}
             <span className="text-accent-bright">Bronx, NY &amp; Nationwide</span>
           </>
         }
-        subtitle="Reaching out to embrace YOUR needs — with personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions from a Bronx-based team serving clients nationwide."
+        subtitle="Reaching out to embrace YOUR needs, with personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions from a Bronx-based team serving clients nationwide."
         trustPoints={[
           'Nationwide Remote Service',
           'Bronx, NY Office',
@@ -61,7 +61,7 @@ export default function HomePage() {
 
       <CTABand
         title="Not sure which service fits your situation?"
-        body="Talk to our team — it's a free consultation, and we'll tell you honestly what you need, including when the answer is nothing."
+        body="Talk to our team. It's a free consultation, and we'll tell you honestly what you need, including when the answer is nothing."
       />
 
       {/* About preview */}
@@ -76,7 +76,7 @@ export default function HomePage() {
               <p>
                 {site.brandName} was founded by {site.owner} to close a
                 specific gap. Most people building something are not short on
-                drive — they are short on access: to competent financial
+                drive. They are short on access: to competent financial
                 advice, to the right products and services, and to someone who
                 has already done it and will tell them the truth.
               </p>
@@ -84,8 +84,8 @@ export default function HomePage() {
                 So we work on both sides of that. We train and develop
                 independent business owners through real-world instruction and
                 mentor partnerships, and we run a full financial services
-                practice — tax preparation, IRS resolution, bookkeeping,
-                planning, funding, credit, and recovery — for the people
+                practice: tax preparation, IRS resolution, bookkeeping,
+                planning, funding, credit, and recovery, for the people
                 coming up through that network and for clients who simply need
                 the work done well.
               </p>
@@ -256,13 +256,13 @@ export default function HomePage() {
       <FAQ
         faqs={homeFaqs}
         title="Questions people ask before they call"
-        intro="If yours is not here, ask us directly — the consultation is free and there is no obligation attached to it."
+        intro="If yours is not here, ask us directly. The consultation is free and there is no obligation attached to it."
       />
 
       <CTABand
         tone="dark"
         title="Ready to keep more of what you make?"
-        body="Start with a free consultation. Call, text, or send us a note — whichever is easiest."
+        body="Start with a free consultation. Call, text, or send us a note, whichever is easiest."
         badges={[
           'Bronx, NY Based',
           'Nationwide Service',

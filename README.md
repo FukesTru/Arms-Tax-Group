@@ -241,6 +241,21 @@ Policy discloses that form and chat data is processed by a third party, and
 that the widget sets its own cookies. **Keep those disclosures in sync if the
 provider ever changes.**
 
+## House style: no em dashes
+
+Visible copy uses no em dashes (`—`). They were removed sitewide at the client's
+request because they read as machine-written. Replacements were chosen per
+sentence rather than swapped mechanically: connectives took a comma, asides took
+parentheses, enumerations and explanations took a colon, and independent clauses
+were split into sentences.
+
+If you add copy, keep to that. A blanket find-and-replace produces sentence
+fragments and comma splices — the first attempt at this created fourteen of them
+before they were caught and fixed by hand.
+
+En dashes stay where they are correct typography, such as `Mon–Fri` and numeric
+ranges.
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several
@@ -286,6 +301,12 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       **not** a direct lender; correct it if that is wrong, as it changes required
       disclosures.
 - [ ] **EIN** — confirm the client wants it kept off the public site (current behavior).
+- [ ] **Founder photograph** — drop the file at `public/images/leval-moore.jpg`
+      (`.png`/`.webp` also work). `FounderPortrait` checks for it at build time and
+      renders it automatically; with no file present it falls back to the initials,
+      so there is no flag to flip and no broken image. **Only a real photograph of
+      Leval Moore belongs in this slot — never a stock photo of someone else.**
+
 - [ ] **⚠️ Logo file — `public/logo.png` is a PLACEHOLDER, not the client's asset.** The
       logo was supplied as an image in conversation and could not be written to disk, so the
       committed file is an approximate reconstruction used to verify layout. It is close but

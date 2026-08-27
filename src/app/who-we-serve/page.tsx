@@ -14,7 +14,7 @@ import OfficeAddress from '@/components/OfficeAddress';
 export const metadata = pageMetadata({
   title: 'Nationwide Tax & Financial Services | The Arms Corporation',
   description:
-    'Tax, accounting, and financial services for clients nationwide, backed by a real office in Bronx, NY. The Arms Corporation — remote or in person, your choice.',
+    'Tax, accounting, and financial services for clients nationwide, backed by a real office in Bronx, NY. The Arms Corporation, remote or in person, your choice.',
   path: '/who-we-serve',
 });
 
@@ -97,7 +97,7 @@ export default function WhoWeServePage() {
             <div className="prose-body mt-5 flex-1 space-y-4">
               <p>
                 Every service we offer is available remotely, and the remote
-                version is not a lesser version. Tax preparation, IRS
+                version is not a lesser version: tax preparation, IRS
                 resolution, bookkeeping, planning, funding applications, credit
                 work, and unclaimed funds recovery are all handled for clients
                 across the country.
@@ -160,7 +160,7 @@ export default function WhoWeServePage() {
                 </dd>
               </div>
               <div>
-                {/* UNCONFIRMED hours — see src/lib/site.ts */}
+                {/* UNCONFIRMED hours, see src/lib/site.ts */}
                 <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
                   Hours
                 </dt>
@@ -180,7 +180,7 @@ export default function WhoWeServePage() {
         <SectionHeading
           eyebrow="Who We Help"
           title="The people and businesses we work with most"
-          intro="If you do not see yourself on this list, that does not mean we cannot help — it means the list is not exhaustive. Ask."
+          intro="If you do not see yourself on this list, that does not mean we cannot help, it means the list is not exhaustive. Ask."
         />
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">

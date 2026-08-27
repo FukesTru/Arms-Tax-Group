@@ -41,7 +41,7 @@ export function pageMetadata({
           url: `${site.url}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: `${site.brandName} — tax, accounting, and financial services`,
+          alt: `${site.brandName}. Tax, accounting, and financial services`,
         },
       ],
     },

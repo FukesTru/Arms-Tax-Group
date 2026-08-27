@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 });
 
 /*
-  PLACEHOLDER LEGAL CONTENT — NOT ATTORNEY REVIEWED.
+  PLACEHOLDER LEGAL CONTENT. NOT ATTORNEY REVIEWED.
 
   Written to cover the services this site offers, with particular attention to
   the no-guaranteed-outcome language required for tax resolution and credit

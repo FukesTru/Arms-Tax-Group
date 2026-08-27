@@ -79,7 +79,7 @@ export function localBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'AccountingService',
     '@id': BRONX_ID,
-    name: `${site.brandName} — Bronx, NY Office`,
+    name: `${site.brandName}. Bronx, NY Office`,
     parentOrganization: { '@id': ORG_ID },
     url: `${site.url}/who-we-serve/bronx-ny`,
     telephone: site.phone.e164,

@@ -84,7 +84,7 @@ export default function ServicePageTemplate({
                 Free consultation, no obligation
               </h3>
               <p className="mt-4 text-[0.96rem] leading-relaxed text-ink-600">
-                Tell us what is going on and we will tell you what it involves —
+                Tell us what is going on and we will tell you what it involves
                 honestly, including when the answer is that you do not need us.
               </p>
               <Link href="/contact" className="btn-primary mt-6 w-full">
@@ -115,7 +115,7 @@ export default function ServicePageTemplate({
         </div>
       </Section>
 
-      {/* Sub-service grid — category pages only */}
+      {/* Sub-service grid. Category pages only */}
       {subServices && subServices.length > 0 && (
         <Section tone="tint">
           <SectionHeading
@@ -155,7 +155,7 @@ export default function ServicePageTemplate({
 
       <FAQ
         faqs={content.faqs}
-        intro={`Questions we hear often about ${content.h1.toLowerCase()}. If yours is not here, ask us directly — the consultation is free.`}
+        intro={`Questions we hear often about ${content.h1.toLowerCase()}. If yours is not here, ask us directly, the consultation is free.`}
       />
 
       {/* Compliance disclaimer, where the service is regulated */}

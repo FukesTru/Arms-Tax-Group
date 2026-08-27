@@ -15,7 +15,7 @@ type CTABandProps = {
 
 export default function CTABand({
   title = 'Not sure which service you need?',
-  body = "Talk to our team — it's a free consultation, and there's no pressure to commit.",
+  body = "Talk to our team, it's a free consultation, and there's no pressure to commit.",
   ctaLabel = 'Get a Free Consultation',
   ctaHref = '/contact',
   tone = 'accent',

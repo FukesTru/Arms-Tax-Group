@@ -12,12 +12,12 @@ export default function Footer() {
       <div className="container-x">
         <div className="grid gap-10 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <Link href="/" aria-label={`${site.brandName} — home`}>
+            <Link href="/" aria-label={`${site.brandName}. Home`}>
               <Logo variant="onDark" size={72} />
             </Link>
             <p className="mt-5 max-w-xs text-[0.92rem] leading-relaxed">
               Tax preparation, IRS resolution, bookkeeping, funding, and credit
-              solutions for individuals and businesses. Based in Bronx, NY —
+              solutions for individuals and businesses. Based in Bronx, NY
               serving clients nationwide.
             </p>
             <p className="mt-4 font-display text-[0.98rem] font-bold text-accent">
@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
 
             {/*
-              Social icon slot — structured but empty. No profiles are set up
+              Social icon slot, structured but empty. No profiles are set up
               yet. Adding entries to site.social activates this row and the
               sameAs property in the organization schema.
             */}
@@ -114,7 +114,7 @@ export default function Footer() {
             </h2>
             <ul className="mt-5 space-y-3.5 text-[0.92rem]">
               <li>
-                {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                {/* Suppressed while the address conflict is open, see lib/site.ts */}
                 <OfficeAddress tone="dark" />
               </li>
               <li>
@@ -138,7 +138,7 @@ export default function Footer() {
                   {site.email}
                 </a>
               </li>
-              {/* UNCONFIRMED hours — see src/lib/site.ts */}
+              {/* UNCONFIRMED hours, see src/lib/site.ts */}
               <li className="pt-1">
                 <span className="block font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/50">
                   Hours

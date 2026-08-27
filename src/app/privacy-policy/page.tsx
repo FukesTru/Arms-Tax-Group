@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 });
 
 /*
-  PLACEHOLDER LEGAL CONTENT — NOT ATTORNEY REVIEWED.
+  PLACEHOLDER LEGAL CONTENT. NOT ATTORNEY REVIEWED.
 
   This is general financial-services privacy language written to cover the
   services this site offers, including the lending and credit partner network.
@@ -34,7 +34,7 @@ const sections: LegalSection[] = [
       'Information you provide directly includes what you submit through our contact and consultation forms, send by email or text message, or share with us in the course of an engagement.',
     ],
     bullets: [
-      'Contact details — name, phone number, email address, and mailing address',
+      'Contact details. Name, phone number, email address, and mailing address',
       'Anything you submit through the contact form or the live chat widget on this site, both of which are hosted by our client management provider and delivered to us through it',
       'Tax and financial documents you share with us, which may include Social Security numbers, taxpayer identification numbers, income records, and account information',
       'Business information, including entity documents, financial statements, and payroll records',
@@ -79,7 +79,7 @@ const sections: LegalSection[] = [
     paragraphs: [
       'We maintain administrative, technical, and physical safeguards designed to protect the information you share with us. Documents are transmitted through secure electronic sharing rather than ordinary email attachments, and access to client files is limited to team members who need it to perform the work.',
       'No method of transmission or storage is entirely secure. While we take the protection of your information seriously, we cannot guarantee absolute security, and you share information with us with that understanding.',
-      'Please do not send sensitive documents — anything containing a Social Security number, taxpayer identification number, or account number — as an unencrypted email attachment. Ask us for a secure upload link instead.',
+      'Please do not send sensitive documents. Anything containing a Social Security number, taxpayer identification number, or account number, as an unencrypted email attachment. Ask us for a secure upload link instead.',
     ],
   },
   {

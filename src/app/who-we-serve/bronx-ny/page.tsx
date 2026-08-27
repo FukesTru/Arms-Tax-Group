@@ -39,7 +39,7 @@ export default function BronxOfficePage() {
       <Hero
         eyebrow="Bronx, New York"
         title="Tax & Financial Services in the Bronx"
-        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions — in person at our New York office, or remotely if that is easier."
+        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions. In person at our New York office, or remotely if that is easier."
         trustPoints={['Walk-In Appointments', 'All 9 Services On Site', 'Free Consultation']}
         breadcrumbs={trail}
       />
@@ -57,8 +57,8 @@ export default function BronxOfficePage() {
             <FadeUp delay={0.06} className="prose-body mt-6 space-y-5">
               <p>
                 Our office is where this practice started. Clients across the
-                Bronx — and from Manhattan, Westchester, and the surrounding
-                boroughs — come in to have
+                Bronx, and from Manhattan, Westchester, and the surrounding
+                boroughs. Come in to have
                 their returns prepared, hand over a year of receipts, work
                 through an IRS letter that arrived unexpectedly, or sit down and
                 talk about a business idea before committing money to it.
@@ -72,7 +72,7 @@ export default function BronxOfficePage() {
                 deciding what to do next.
               </p>
               <p>
-                If coming in is inconvenient, none of it is required — the same
+                If coming in is inconvenient, none of it is required. The same
                 services run remotely and clients regularly mix the two,
                 handling most of the year online and coming in when a
                 conversation deserves a table. Call ahead either way so we can
@@ -106,7 +106,7 @@ export default function BronxOfficePage() {
                     Address
                   </dt>
                   <dd className="mt-1.5">
-                    {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                    {/* Suppressed while the address conflict is open, see lib/site.ts */}
                     <OfficeAddress className="text-white/85" tone="dark" />
                   </dd>
                 </div>
@@ -150,7 +150,7 @@ export default function BronxOfficePage() {
                   </dd>
                 </div>
                 <div>
-                  {/* UNCONFIRMED hours — see src/lib/site.ts */}
+                  {/* UNCONFIRMED hours, see src/lib/site.ts */}
                   <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
                     Hours
                   </dt>

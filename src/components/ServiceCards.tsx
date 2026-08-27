@@ -17,7 +17,7 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
           className="group flex flex-col overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover"
         >
           <div className="relative overflow-hidden bg-ink-900">
-            {/* Artwork sits behind the card header — swap the manifest entry
+            {/* Artwork sits behind the card header. Swap the manifest entry
                 for a photograph and this becomes a photo card. */}
             <SiteImage
               asset={

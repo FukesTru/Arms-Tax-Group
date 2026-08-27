@@ -5,7 +5,7 @@ export const businessFinancialCategory: ServicePageContent = {
   h1: 'Business & Financial Solutions',
   eyebrow: 'Service Category',
   heroSubtitle:
-    'Funding, credit, and recovery support that goes beyond filing — helping you grow what you have and reclaim what you are already owed.',
+    'Funding, credit, and recovery support that goes beyond filing, helping you grow what you have and reclaim what you are already owed.',
   metaTitle: 'Business Funding, Credit & Recovery Solutions | The Arms Corporation',
   metaDescription:
     'Small business funding, credit solutions, unclaimed funds recovery, and business consulting from The Arms Corporation. Bronx, NY office, serving nationwide.',
@@ -14,7 +14,7 @@ export const businessFinancialCategory: ServicePageContent = {
   intro: [
     'A correct tax return tells you where you stand. It does not, by itself, get you the capital to take on a bigger contract, repair credit that is limiting your options, or recover money a state treasury has been holding in your name for years. Those are separate problems, and most people solve them with separate providers who never speak to one another.',
     'We built this side of the practice so the same team that understands your numbers can also help you act on them. If your books show you can service a loan, we can help you pursue one. If a funding application is being held up by a credit profile, we can help you understand and address what is on it. If your returns reveal an overpayment, or you have moved and lost track of an old account, we can help you find and claim it.',
-    'These services connect naturally to the tax work — but none of them require it. Plenty of clients come to us for funding or recovery alone, and that is a perfectly good place to start. Everything here is available nationwide, remotely, or in person at our Bronx office.',
+    'These services connect naturally to the tax work, but none of them require it. Plenty of clients come to us for funding or recovery alone, and that is a perfectly good place to start. Everything here is available nationwide, remotely, or in person at our Bronx office.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -33,7 +33,7 @@ export const businessFinancialCategory: ServicePageContent = {
   ],
   processHeading: 'How we approach it',
   processIntro:
-    'Different services, same starting point — understanding your actual position before recommending anything.',
+    'Different services, same starting point: understanding your actual position before recommending anything.',
   process: [
     {
       title: 'Free Consultation',
@@ -41,7 +41,7 @@ export const businessFinancialCategory: ServicePageContent = {
     },
     {
       title: 'Position Review',
-      body: 'We look at the relevant numbers — books, credit, filings, or records — so any recommendation is grounded in your real situation.',
+      body: 'We look at the relevant numbers (books, credit, filings, or records), so any recommendation is grounded in your real situation.',
     },
     {
       title: 'Match & Apply',
@@ -66,12 +66,12 @@ export const businessFinancialCategory: ServicePageContent = {
     {
       question: 'How do I know which of these I actually need?',
       answer:
-        'Often you do not, and that is fine. Start with the free consultation and describe the problem rather than the solution — "I need capital for a contract" or "my application was declined." Sorting out which service fits is our job, not yours.',
+        'Often you do not, and that is fine. Start with the free consultation and describe the problem rather than the solution: "I need capital for a contract" or "my application was declined." Sorting out which service fits is our job, not yours.',
     },
     {
       question: 'Do you work with brand-new businesses?',
       answer:
-        'Yes, though the options differ. A business with limited operating history has fewer funding paths available, so early-stage clients often start with entity structure, credit profile development, and consulting — the groundwork that makes funding realistic later.',
+        'Yes, though the options differ. A business with limited operating history has fewer funding paths available, so early-stage clients often start with entity structure, credit profile development, and consulting, the groundwork that makes funding realistic later.',
     },
   ],
 };
@@ -88,9 +88,9 @@ export const businessLoansFunding: ServicePageContent = {
   trustPoints: ['Working Capital', 'Lending Partner Network', 'Application Support'],
   introHeading: 'Capital is a timing problem before it is a money problem',
   intro: [
-    'The contract is there. The invoice is thirty days out. Payroll is Friday. Most small business funding needs look like this — not a shortage of opportunity, but a gap between when money goes out and when it comes back in. Meanwhile the application process asks for financials you have not assembled, in a format you have not seen, from a lender whose criteria are not published anywhere.',
-    'We help business owners navigate that. We review where your business actually stands — revenue, time in operation, cash flow, credit profile — and work through our network of lending partners to identify options that realistically fit, rather than sending you to apply blindly and collect declines. We then help you prepare the documentation, which is frequently where applications stall.',
-    'To be clear about what we are: The Arms Corporation works with a network of lending and funding partners. We are not the lender, and we do not make credit decisions or set terms — the funding partner does. Our role is to understand your position, match it to partners whose criteria you fit, and support you through the process. Approval, amount, and terms are always determined by the funding partner based on their own underwriting.',
+    'The contract is there. The invoice is thirty days out. Payroll is Friday. Most small business funding needs look like this, not a shortage of opportunity, but a gap between when money goes out and when it comes back in. Meanwhile the application process asks for financials you have not assembled, in a format you have not seen, from a lender whose criteria are not published anywhere.',
+    'We help business owners navigate that. We review where your business actually stands (revenue, time in operation, cash flow, credit profile), and work through our network of lending partners to identify options that realistically fit, rather than sending you to apply blindly and collect declines. We then help you prepare the documentation, which is frequently where applications stall.',
+    'To be clear about what we are: The Arms Corporation works with a network of lending and funding partners. We are not the lender, and we do not make credit decisions or set terms; the funding partner does. Our role is to understand your position, match it to partners whose criteria you fit, and support you through the process. Approval, amount, and terms are always determined by the funding partner based on their own underwriting.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -106,7 +106,7 @@ export const businessLoansFunding: ServicePageContent = {
   ],
   processHeading: 'Three steps to a funding decision',
   processIntro:
-    'Most of the work happens before the application — which is why applications through us stall less often.',
+    'Most of the work happens before the application, which is why applications through us stall less often.',
   process: [
     {
       title: 'Application Review',
@@ -125,7 +125,7 @@ export const businessLoansFunding: ServicePageContent = {
     {
       question: 'Are you the lender, or do you connect me with one?',
       answer:
-        'We work with a network of lending and funding partners — we are not the direct lender. We review your position, match you with partners whose criteria you fit, and help you prepare and submit a strong application. The funding partner makes the approval decision and sets all terms, rates, and amounts.',
+        'We work with a network of lending and funding partners; we are not the direct lender. We review your position, match you with partners whose criteria you fit, and help you prepare and submit a strong application. The funding partner makes the approval decision and sets all terms, rates, and amounts.',
     },
     {
       question: 'How long does my business need to have been operating?',
@@ -135,7 +135,7 @@ export const businessLoansFunding: ServicePageContent = {
     {
       question: 'Will applying affect my credit?',
       answer:
-        'It can, depending on the partner and the stage of the application — some conduct a soft review initially and a hard inquiry only when you proceed. We tell you which type of review each option involves before you commit to anything, so there are no surprises on your report.',
+        'It can, depending on the partner and the stage of the application. Some conduct a soft review initially and a hard inquiry only when you proceed. We tell you which type of review each option involves before you commit to anything, so there are no surprises on your report.',
     },
     {
       question: 'What documents will I need?',
@@ -150,7 +150,7 @@ export const businessLoansFunding: ServicePageContent = {
     {
       question: 'How quickly could funding come through?',
       answer:
-        'That is entirely up to the funding partner and the product — some move quickly, others involve a longer underwriting process. We can tell you the typical range for the options you are pursuing, but we cannot promise a timeline on a partner’s behalf.',
+        'That is entirely up to the funding partner and the product. Some move quickly, others involve a longer underwriting process. We can tell you the typical range for the options you are pursuing, but we cannot promise a timeline on a partner’s behalf.',
     },
   ],
   disclaimer:
@@ -169,8 +169,8 @@ export const creditSolutions: ServicePageContent = {
   trustPoints: ['Report Review', 'Dispute Strategy', 'Business Credit'],
   introHeading: 'Most people have never actually read their credit report',
   intro: [
-    'They have seen a score. That is a different thing. The score is a summary; the report is the substance — the accounts, balances, payment history, inquiries, and public records that produce it, some of which are frequently inaccurate, out of date, or attached to the wrong person entirely.',
-    'We start by going through the report with you line by line, so you know what is on it, what is dragging on it, and what is simply wrong. From there we help you build a strategy: which items have a legitimate basis for dispute and how that process actually works, which accounts are worth addressing directly, and which habits — utilization, payment timing, account age — are moving your profile in the wrong direction month after month.',
+    'They have seen a score. That is a different thing. The score is a summary; the report is the substance: the accounts, balances, payment history, inquiries, and public records that produce it, some of which are frequently inaccurate, out of date, or attached to the wrong person entirely.',
+    'We start by going through the report with you line by line, so you know what is on it, what is dragging on it, and what is simply wrong. From there we help you build a strategy: which items have a legitimate basis for dispute and how that process actually works, which accounts are worth addressing directly, and which habits (utilization, payment timing, account age) are moving your profile in the wrong direction month after month.',
     'For business owners, we also work on the business credit side, which many people do not realize is a separate profile with its own bureaus and its own rules. Establishing it properly matters for financing, vendor terms, and eventually separating your business obligations from your personal ones.',
     'What we will not do is promise you a number. Which items can be affected, and how a profile responds over time, depends on facts specific to you.',
   ],
@@ -207,7 +207,7 @@ export const creditSolutions: ServicePageContent = {
     {
       question: 'Can you remove negative items from my credit report?',
       answer:
-        'No one can promise that, and it is worth being cautious about anyone who does. Accurate, timely, and verifiable information generally stays on a report for the period the law allows. What can be disputed is information that is inaccurate, incomplete, outdated, or not actually yours — and identifying those items is a real part of the work.',
+        'No one can promise that, and it is worth being cautious about anyone who does. Accurate, timely, and verifiable information generally stays on a report for the period the law allows. What can be disputed is information that is inaccurate, incomplete, outdated, or not actually yours, and identifying those items is a real part of the work.',
     },
     {
       question: 'How much will my score go up?',
@@ -217,7 +217,7 @@ export const creditSolutions: ServicePageContent = {
     {
       question: 'How long does this take?',
       answer:
-        'Dispute investigations run on timelines set by the bureaus and generally take some weeks per cycle. Broader credit-building — utilization, payment history, account age — works on a longer horizon measured in months. Anyone promising a fast, dramatic change is describing something other than how credit reporting works.',
+        'Dispute investigations run on timelines set by the bureaus and generally take some weeks per cycle. Broader credit-building (utilization, payment history, account age) works on a longer horizon measured in months. Anyone promising a fast, dramatic change is describing something other than how credit reporting works.',
     },
     {
       question: 'Can I do this myself?',
@@ -251,9 +251,9 @@ export const unclaimedFundsRecovery: ServicePageContent = {
   trustPoints: ['Multi-State Search', 'Claim Filing Support', 'Individuals & Businesses'],
   introHeading: 'Money does not disappear. It gets held.',
   intro: [
-    'When a business cannot reach you, the money does not vanish — after a dormancy period it is turned over to the state as unclaimed property. Final paychecks from a job you left. A utility or rental deposit never returned. An old bank or brokerage account. An insurance payout sent to an address you moved away from a decade ago. A refund check that was never cashed.',
-    'Tax overpayments work similarly. Withholding that exceeded what was owed on a return never filed, a credit applied to a year that no longer needed it, or an amended return that turned an assessed balance into a refund — all of it can sit unclaimed, and in many cases there is a window within which it can still be claimed.',
-    'We search for property held in your name or your business’s name across state databases, review your filing history for overpayments that were never recovered, and handle the claim process — which is where most people give up, since it varies by state and typically requires documentation proving you are who you say you are and that the property was yours.',
+    'When a business cannot reach you, the money does not vanish. After a dormancy period it is turned over to the state as unclaimed property. Final paychecks from a job you left. A utility or rental deposit never returned. An old bank or brokerage account. An insurance payout sent to an address you moved away from a decade ago. A refund check that was never cashed.',
+    'Tax overpayments work similarly. Withholding that exceeded what was owed on a return never filed, a credit applied to a year that no longer needed it, or an amended return that turned an assessed balance into a refund. All of it can sit unclaimed, and in many cases there is a window within which it can still be claimed.',
+    'We search for property held in your name or your business’s name across state databases, review your filing history for overpayments that were never recovered, and handle the claim process, which is where most people give up, since it varies by state and typically requires documentation proving you are who you say you are and that the property was yours.',
     'The search itself is the easy part. Proving the claim is the work, and it is the part we take on.',
   ],
   handleHeading: 'What we handle',
@@ -265,7 +265,7 @@ export const unclaimedFundsRecovery: ServicePageContent = {
     'Taxpayer overpayment and unclaimed refund review',
     'Claim preparation and documentation assembly',
     'Filing and follow-through with the holding state agency',
-    'Business unclaimed property — dissolved entities and old accounts',
+    'Business unclaimed property. Dissolved entities and old accounts',
   ],
   processHeading: 'Three steps to recovery',
   processIntro:
@@ -288,12 +288,12 @@ export const unclaimedFundsRecovery: ServicePageContent = {
     {
       question: 'How do I know if I have unclaimed funds?',
       answer:
-        'Most people have no idea, which is exactly the point — the money was turned over precisely because the holder could not reach you. Common sources are old bank accounts, uncashed final paychecks, security deposits, insurance proceeds, and refund checks sent to a former address. A search is the only way to find out, and it is where we start.',
+        'Most people have no idea, which is exactly the point. The money was turned over precisely because the holder could not reach you. Common sources are old bank accounts, uncashed final paychecks, security deposits, insurance proceeds, and refund checks sent to a former address. A search is the only way to find out, and it is where we start.',
     },
     {
       question: 'What does this cost?',
       answer:
-        'The initial consultation and search cost you nothing. If we identify property or an overpayment and you decide to pursue it, we will explain the fee arrangement in writing before any work begins — you will never be surprised by a charge after the fact.',
+        'The initial consultation and search cost you nothing. If we identify property or an overpayment and you decide to pursue it, we will explain the fee arrangement in writing before any work begins, you will never be surprised by a charge after the fact.',
     },
     {
       question: 'How long does recovery take?',
@@ -303,7 +303,7 @@ export const unclaimedFundsRecovery: ServicePageContent = {
     {
       question: 'Can I search for this myself?',
       answer:
-        'Yes. States maintain public unclaimed property databases and you can search and file at no cost. People bring us in because property is often listed under a former name, a prior address, or a business entity they forgot about — and because claims are frequently rejected over documentation issues that are tedious to sort out.',
+        'Yes. States maintain public unclaimed property databases and you can search and file at no cost. People bring us in because property is often listed under a former name, a prior address, or a business entity they forgot about, and because claims are frequently rejected over documentation issues that are tedious to sort out.',
     },
     {
       question: 'Can you find funds held in another state?',
@@ -313,7 +313,7 @@ export const unclaimedFundsRecovery: ServicePageContent = {
     {
       question: 'What about money owed to a business I closed?',
       answer:
-        'Dissolved and inactive businesses regularly have unclaimed property — vendor refunds, deposits, uncashed checks. Recovery is possible but the documentation requirements are heavier, since you must establish authority to claim on the entity’s behalf. We handle that part.',
+        'Dissolved and inactive businesses regularly have unclaimed property, vendor refunds, deposits, uncashed checks. Recovery is possible but the documentation requirements are heavier, since you must establish authority to claim on the entity’s behalf. We handle that part.',
     },
   ],
 };
@@ -323,7 +323,7 @@ export const businessConsulting: ServicePageContent = {
   h1: 'Business Consulting Services',
   eyebrow: 'Business & Financial Solutions',
   heroSubtitle:
-    'Practical guidance for entrepreneurs and small business owners — from how to set the business up to how to grow it deliberately.',
+    'Practical guidance for entrepreneurs and small business owners, from how to set the business up to how to grow it deliberately.',
   metaTitle: 'Small Business Consulting Services | The Arms Corporation',
   metaDescription:
     'Strategic guidance for entrepreneurs and small business owners, from entity structure to growth planning. The Arms Corporation, Bronx, NY and nationwide.',
@@ -332,14 +332,14 @@ export const businessConsulting: ServicePageContent = {
   intro: [
     'You can find a thousand articles about forming an LLC and almost nothing about whether an LLC is right for what you specifically are building. You can hire a consulting firm that will produce a handsome deck about a business it does not understand. What is genuinely hard to find is someone who will look at your actual numbers and give you a straight answer.',
     'That is the gap this service fills. We work with entrepreneurs and small business owners on the decisions that have real financial consequences: how to structure the entity and when to change it, how to pay yourself, what your pricing does to your margins, whether you can afford to hire, what growth would cost before it pays, and which obligations you are quietly accumulating without noticing.',
-    'For newer owners, a good deal of this is education — understanding what the business needs to stay compliant, which records matter and why, and what the first year actually demands. For established owners, it tends to be more targeted: a decision to make, a plan to pressure-test, a number that stopped making sense.',
+    'For newer owners, a good deal of this is education: understanding what the business needs to stay compliant, which records matter and why, and what the first year actually demands. For established owners, it tends to be more targeted: a decision to make, a plan to pressure-test, a number that stopped making sense.',
     'Because we also handle the tax and accounting side, the advice is grounded in your real financial position rather than a hypothetical one.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
     'The decisions business owners bring us most often.',
   handles: [
-    'Entity structure guidance — formation and restructuring',
+    'Entity structure guidance. Formation and restructuring',
     'Owner compensation and distribution planning',
     'Financial strategy and cash flow planning',
     'Pricing and margin review',
@@ -358,7 +358,7 @@ export const businessConsulting: ServicePageContent = {
     },
     {
       title: 'Analysis',
-      body: 'We look at the real numbers — books, returns, structure — so recommendations rest on your situation rather than general principles.',
+      body: 'We look at the real numbers (books, returns, structure), so recommendations rest on your situation rather than general principles.',
     },
     {
       title: 'Plan & Support',
@@ -369,7 +369,7 @@ export const businessConsulting: ServicePageContent = {
     {
       question: 'I am just starting out. Is consulting worth it this early?',
       answer:
-        'Often it is the point at which it is worth the most, because the early decisions — entity type, how you keep records, how you pay yourself — are cheap to make correctly and expensive to unwind later. A single early session frequently saves considerably more than it costs.',
+        'Often it is the point at which it is worth the most, because the early decisions (entity type, how you keep records, how you pay yourself) are cheap to make correctly and expensive to unwind later. A single early session frequently saves considerably more than it costs.',
     },
     {
       question: 'What does an engagement typically look like?',
@@ -379,7 +379,7 @@ export const businessConsulting: ServicePageContent = {
     {
       question: 'Do you help with business formation?',
       answer:
-        'We guide the decision — which structure fits your goals, tax situation, and liability exposure — and walk you through what formation and ongoing compliance involve in your state. Where legal work is required, we will tell you plainly that you need an attorney rather than pretending otherwise.',
+        'We guide the decision (which structure fits your goals, tax situation, and liability exposure), and walk you through what formation and ongoing compliance involve in your state. Where legal work is required, we will tell you plainly that you need an attorney rather than pretending otherwise.',
     },
     {
       question: 'Can you help me decide whether I can afford to hire?',

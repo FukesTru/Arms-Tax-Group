@@ -49,7 +49,7 @@ const contactMethods = [
     label: 'Email',
     value: site.email,
     href: `mailto:${site.email}`,
-    detail: 'Please do not attach tax documents — we will send a secure link.',
+    detail: 'Please do not attach tax documents, we will send a secure link.',
   },
   {
     label: 'Fax',
@@ -157,11 +157,11 @@ export default function ContactPage() {
                 Visit Us
               </p>
               <div className="mt-4 text-[1.02rem] leading-relaxed text-white/85">
-                {/* Suppressed while the address conflict is open — see lib/site.ts */}
+                {/* Suppressed while the address conflict is open, see lib/site.ts */}
                 <OfficeAddress tone="dark" />
               </div>
               <div className="mt-5 border-t border-white/10 pt-5">
-                {/* UNCONFIRMED hours — see src/lib/site.ts */}
+                {/* UNCONFIRMED hours, see src/lib/site.ts */}
                 <p className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
                   Hours
                 </p>

@@ -51,8 +51,8 @@ export default function FounderPortrait() {
     <Image
       src={src}
       alt={`${site.owner}, Founder and Principal of ${site.brandName}`}
-      width={600}
-      height={800}
+      width={407}
+      height={600}
       sizes="(min-width: 768px) 280px, 100vw"
       className="relative h-full w-full object-cover object-top"
       priority={false}

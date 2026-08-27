@@ -302,13 +302,10 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       **not** a direct lender; correct it if that is wrong, as it changes required
       disclosures.
 - [ ] **EIN** — confirm the client wants it kept off the public site (current behavior).
-- [ ] **Founder photograph** — drop the file at `public/images/leval-moore.jpg`
-      (`.png`/`.webp` also work). `FounderPortrait` checks for it at build time and
-      renders it automatically; with no file present it falls back to the initials,
-      so there is no flag to flip and no broken image. Prefer a **cut-out PNG with a
-      transparent background**: the panel behind it is dark, so a white-background
-      JPG renders as a white block. **Only a real photograph of Leval Moore belongs
-      in this slot, never a stock photo of someone else.**
+- [x] **Founder photograph** — done. `public/images/leval-moore.png` is a 407x600
+      RGBA cut-out with a genuinely transparent background (alpha 0 at all four
+      corners, verified), so it composites onto the dark panel rather than sitting
+      in it as a white block. `FounderPortrait` picks it up at build time.
 
 - [ ] **⚠️ Logo file — `public/logo.png` is a PLACEHOLDER, not the client's asset.** The
       logo was supplied as an image in conversation and could not be written to disk, so the

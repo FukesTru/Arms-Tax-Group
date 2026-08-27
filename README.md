@@ -232,8 +232,9 @@ Two deliberate departures from the vendor snippet:
   the form would render as an invisible strip. Starting at its natural height
   means the worst case is a form that does not auto-resize, not one that
   vanishes.
-- **The Text Us bubble moved to bottom-LEFT.** The chat widget renders its own
-  launcher bottom-right; two bubbles in one corner would overlap.
+- **The Text Us bubble was removed entirely.** The chat widget covers the same
+  job, and two floating launchers were clutter. The SMS number still appears in
+  the footer, on the Contact page, and on the Bronx office page.
 
 Submissions no longer touch this app — the previous in-app form and its
 `/api/contact` route were removed rather than left as dead code. The Privacy
@@ -304,8 +305,10 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
 - [ ] **Founder photograph** — drop the file at `public/images/leval-moore.jpg`
       (`.png`/`.webp` also work). `FounderPortrait` checks for it at build time and
       renders it automatically; with no file present it falls back to the initials,
-      so there is no flag to flip and no broken image. **Only a real photograph of
-      Leval Moore belongs in this slot — never a stock photo of someone else.**
+      so there is no flag to flip and no broken image. Prefer a **cut-out PNG with a
+      transparent background**: the panel behind it is dark, so a white-background
+      JPG renders as a white block. **Only a real photograph of Leval Moore belongs
+      in this slot, never a stock photo of someone else.**
 
 - [ ] **⚠️ Logo file — `public/logo.png` is a PLACEHOLDER, not the client's asset.** The
       logo was supplied as an image in conversation and could not be written to disk, so the

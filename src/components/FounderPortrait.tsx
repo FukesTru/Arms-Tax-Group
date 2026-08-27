@@ -13,6 +13,12 @@ import { site } from '@/lib/site';
  *
  * A real person's photograph is the only acceptable content for this slot.
  * Never substitute a stock photo of someone else.
+ *
+ * FORMAT: the panel behind this is dark (bg-ink-900). A cut-out PNG with a
+ * transparent background composites onto it cleanly, which is what the
+ * client's supplied portrait is styled for. A JPG with a white background
+ * will render as a white block inside the dark panel instead, so prefer
+ * .png if the photo is a cut-out.
  */
 
 const CANDIDATES = ['leval-moore.jpg', 'leval-moore.jpeg', 'leval-moore.png', 'leval-moore.webp'];

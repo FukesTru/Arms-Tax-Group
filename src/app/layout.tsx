@@ -4,7 +4,6 @@ import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import JsonLd from '@/components/JsonLd';
-import TextUsBubble from '@/components/TextUsBubble';
 import { organizationSchema } from '@/lib/schema';
 import { site } from '@/lib/site';
 import './globals.css';
@@ -78,8 +77,8 @@ gtag('config', '${ga4Id}');`}
 
         {/*
           LeadConnector chat widget. Loaded after hydration so it never blocks
-          first paint. It renders its own bottom-right launcher, which is why
-          the Text Us bubble sits bottom-left.
+          first paint. It renders its own bottom-right launcher and is now the
+          only floating element on the page.
         */}
         <Script
           id="leadconnector-chat-widget"
@@ -92,7 +91,6 @@ gtag('config', '${ga4Id}');`}
         <Header />
         <main id="main">{children}</main>
         <Footer />
-        <TextUsBubble />
       </body>
     </html>
   );

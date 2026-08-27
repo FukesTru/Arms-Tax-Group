@@ -214,6 +214,33 @@ Two cautions when sourcing photography:
 - The founder photo slot on the About page is still an "LM" monogram. Replace it
   with a real photograph of Leval Moore, never a stock person.
 
+## LeadConnector integration
+
+Both the live chat widget and the contact form are provided by LeadConnector
+(HighLevel). IDs live in `site.leadConnector` in `src/lib/site.ts`.
+
+| Piece | Where | Notes |
+|---|---|---|
+| Chat widget | `layout.tsx`, sitewide | `next/script`, `afterInteractive` so it never blocks first paint |
+| Contact form | `LeadConnectorForm`, on `/contact` | iframe + `form_embed.js`, which resizes it after load |
+
+Two deliberate departures from the vendor snippet:
+
+- **The iframe gets an explicit starting height (542px) instead of
+  `height:100%`.** A percentage height against an auto-height parent collapses
+  to zero, so if `form_embed.js` is slow, blocked by an ad blocker, or fails,
+  the form would render as an invisible strip. Starting at its natural height
+  means the worst case is a form that does not auto-resize, not one that
+  vanishes.
+- **The Text Us bubble moved to bottom-LEFT.** The chat widget renders its own
+  launcher bottom-right; two bubbles in one corner would overlap.
+
+Submissions no longer touch this app — the previous in-app form and its
+`/api/contact` route were removed rather than left as dead code. The Privacy
+Policy discloses that form and chat data is processed by a third party, and
+that the widget sets its own cookies. **Keep those disclosures in sync if the
+provider ever changes.**
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several
@@ -279,9 +306,11 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
 - [ ] **Legal review** — Privacy Policy and Terms are general placeholder content and have
       **not** been reviewed by an attorney. Both display a notice saying so; remove it only
       after counsel has reviewed and approved the text.
-- [ ] **Contact form delivery** — `src/app/api/contact/route.ts` validates and logs
-      submissions but does not deliver them. Wire it to the client's inbox or CRM using a
-      server-side key from an environment variable.
+- [ ] **Verify the LeadConnector form and chat widget in production.** Both were
+      wired blind: `leadconnectorhq.com` and `msgsndr.com` are blocked by this
+      build environment's egress proxy, so the markup and attributes are verified
+      but the widget and form have never been seen rendering. Load `/contact`,
+      submit a test entry, and confirm it lands in the LeadConnector inbox.
 - [ ] **GA4** — replace the placeholder ID in `site.analytics.ga4MeasurementId`. The tag is
       suppressed while the placeholder value is present.
 - [ ] **Open Graph image** — add `public/og-image.png` at 1200×630.

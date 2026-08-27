@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 import { site } from '@/lib/site';
 
 /**
- * Floating bottom-right "Text Us" bubble, routed to the client's SMS line.
+ * Floating "Text Us" bubble, routed to the client's SMS line.
+ *
+ * Sits bottom-LEFT: the LeadConnector chat widget renders its own launcher
+ * bottom-right, and two stacked bubbles in the same corner would overlap.
  * Appears after a short scroll so it never covers the hero CTAs.
  */
 export default function TextUsBubble() {
@@ -20,7 +23,7 @@ export default function TextUsBubble() {
   return (
     <a
       href={site.text.href}
-      className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-accent py-3.5 pl-4 pr-5 font-display text-[0.9rem] font-bold text-white shadow-card-hover transition-all duration-300 hover:bg-accent-600 ${
+      className={`fixed bottom-5 left-5 z-40 flex items-center gap-2.5 rounded-full bg-accent py-3.5 pl-4 pr-5 font-display text-[0.9rem] font-bold text-white shadow-card-hover transition-all duration-300 hover:bg-accent-600 ${
         visible
           ? 'translate-y-0 opacity-100'
           : 'pointer-events-none translate-y-4 opacity-0'

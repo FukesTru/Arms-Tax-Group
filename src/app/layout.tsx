@@ -75,6 +75,20 @@ gtag('config', '${ga4Id}');`}
       </head>
       <body>
         <JsonLd data={organizationSchema()} />
+
+        {/*
+          LeadConnector chat widget. Loaded after hydration so it never blocks
+          first paint. It renders its own bottom-right launcher, which is why
+          the Text Us bubble sits bottom-left.
+        */}
+        <Script
+          id="leadconnector-chat-widget"
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id={site.leadConnector.chatWidgetId}
+          strategy="afterInteractive"
+        />
+
         <Header />
         <main id="main">{children}</main>
         <Footer />

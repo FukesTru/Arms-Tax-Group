@@ -112,6 +112,23 @@ export const site = {
    */
   social: [] as { label: string; href: string }[],
 
+  /**
+   * LeadConnector (HighLevel) integration. The chat widget loads sitewide and
+   * the embedded form replaces the old custom contact form; both submit to the
+   * client's LeadConnector inbox rather than to this app.
+   *
+   * NOTE: form submissions and chat messages leave this site and are processed
+   * by a third party. The Privacy Policy discloses this — keep the two in sync
+   * if either ID changes or the provider is swapped.
+   */
+  leadConnector: {
+    chatWidgetId: '6a7f3a8fb7fff8e52956955c',
+    contactFormId: 'AhRfkEtrL6TTzA61PYnA',
+    contactFormName: 'Website Form (The Arms Corp)',
+    /** Initial iframe height; form_embed.js resizes it after load. */
+    contactFormHeight: 542,
+  },
+
   analytics: {
     // Placeholder — swap in the real GA4 measurement ID at launch.
     ga4MeasurementId: 'G-XXXXXXXXXX',

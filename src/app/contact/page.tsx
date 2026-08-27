@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import CTABand from '@/components/CTABand';
-import ContactForm from '@/components/ContactForm';
+import LeadConnectorForm from '@/components/LeadConnectorForm';
 import FAQ from '@/components/FAQ';
 import FadeUp from '@/components/FadeUp';
 import Hero from '@/components/Hero';
@@ -92,8 +92,20 @@ export default function ContactPage() {
               intro="The more context you give us, the more useful the first conversation will be. Everything you send stays between us."
             />
             <FadeUp delay={0.08} className="mt-8">
-              <ContactForm />
+              <LeadConnectorForm />
             </FadeUp>
+
+            <p className="mt-4 text-[0.82rem] leading-relaxed text-ink-600">
+              Your details are sent securely to our client management system so
+              we can respond. See our{' '}
+              <a
+                href="/privacy-policy"
+                className="font-semibold text-accent underline-offset-2 hover:underline"
+              >
+                Privacy Policy
+              </a>
+              .
+            </p>
           </div>
 
           <div>

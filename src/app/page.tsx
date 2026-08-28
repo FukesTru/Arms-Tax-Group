@@ -32,7 +32,7 @@ export default function HomePage() {
 
       <Hero
         size="large"
-        image={images.heroLanding}
+        visual="aperture"
         title={
           <>
             Tax &amp; Financial Solutions for Individuals and Businesses in{' '}

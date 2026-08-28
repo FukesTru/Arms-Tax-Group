@@ -32,6 +32,11 @@ export type SiteImageAsset = {
 };
 
 export const images = {
+  /**
+   * Superseded by HeroAperture, which the homepage now uses. Kept as the
+   * fallback behind Hero's `image` prop: passing visual="image" with this
+   * asset restores the static hero without touching any other code.
+   */
   heroLanding: {
     src: '/images/hero-landing.svg',
     alt: 'Illustration of a prepared tax return, a confirmation card and a rising bar chart.',

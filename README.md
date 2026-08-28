@@ -180,6 +180,33 @@ nobody confirmed. That tile is now "Nationwide / Remote". Only "9 — Services u
 is a real, checkable number. If the client has genuine metrics — clients served, returns
 filed, dollars recovered — these tiles are the place for them.
 
+## Hero visual
+
+The homepage hero uses `HeroAperture`, a self-contained animated component
+rather than a static asset. Concentric arcs sweep open, a path draws itself
+through them, and three metric chips settle around it.
+
+- **Motion:** Framer Motion. Arcs and path animate via `pathLength`; everything
+  else is transform-only. Pointer parallax runs through motion values, so
+  moving the mouse never triggers a React re-render. Measured at 24 SVG nodes,
+  37 DOM nodes, and zero long tasks across a 4-second idle window.
+- **Reactive:** the plane, the ring and each chip shift at their own depth on
+  pointer move, and the ring rotates slightly toward the cursor.
+- **Idle:** one slow halo pulse on the end node and a 6.5s chip float. Nothing
+  else loops.
+- **Reduced motion:** `useReducedMotion` renders the settled state with
+  `initial={false}` and zero-duration transitions. No animation runs at all.
+- **Responsive:** stacks below the copy under `lg` at full container width.
+- **Decorative:** `aria-hidden`, since the headline carries the meaning.
+
+**The chips carry no figures.** Labels and trend glyphs only, for the same
+reason the rest of the site publishes no unverified statistics. To show real
+numbers, add them to `CHIPS` in the component once the client has approved the
+values.
+
+Switching back to the static artwork is one prop: `visual="image"` with
+`image={images.heroLanding}` on the homepage `<Hero>`.
+
 ## Images
 
 Every image slot is declared in `src/lib/images.ts` and rendered through

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import type { SiteImageAsset } from '@/lib/images';
 import { site } from '@/lib/site';
+import HeroAperture from './HeroAperture';
 import SiteImage from './SiteImage';
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 import FadeUp from './FadeUp';
@@ -21,6 +22,8 @@ type HeroProps = {
    * lg so it never competes with the headline on a phone.
    */
   image?: SiteImageAsset;
+  /** 'aperture' swaps the static artwork for the animated hero visual. */
+  visual?: 'image' | 'aperture';
 };
 
 export default function Hero({
@@ -32,6 +35,7 @@ export default function Hero({
   primaryCta = { label: 'Get a Free Consultation', href: '/contact' },
   size = 'default',
   image,
+  visual = 'image',
 }: HeroProps) {
   return (
     <section
@@ -58,14 +62,18 @@ export default function Hero({
 
         <div
           className={
-            image
+            image || visual === 'aperture'
               ? 'grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12'
               : ''
           }
         >
         <FadeUp
           className={
-            image ? '' : size === 'large' ? 'max-w-4xl' : 'max-w-3xl'
+            image || visual === 'aperture'
+              ? ''
+              : size === 'large'
+                ? 'max-w-4xl'
+                : 'max-w-3xl'
           }
         >
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
@@ -133,15 +141,22 @@ export default function Hero({
           </div>
         </FadeUp>
 
-        {image && (
-          <FadeUp delay={0.12} className="hidden lg:block">
-            <SiteImage
-              asset={image}
-              priority
-              className="h-auto w-full"
-              sizes="(min-width: 1024px) 45vw, 0px"
-            />
-          </FadeUp>
+        {visual === 'aperture' ? (
+          /* Stacks below the copy on small screens rather than hiding. */
+          <div className="mt-4 w-full max-w-[560px] self-center lg:mt-0">
+            <HeroAperture />
+          </div>
+        ) : (
+          image && (
+            <FadeUp delay={0.12} className="hidden lg:block">
+              <SiteImage
+                asset={image}
+                priority
+                className="h-auto w-full"
+                sizes="(min-width: 1024px) 45vw, 0px"
+              />
+            </FadeUp>
+          )
         )}
         </div>
       </div>

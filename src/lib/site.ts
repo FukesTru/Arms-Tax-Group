@@ -127,6 +127,22 @@ export const site = {
     contactFormName: 'Website Form (The Arms Corp)',
     /** Initial iframe height; form_embed.js resizes it after load. */
     contactFormHeight: 542,
+    /**
+     * Query-param names the LeadConnector form reads to pre-fill fields, used
+     * when a visitor arrives from the hero estimator.
+     *
+     * ⚠️ UNCONFIRMED — LeadConnector matches on each custom field's own key,
+     * which we cannot read from here (the domain is not reachable from the
+     * build environment). These are the names we send; if they do not match
+     * the keys on the real form the fields simply arrive blank, which is why
+     * the contact page also shows the estimate in plain text. Confirm the
+     * keys in the LeadConnector form builder and correct them here.
+     */
+    prefillKeys: {
+      income: 'annual_income',
+      deductions: 'missed_deductions',
+      savings: 'estimated_savings',
+    },
   },
 
   analytics: {

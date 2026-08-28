@@ -33,7 +33,7 @@ export type SiteImageAsset = {
 
 export const images = {
   /**
-   * Superseded by HeroAperture, which the homepage now uses. Kept as the
+   * Superseded by SavingsEstimator, which the homepage now uses. Kept as the
    * fallback behind Hero's `image` prop: passing visual="image" with this
    * asset restores the static hero without touching any other code.
    */

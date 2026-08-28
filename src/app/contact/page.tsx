@@ -16,6 +16,7 @@ import {
 } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { mapsDirectionsUrl } from '@/lib/address';
+import { parseEstimateParams } from '@/lib/estimateSavings';
 import { site } from '@/lib/site';
 import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
@@ -59,7 +60,19 @@ const contactMethods = [
   },
 ];
 
-export default function ContactPage() {
+/**
+ * `searchParams` carries the hero estimator's values when a visitor clicks
+ * "Get your exact number", so the consultation form can open already knowing
+ * what they told the sliders. Anything missing or unparseable yields null and
+ * the page renders exactly as it does for a direct visit.
+ */
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ income?: string | string[]; deductions?: string | string[] }>;
+}) {
+  const estimate = parseEstimateParams(await searchParams);
+
   return (
     <>
       <JsonLd
@@ -92,7 +105,7 @@ export default function ContactPage() {
               intro="The more context you give us, the more useful the first conversation will be. Everything you send stays between us."
             />
             <FadeUp delay={0.08} className="mt-8">
-              <LeadConnectorForm />
+              <LeadConnectorForm estimate={estimate} />
             </FadeUp>
 
             <p className="mt-4 text-[0.82rem] leading-relaxed text-ink-600">

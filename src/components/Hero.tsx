@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import type { SiteImageAsset } from '@/lib/images';
 import { site } from '@/lib/site';
-import HeroAperture from './HeroAperture';
+import SavingsEstimator from './SavingsEstimator';
 import SiteImage from './SiteImage';
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 import FadeUp from './FadeUp';
@@ -22,8 +22,8 @@ type HeroProps = {
    * lg so it never competes with the headline on a phone.
    */
   image?: SiteImageAsset;
-  /** 'aperture' swaps the static artwork for the animated hero visual. */
-  visual?: 'image' | 'aperture';
+  /** 'estimator' swaps the artwork for the interactive savings estimator. */
+  visual?: 'image' | 'estimator';
 };
 
 export default function Hero({
@@ -62,14 +62,14 @@ export default function Hero({
 
         <div
           className={
-            image || visual === 'aperture'
+            image || visual === 'estimator'
               ? 'grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12'
               : ''
           }
         >
         <FadeUp
           className={
-            image || visual === 'aperture'
+            image || visual === 'estimator'
               ? ''
               : size === 'large'
                 ? 'max-w-4xl'
@@ -141,11 +141,11 @@ export default function Hero({
           </div>
         </FadeUp>
 
-        {visual === 'aperture' ? (
+        {visual === 'estimator' ? (
           /* Stacks below the copy on small screens rather than hiding. */
-          <div className="mt-4 w-full max-w-[560px] self-center lg:mt-0">
-            <HeroAperture />
-          </div>
+          <FadeUp delay={0.12} className="w-full max-w-[520px] self-center lg:mt-0">
+            <SavingsEstimator />
+          </FadeUp>
         ) : (
           image && (
             <FadeUp delay={0.12} className="hidden lg:block">

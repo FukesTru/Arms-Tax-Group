@@ -180,40 +180,64 @@ nobody confirmed. That tile is now "Nationwide / Remote". Only "9 — Services u
 is a real, checkable number. If the client has genuine metrics — clients served, returns
 filed, dollars recovered — these tiles are the place for them.
 
-## Hero visual
+## Hero visual: the savings estimator
 
-The homepage hero uses `HeroAperture`, a self-contained animated component
-rather than a static asset. A ticked outer ring turns slowly, concentric arcs
-sweep open, and two series draw themselves inside: what you keep rising away
-from what you owe, with the widening gap between them filled.
+The homepage hero carries `SavingsEstimator`, an interactive two-slider tax
+savings estimator, in place of a static illustration. Annual income and a count
+of likely-missed deductions drive a live figure, a proportional progress bar,
+and a CTA into the consultation form.
 
-- **Motion:** Framer Motion. Arcs and path animate via `pathLength`; everything
-  else is transform-only. Pointer parallax runs through motion values, so
-  moving the mouse never triggers a React re-render. Measured at 24 SVG nodes,
-  37 DOM nodes, and zero long tasks across a 4-second idle window.
-- **Reactive:** the plane, the ring and each chip shift at their own depth on
-  pointer move, and the ring rotates slightly toward the cursor.
-- **Idle:** the outer ring turns once every 64 seconds, plus one slow halo
-  pulse on the growth endpoint and a 6.5s chip float. Nothing else loops. The
-  ring spins as a single group transform, so it composites rather than
-  repainting.
-- **Reduced motion:** `useReducedMotion` renders the settled state with
-  `initial={false}` and zero-duration transitions. No animation runs at all.
-- **Responsive:** stacks below the copy under `lg` at full container width.
-- **Decorative:** `aria-hidden`, since the headline carries the meaning.
+- **The maths lives in `src/lib/estimateSavings.ts`**, as a pure function with
+  its multipliers as named constants at the top of the file. Nothing else in
+  the app hard-codes an estimate, so tuning the model with the client is a
+  three-line edit in one file.
+- **Motion:** the figure counts between values over ~500ms through a Framer
+  motion value written straight to the DOM node, so dragging a slider does not
+  re-render on every animation frame. The bar is a CSS width transition.
+  Measured: 60 consecutive slider steps produce zero long tasks. The two long
+  tasks on the homepage (113ms and 52ms) both land in the first 200ms of load
+  and are script parse, not this component.
+- **Reduced motion:** `useReducedMotion` sets the figure outright and the bar
+  carries `motion-reduce:transition-none`. No count-up runs.
+- **Accessibility:** native `<input type="range">` elements, each with a real
+  `<label for>`, so keyboard operation and screen-reader announcement come for
+  free. The result carries `aria-live="polite"`; the animated span is
+  `aria-hidden` and a visually hidden sibling holds the settled figure, so
+  assistive tech announces the final number once rather than every frame.
+- **Responsive:** sliders go full width and the result card stacks beneath the
+  hero copy under `lg`. No horizontal overflow at 390/768/1024/1440.
+- **Contrast:** all text on the card measured against its composited ground —
+  labels 13.02:1, result label 6.21:1, bounds and disclaimer 5.25:1. The bound
+  labels were `white/45` first, which measured 4.49:1 and missed AA.
 
-**The chips and the graph carry no figures.** Directional labels and glyphs
-only, for the same reason the rest of the site publishes no unverified
-statistics. The falling series is labelled "Tax burden" rather than "Tax
-saved" deliberately: the site carries a no-guaranteed-outcomes stance for tax
-resolution, and a hero chart captioned as savings edges toward promising a
-result. To show real numbers, add them to `CHIPS` once the client has approved
-the values.
+**Tuning constants, in `estimateSavings.ts`:**
 
-**Do not add `strokeDasharray` to the burden series.** Framer drives the
-draw-on by animating `pathLength`, which sets dasharray and dashoffset itself,
-so any dash pattern is silently overridden. The two series are distinguished by
-weight and colour instead.
+| Constant | Current | What it does |
+| --- | --- | --- |
+| `SAVINGS_PER_DEDUCTION` | `0.009` | Value of one missed deduction, as a share of income. Drives every figure shown. |
+| `MINIMUM_SAVINGS` | `150` | Floor once at least one deduction is reported. |
+| `MAXIMUM_SAVINGS_RATE` | `0.072` | Ceiling as a share of income. |
+
+Keep `MAXIMUM_SAVINGS_RATE` at or above `SAVINGS_PER_DEDUCTION × 8`. Set it
+lower and the cap binds partway up the slider: the top steps all return the
+same figure and the control feels broken. At `0.06` the 7th and 8th deductions
+were identical, which is why it is what it is.
+
+**The disclaimer is not dismissible and should stay that way.** "Rough estimate
+for illustration only — actual savings depend on your full tax situation. Not
+tax advice." A savings figure on a tax firm's homepage is a marketing claim, so
+the multiplier behind it needs the client's explicit sign-off before launch —
+see the checklist below.
+
+**Prefill into the consultation form.** "Get your exact number" links to
+`/contact?income=…&deductions=…#consultation-form`. The contact page parses
+those params with `parseEstimateParams`, hands them to `LeadConnectorForm`, and
+the form appends them to the iframe URL under the keys in
+`site.leadConnector.prefillKeys`. Those keys are unconfirmed — LeadConnector
+matches on each custom field's own key and its domain is not reachable from
+this build environment — so the estimate is *also* rendered above the form as
+plain text. If prefill silently fails, the visitor still sees their numbers
+rather than losing them between two pages.
 
 Switching back to the static artwork is one prop: `visual="image"` with
 `image={images.heroLanding}` on the homepage `<Hero>`.
@@ -295,6 +319,13 @@ before they were caught and fixed by hand.
 En dashes stay where they are correct typography, such as `Mon–Fri` and numeric
 ranges.
 
+**One deliberate exception:** the hero estimator's disclaimer, "Rough estimate
+for illustration only — actual savings depend on your full tax situation. Not
+tax advice." That string was supplied verbatim by the client as the wording they
+want shown, so it is reproduced exactly rather than restyled. Do not
+find-and-replace it. If the em dash matters more than the exact wording, ask
+before changing it, since it is the compliance line under a dollar figure.
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several
@@ -362,6 +393,21 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       real logo once it lands (`public/favicon.svg`, `public/og-image.png`).
 - [ ] **Founder photo** — the About page uses an "LM" monogram placeholder.
 - [ ] **Founder bio** — the About page bio is written copy; replace with the client's own.
+- [ ] **⚠️ Savings estimator multiplier — the hero shows a dollar figure built on a
+      placeholder.** `SAVINGS_PER_DEDUCTION` in `src/lib/estimateSavings.ts` is currently
+      `0.009` (0.9% of income per missed deduction), a number we chose to make the
+      component demonstrable, not one the client supplied. Every figure the hero shows
+      derives from it. A savings estimate on a tax firm's homepage is a marketing claim
+      about outcomes, so get the client to sign off on the multiplier — or on removing the
+      estimator — before launch. The three constants are at the top of that one file.
+- [ ] **Estimator disclaimer wording** — "Rough estimate for illustration only ... Not tax
+      advice." should go past the same legal review as the Privacy Policy and Terms.
+- [ ] **LeadConnector prefill field keys** — `site.leadConnector.prefillKeys` sends
+      `annual_income`, `missed_deductions`, and `estimated_savings`. LeadConnector matches
+      on each custom field's own key, which we could not read (domain unreachable from the
+      build environment). Open the form builder, copy the real keys in, and confirm a
+      submission arrives with the fields populated. If they stay blank the estimate still
+      shows above the form as text, so this degrades rather than breaks.
 - [ ] **Legal review** — Privacy Policy and Terms are general placeholder content and have
       **not** been reviewed by an attorney. Both display a notice saying so; remove it only
       after counsel has reviewed and approved the text.

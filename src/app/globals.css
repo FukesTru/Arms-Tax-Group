@@ -73,6 +73,87 @@
   .prose-body p {
     @apply text-[1.05rem] leading-[1.75] text-ink-600;
   }
+
+  /*
+    Hero estimator sliders. Native range inputs keep the keyboard and
+    screen-reader behaviour; only the track and thumb are restyled. The two
+    vendor pseudo-element blocks cannot be merged — a selector either browser
+    does not recognise invalidates the whole rule.
+
+    --fill is set inline by the component and marks how far the thumb has
+    travelled, so the accent portion of the track tracks the value.
+  */
+  .estimator-range {
+    @apply block h-6 w-full cursor-pointer appearance-none bg-transparent;
+  }
+
+  .estimator-range:focus-visible {
+    @apply outline-none;
+  }
+
+  .estimator-range::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      theme('colors.accent.bright') 0%,
+      theme('colors.accent.bright') var(--fill, 0%),
+      rgba(255, 255, 255, 0.14) var(--fill, 0%),
+      rgba(255, 255, 255, 0.14) 100%
+    );
+  }
+
+  .estimator-range::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      theme('colors.accent.bright') 0%,
+      theme('colors.accent.bright') var(--fill, 0%),
+      rgba(255, 255, 255, 0.14) var(--fill, 0%),
+      rgba(255, 255, 255, 0.14) 100%
+    );
+  }
+
+  .estimator-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    width: 22px;
+    /* Centres a 22px thumb on a 6px track. */
+    margin-top: -8px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid theme('colors.accent.DEFAULT');
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    transition: transform 150ms ease;
+  }
+
+  .estimator-range::-moz-range-thumb {
+    height: 22px;
+    width: 22px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid theme('colors.accent.DEFAULT');
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    transition: transform 150ms ease;
+  }
+
+  .estimator-range:active::-webkit-slider-thumb {
+    transform: scale(1.12);
+  }
+
+  .estimator-range:active::-moz-range-thumb {
+    transform: scale(1.12);
+  }
+
+  .estimator-range:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 4px rgba(240, 58, 95, 0.45);
+  }
+
+  .estimator-range:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 4px rgba(240, 58, 95, 0.45);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

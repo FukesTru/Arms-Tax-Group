@@ -81,40 +81,47 @@ export default function SavingsEstimator({ className = '' }: { className?: strin
 
   return (
     <div
-      className={`rounded-2xl border border-white/12 bg-white/[0.05] p-6 backdrop-blur-md sm:p-7 ${className}`}
+      className={`overflow-hidden rounded-2xl border border-white/12 bg-white/[0.05] backdrop-blur-md ${className}`}
     >
-      <p className="eyebrow">Estimate your savings</p>
+      {/*
+        One card, two zones, divided by a hairline rather than nested boxes.
+        The earlier version put a bordered card inside a bordered card inside
+        the hero, which read as three stacked rectangles.
+      */}
+      <div className="p-6 sm:p-7">
+        <p className="eyebrow">Estimate your savings</p>
 
-      <div className="mt-6 space-y-7">
-        <SliderRow
-          id={incomeId}
-          label="Annual income"
-          value={income}
-          display={formatUsd(income)}
-          min={INCOME.min}
-          max={INCOME.max}
-          step={INCOME.step}
-          minLabel={formatUsd(INCOME.min)}
-          maxLabel={`${formatUsd(INCOME.max)}+`}
-          onChange={setIncome}
-        />
+        <div className="mt-6 space-y-6">
+          <SliderRow
+            id={incomeId}
+            label="Annual income"
+            value={income}
+            display={formatUsd(income)}
+            min={INCOME.min}
+            max={INCOME.max}
+            step={INCOME.step}
+            minLabel={formatUsd(INCOME.min)}
+            maxLabel={`${formatUsd(INCOME.max)}+`}
+            onChange={setIncome}
+          />
 
-        <SliderRow
-          id={deductionsId}
-          label="Deductions likely being missed"
-          value={deductions}
-          display={String(deductions)}
-          min={DEDUCTIONS.min}
-          max={DEDUCTIONS.max}
-          step={DEDUCTIONS.step}
-          minLabel="None"
-          maxLabel={`${DEDUCTIONS.max}+`}
-          onChange={setDeductions}
-        />
+          <SliderRow
+            id={deductionsId}
+            label="Deductions likely being missed"
+            value={deductions}
+            display={String(deductions)}
+            min={DEDUCTIONS.min}
+            max={DEDUCTIONS.max}
+            step={DEDUCTIONS.step}
+            minLabel="None"
+            maxLabel={`${DEDUCTIONS.max}+`}
+            onChange={setDeductions}
+          />
+        </div>
       </div>
 
-      {/* Result */}
-      <div className="mt-8 rounded-xl border border-white/10 bg-ink-900/50 p-5 sm:p-6">
+      {/* Result zone: full-bleed band, so the card reads as one object. */}
+      <div className="border-t border-white/10 bg-ink-900/60 p-6 sm:p-7">
         <p className="font-display text-[0.72rem] font-bold uppercase tracking-[0.16em] text-white/55">
           Potential annual savings
         </p>
@@ -122,7 +129,7 @@ export default function SavingsEstimator({ className = '' }: { className?: strin
         <p
           aria-live="polite"
           aria-atomic="true"
-          className="mt-1.5 font-serif text-[2.7rem] font-bold leading-[1.15] tabular-nums text-white sm:text-5xl"
+          className="mt-2 flex items-baseline gap-2.5"
         >
           {/*
             Two nodes on purpose. The visible span is driven imperatively by
@@ -130,18 +137,28 @@ export default function SavingsEstimator({ className = '' }: { className?: strin
             hidden span carries the settled figure, so assistive tech announces
             the final number once instead of every intermediate frame.
           */}
-          <span ref={figureRef} aria-hidden="true">
+          <span
+            ref={figureRef}
+            aria-hidden="true"
+            className="font-display text-[2.9rem] font-bold leading-[1.1] tracking-[-0.02em] tabular-nums text-white sm:text-[3.25rem]"
+          >
             {formatUsd(savings)}
+          </span>
+          <span
+            aria-hidden="true"
+            className="font-display text-[0.95rem] font-semibold text-white/45"
+          >
+            / year
           </span>
           <span className="sr-only">{formatUsd(savings)} per year, estimated</span>
         </p>
 
         <div
-          className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white/10"
+          className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10"
           role="presentation"
         >
           <div
-            className="h-full rounded-full bg-accent-bright transition-[width] duration-500 ease-out motion-reduce:transition-none"
+            className="h-full rounded-full bg-gradient-to-r from-accent to-accent-bright transition-[width] duration-500 ease-out motion-reduce:transition-none"
             style={{ width: `${Math.round(fraction * 100)}%` }}
           />
         </div>
@@ -149,12 +166,12 @@ export default function SavingsEstimator({ className = '' }: { className?: strin
         <Link href={bookingHref} className="btn-primary mt-6 w-full">
           Get your exact number
         </Link>
-      </div>
 
-      <p className="mt-4 text-[0.78rem] leading-relaxed text-white/50">
-        Rough estimate for illustration only &mdash; actual savings depend on your
-        full tax situation. Not tax advice.
-      </p>
+        <p className="mt-4 text-[0.76rem] leading-relaxed text-white/50">
+          Rough estimate for illustration only &mdash; actual savings depend on
+          your full tax situation. Not tax advice.
+        </p>
+      </div>
     </div>
   );
 }
@@ -189,10 +206,13 @@ function SliderRow({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4">
-        <label htmlFor={id} className="font-display text-[0.9rem] font-semibold text-white/85">
+        <label
+          htmlFor={id}
+          className="font-display text-[0.88rem] font-semibold text-white/80"
+        >
           {label}
         </label>
-        <span className="font-display text-[1.05rem] font-bold text-accent-bright">
+        <span className="font-display text-[1.15rem] font-bold tabular-nums text-accent-bright">
           {display}
         </span>
       </div>
@@ -205,11 +225,11 @@ function SliderRow({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="estimator-range mt-3 w-full"
+        className="estimator-range mt-2.5 w-full"
         style={{ ['--fill' as string]: `${pct}%` }}
       />
 
-      <div className="mt-2 flex justify-between font-display text-[0.72rem] font-medium text-white/50">
+      <div className="mt-1 flex justify-between font-display text-[0.7rem] font-medium text-white/50">
         <span>{minLabel}</span>
         <span>{maxLabel}</span>
       </div>

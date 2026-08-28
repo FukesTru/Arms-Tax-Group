@@ -133,43 +133,47 @@ wherever an FAQ block appears, `LocalBusiness` on the Bronx office and contact p
 
 ---
 
-## ⚠️ Blocking: unresolved office address
+## Office address — resolved
 
-**The client's intake form and current live site give different addresses, in two
-different cities.** Nothing on the site guesses between them.
+**The client confirmed the intake-form address on 2026-08-28.**
 
-| Source | Address |
-|---|---|
-| Client intake form | 1426 White Plains Road, Bronx, NY 10462 |
-| Current live site (thearmscorp.co) | 50 Main St, Suite 1000, White Plains, NY 10606 |
+| Source | Address | Status |
+|---|---|---|
+| Client intake form | 1426 White Plains Road, Bronx, NY 10462 | **confirmed, published** |
+| Current live site (thearmscorp.co) | 50 Main St, Suite 1000, White Plains, NY 10606 | rejected, never rendered |
 
-While `site.address.status` is `'unconfirmed'`, the street address is suppressed
-everywhere it would otherwise appear — footer, Contact page, Bronx office page,
-Who We Serve, `LocalBusiness` and organization schema (no `address`, no `geo`),
-and the Google Maps embed — and a visible amber review flag is shown on the
-Contact and office pages instead.
+`site.address.status` is `'confirmed'` and `address.confirmed` is `'intake'`, so
+the address now publishes in the footer sitewide, on the Contact page, on the
+Bronx office page, in the `AccountingService` and organization schema, and the
+Google Maps embed is live on `/contact` and `/who-we-serve/bronx-ny`. The amber
+review flag is gone from every page.
 
-The raw values sit behind `site.address.candidates` and are only reachable through
-`lib/address.ts`, so TypeScript makes it a compile error to render an address
-without handling the unconfirmed case. Nothing here relies on remembering.
+The rejected address is still in `site.address.candidates.liveSite` as a record
+of what the conflict was. It is not reachable through `lib/address.ts` and never
+renders. Note that the client's own live site will keep showing it until they
+update or retire that site — worth raising with them.
 
-**To resolve:** in `src/lib/site.ts`, set `address.status` to `'confirmed'` and
-`address.confirmed` to `'intake'` or `'liveSite'`. Every suppressed element,
-the maps embed, and the schema restore themselves; the flags disappear.
+**No copy rewrite was needed.** The confirmed city is Bronx, which is what the
+site was already written around: `/who-we-serve/bronx-ny`, the "tax preparation
+Bronx NY" SEO target, the hero trust points, the CTA badges, the meta
+descriptions, and the About copy all stand as written. Had the answer been White
+Plains, every one of those would have had to change.
 
-**This is bigger than a street address.** The two candidates are in different
-cities. If the answer is White Plains, the following also need rewriting, and none
-of it is done automatically:
+### One thing still held back: the coordinates
 
-- `/who-we-serve/bronx-ny` — the slug, title, H1, body copy, and its
-  "tax preparation Bronx NY" SEO target
-- Every "Bronx, NY" reference sitewide — hero trust points, CTA trust badges,
-  several meta descriptions and page titles, the footer link label, and the
-  Who We Serve copy
-- The homepage About preview and About page, which describe a Bronx practice
+`geo` is deliberately **not** in the published schema. The lat/long in
+`site.address.candidates.intake` (40.8412, -73.8593) are our own estimate for the
+street, not surveyed values and not client-supplied, and no geocoder is reachable
+from this build environment to check them. Google geocodes the `PostalAddress`
+by itself, so omitting `geo` costs nothing, whereas a wrong `GeoCoordinates` pin
+would put the business on the wrong corner.
 
-The build currently keeps the Bronx framing because that is what the client's own
-intake form says. Confirm before launch.
+To publish them: open the office in Google Maps, right-click the pin, copy the
+real coordinates into that candidate, and set `site.address.geoVerified` to
+`true`. The schema picks them up with no other change.
+
+The Maps embed is unaffected — it uses a `?q=<full address>&output=embed` URL
+that Google geocodes from the text, so it points at the right place already.
 
 ## A note on the homepage stat tiles
 
@@ -191,12 +195,19 @@ and a CTA into the consultation form.
   its multipliers as named constants at the top of the file. Nothing else in
   the app hard-codes an estimate, so tuning the model with the client is a
   three-line edit in one file.
+- **Typography:** the figure is set in the site's own display face, Space
+  Grotesk, at `tracking-[-0.02em]` with `tabular-nums` so it does not jitter as
+  it counts. It was Playfair Display first, which read as a different brand
+  bolted onto the page; that font is no longer loaded at all.
+- **Layout:** one card, two zones, divided by a hairline. The result sits in a
+  full-bleed band with its own ground rather than a second bordered box inside
+  the first, which is what made the earlier version read as stacked rectangles.
 - **Motion:** the figure counts between values over ~500ms through a Framer
   motion value written straight to the DOM node, so dragging a slider does not
   re-render on every animation frame. The bar is a CSS width transition.
-  Measured: 60 consecutive slider steps produce zero long tasks. The two long
-  tasks on the homepage (113ms and 52ms) both land in the first 200ms of load
-  and are script parse, not this component.
+  Measured: 60 consecutive slider steps produce zero long tasks. The one long
+  task on the homepage (89ms) lands in the first 200ms of load and is script
+  parse, not this component.
 - **Reduced motion:** `useReducedMotion` sets the figure outright and the bar
   carries `motion-reduce:transition-none`. No count-up runs.
 - **Accessibility:** native `<input type="range">` elements, each with a real
@@ -207,8 +218,8 @@ and a CTA into the consultation form.
 - **Responsive:** sliders go full width and the result card stacks beneath the
   hero copy under `lg`. No horizontal overflow at 390/768/1024/1440.
 - **Contrast:** all text on the card measured against its composited ground —
-  labels 13.02:1, result label 6.21:1, bounds and disclaimer 5.25:1. The bound
-  labels were `white/45` first, which measured 4.49:1 and missed AA.
+  labels 11.63:1, result label 6.22:1, bounds 5.25:1, disclaimer 5.33:1. The
+  bound labels were `white/45` first, which measured 4.49:1 and missed AA.
 
 **Tuning constants, in `estimateSavings.ts`:**
 
@@ -362,8 +373,16 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
 - [ ] **Years in business / experience claim** — publish a number only once confirmed.
 - [ ] **Credentials** — is Leval Moore a CPA, Enrolled Agent, or licensed preparer? This
       determines what the site may legally claim, and what disclaimers it needs.
-- [ ] **Office address** — see the blocking section above. Two conflicting addresses in two
-      different cities; resolve in `src/lib/site.ts`.
+- [x] **Office address** — RESOLVED 2026-08-28. Client confirmed the intake-form
+      address, 1426 White Plains Road, Bronx, NY 10462. Publishing sitewide.
+- [ ] **Office coordinates** — `geo` is withheld from the schema because the lat/long
+      are our estimate, not verified, and no geocoder is reachable from this build
+      environment. Read the real pin off Google Maps into
+      `site.address.candidates.intake` and set `site.address.geoVerified` to `true`.
+      Google geocodes the postal address meanwhile, so this is an improvement, not a
+      breakage.
+- [ ] **The client's live site still shows the old White Plains address.** Ask them to
+      update or retire thearmscorp.co so the two do not disagree in search results.
 - [ ] **Owner name spelling** — intake says "Leval Moore"; the client's live site spells it
       "Laval". The site uses the intake spelling throughout. Confirm which is correct.
 - [ ] **Lending & credit** — confirm whether Arms Capital Partners and Arms Credit Solutions

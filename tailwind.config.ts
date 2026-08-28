@@ -57,8 +57,6 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-display)', 'Space Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['var(--font-body)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        // Display serif, reserved for large figures (the hero estimator).
-        serif: ['var(--font-serif)', 'Playfair Display', 'ui-serif', 'Georgia', 'serif'],
       },
       maxWidth: {
         content: '1200px',

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display, Space_Grotesk } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -18,18 +18,6 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
-});
-
-/**
- * Serif face, used only for large figures — the estimator's savings number.
- * Loaded with the numerals-and-currency subset it actually needs rather than
- * the full latin set, since no body copy on the site uses it.
- */
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['600', '700'],
-  variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
@@ -65,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${playfair.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable}`}
     >
       <head>
         {/*

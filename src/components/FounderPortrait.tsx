@@ -14,11 +14,17 @@ import { site } from '@/lib/site';
  * A real person's photograph is the only acceptable content for this slot.
  * Never substitute a stock photo of someone else.
  *
- * FORMAT: the panel behind this is dark (bg-ink-900). A cut-out PNG with a
- * transparent background composites onto it cleanly, which is what the
- * client's supplied portrait is styled for. A JPG with a white background
- * will render as a white block inside the dark panel instead, so prefer
- * .png if the photo is a cut-out.
+ * FORMAT: the panel behind this is a flat dark field (bg-ink-900). A cut-out
+ * PNG with a transparent background composites onto it cleanly, which is what
+ * the client's supplied portrait is styled for. A JPG with a white background
+ * would render as a white block inside the dark panel instead, so prefer .png
+ * if the photo is a cut-out.
+ *
+ * FIT: object-contain, not object-cover. Cover fills the panel by cropping
+ * whatever does not fit, which cut the subject's arm at the left edge and his
+ * waist at the bottom. Contain scales the whole figure to fit, so nothing is
+ * cropped; object-bottom seats him on the base of the panel rather than
+ * floating him in the middle.
  */
 
 const CANDIDATES = ['leval-moore.jpg', 'leval-moore.jpeg', 'leval-moore.png', 'leval-moore.webp'];
@@ -54,7 +60,7 @@ export default function FounderPortrait() {
       width={407}
       height={600}
       sizes="(min-width: 768px) 280px, 100vw"
-      className="relative h-full w-full object-cover object-top"
+      className="relative h-full w-full object-contain object-bottom"
       priority={false}
     />
   );

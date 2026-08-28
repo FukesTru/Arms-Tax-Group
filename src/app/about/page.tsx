@@ -153,14 +153,6 @@ export default function AboutPage() {
         <FadeUp delay={0.08} className="mt-11">
           <article className="grid gap-8 overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card md:grid-cols-[280px_1fr] md:gap-0">
             <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-ink-900">
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(ellipse 80% 80% at 50% 20%, rgba(216,36,77,0.3), transparent 65%)',
-                }}
-                aria-hidden="true"
-              />
               {/* Renders the photograph when one is on disk, initials otherwise. */}
               <FounderPortrait />
             </div>

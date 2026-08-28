@@ -14,11 +14,12 @@ import { site } from '@/lib/site';
  * A real person's photograph is the only acceptable content for this slot.
  * Never substitute a stock photo of someone else.
  *
- * FORMAT: the panel behind this is a flat dark field (bg-ink-900). A cut-out
- * PNG with a transparent background composites onto it cleanly, which is what
- * the client's supplied portrait is styled for. A JPG with a white background
- * would render as a white block inside the dark panel instead, so prefer .png
- * if the photo is a cut-out.
+ * FORMAT: a cut-out PNG with a transparent background, composited onto a
+ * LIGHT panel. The panel is light on purpose: the subject wears a dark navy
+ * suit whose outer edges measure around rgb(15,15,25), so against any dark
+ * background the silhouette disappears (1.0-1.2:1 edge contrast, measured).
+ * On the light panel the same edges measure about 12:1. Do not move this
+ * panel back to a dark surface without a portrait shot for one.
  *
  * FIT: object-contain, not object-cover. Cover fills the panel by cropping
  * whatever does not fit, which cut the subject's arm at the left edge and his
@@ -47,7 +48,7 @@ export default function FounderPortrait() {
       .map((part) => part[0])
       .join('');
     return (
-      <span className="relative flex h-28 w-28 items-center justify-center rounded-full border-2 border-accent font-display text-[2.4rem] font-extrabold text-white">
+      <span className="relative flex h-28 w-28 items-center justify-center rounded-full border-2 border-accent font-display text-[2.4rem] font-extrabold text-ink-900">
         {initials}
       </span>
     );

@@ -152,7 +152,7 @@ export default function AboutPage() {
 
         <FadeUp delay={0.08} className="mt-11">
           <article className="grid gap-8 overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card md:grid-cols-[280px_1fr] md:gap-0">
-            <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-ink-900">
+            <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-zinc-100 ring-1 ring-inset ring-ink-900/10">
               {/* Renders the photograph when one is on disk, initials otherwise. */}
               <FounderPortrait />
             </div>

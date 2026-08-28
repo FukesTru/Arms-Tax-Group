@@ -38,24 +38,48 @@ const ACCENT_BRIGHT = '#F03A5F';
 const CENTER = { x: 300, y: 260 };
 
 /**
- * Waypoints of the rising path. Every point sits inside the innermost ring
- * radius so the aperture frames the path instead of crossing it — the arcs
- * and the line colliding was what made the first pass read as noise.
+ * Two series diverging from a shared origin: what you keep rising, what you
+ * owe falling. The widening gap between them is the whole idea.
+ *
+ * Every point sits inside the innermost ring radius so the aperture frames
+ * the graph instead of crossing it — the arcs and the line colliding was what
+ * made the first pass read as noise.
  */
-const PATH_POINTS: [number, number][] = [
-  [168, 356],
-  [238, 318],
-  [300, 332],
-  [372, 248],
-  [438, 186],
+const ORIGIN: [number, number] = [168, 296];
+
+const GROWTH_POINTS: [number, number][] = [
+  ORIGIN,
+  [236, 282],
+  [300, 250],
+  [370, 208],
+  [436, 168],
 ];
 
-const PATH_D = PATH_POINTS.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ');
+const BURDEN_POINTS: [number, number][] = [
+  ORIGIN,
+  [236, 314],
+  [300, 326],
+  [370, 346],
+  [436, 362],
+];
+
+const toD = (pts: [number, number][]) =>
+  pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ');
+
+const GROWTH_D = toD(GROWTH_POINTS);
+const BURDEN_D = toD(BURDEN_POINTS);
+
+/** Closed wedge between the two series, filled to show the widening gap. */
+const GAP_D = `${GROWTH_D} L436 362 ${[...BURDEN_POINTS]
+  .reverse()
+  .slice(1)
+  .map(([x, y]) => `L${x} ${y}`)
+  .join(' ')} Z`;
 
 type Chip = {
   label: string;
   /** 'trend' rising sparkline, 'check' resolved tick, 'arrow' upward move. */
-  glyph: 'trend' | 'check' | 'arrow';
+  glyph: 'trend' | 'check' | 'arrow' | 'arrowDown';
   /** Position as a percentage of the container. */
   x: number;
   y: number;
@@ -65,9 +89,9 @@ type Chip = {
 };
 
 const CHIPS: Chip[] = [
-  { label: 'Filings current', glyph: 'check', x: 1, y: 20, depth: 1, delay: 1.15 },
-  { label: 'Cash flow', glyph: 'trend', x: 52, y: 2, depth: 0.55, delay: 1.35 },
-  { label: 'Recovered', glyph: 'arrow', x: 58, y: 80, depth: 0.8, delay: 1.55 },
+  { label: 'What you keep', glyph: 'arrow', x: 50, y: 1, depth: 0.55, delay: 1.2 },
+  { label: 'Tax burden', glyph: 'arrowDown', x: 57, y: 78, depth: 0.8, delay: 1.4 },
+  { label: 'Filings current', glyph: 'check', x: 0, y: 22, depth: 1, delay: 1.6 },
 ];
 
 export default function HeroAperture({ className = '' }: { className?: string }) {
@@ -121,6 +145,10 @@ export default function HeroAperture({ className = '' }: { className?: string })
             <stop offset="0%" stopColor={ACCENT} />
             <stop offset="100%" stopColor={ACCENT_BRIGHT} />
           </linearGradient>
+          <linearGradient id="ha-gap" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={ACCENT} stopOpacity="0" />
+            <stop offset="100%" stopColor={ACCENT} stopOpacity="0.22" />
+          </linearGradient>
           <radialGradient id="ha-core" cx="50%" cy="50%">
             <stop offset="0%" stopColor={ACCENT} stopOpacity="0.34" />
             <stop offset="70%" stopColor={ACCENT} stopOpacity="0.06" />
@@ -139,6 +167,47 @@ export default function HeroAperture({ className = '' }: { className?: string })
           transition={reduce ? { duration: 0 } : { duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformOrigin: `${CENTER.x}px ${CENTER.y}px` }}
         />
+
+        {/* Outer ring, ticked like an instrument dial, turning slowly */}
+        <motion.g
+          style={{ transformOrigin: `${CENTER.x}px ${CENTER.y}px` }}
+          initial={reduce ? false : { opacity: 0, rotate: 0 }}
+          animate={reduce ? { opacity: 1 } : { opacity: 1, rotate: 360 }}
+          transition={
+            reduce
+              ? { duration: 0 }
+              : {
+                  opacity: { duration: 1.2, delay: 0.1 },
+                  rotate: { duration: 64, repeat: Infinity, ease: 'linear' },
+                }
+          }
+        >
+          <circle
+            cx={CENTER.x}
+            cy={CENTER.y}
+            r={244}
+            fill="none"
+            stroke="rgba(255,255,255,0.07)"
+            strokeWidth={1}
+          />
+          {Array.from({ length: 48 }, (_, i) => {
+            const a = (i / 48) * Math.PI * 2;
+            const long = i % 4 === 0;
+            const r1 = 244 - (long ? 9 : 4);
+            return (
+              <line
+                key={i}
+                x1={CENTER.x + Math.cos(a) * r1}
+                y1={CENTER.y + Math.sin(a) * r1}
+                x2={CENTER.x + Math.cos(a) * 244}
+                y2={CENTER.y + Math.sin(a) * 244}
+                stroke={long ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.10)'}
+                strokeWidth={long ? 1.4 : 1}
+                strokeLinecap="round"
+              />
+            );
+          })}
+        </motion.g>
 
         {/* Aperture: three arcs sweeping open at staggered rates */}
         <motion.g style={
@@ -172,10 +241,44 @@ export default function HeroAperture({ className = '' }: { className?: string })
           ))}
         </motion.g>
 
-        {/* The rising path, drawn through the aperture */}
+        {/* The graph: what you keep rising away from what you owe */}
         <motion.g style={reduce ? undefined : { x: pathX, y: pathY }}>
+          {/* Widening gap between the two series */}
           <motion.path
-            d={PATH_D}
+            d={GAP_D}
+            fill="url(#ha-gap)"
+            stroke="none"
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={reduce ? { duration: 0 } : { duration: 1.1, delay: 1.05 }}
+          />
+
+          {/*
+            Tax burden, falling away. Deliberately no strokeDasharray: Framer
+            drives the draw-on by animating pathLength, which sets dasharray
+            and dashoffset itself, so any dash pattern here is silently
+            overridden. The series is distinguished by weight and colour
+            instead — thinner, and neutral white against the accent gradient.
+          */}
+          <motion.path
+            d={BURDEN_D}
+            fill="none"
+            stroke="rgba(255,255,255,0.5)"
+            strokeWidth={2.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={
+              reduce
+                ? { duration: 0 }
+                : { duration: 1.4, delay: 0.62, ease: [0.22, 1, 0.36, 1] }
+            }
+          />
+
+          {/* What you keep, rising */}
+          <motion.path
+            d={GROWTH_D}
             fill="none"
             stroke="url(#ha-line)"
             strokeWidth={3.5}
@@ -189,11 +292,12 @@ export default function HeroAperture({ className = '' }: { className?: string })
                 : { duration: 1.5, delay: 0.45, ease: [0.22, 1, 0.36, 1] }
             }
           />
-          {PATH_POINTS.map(([x, y], i) => {
-            const last = i === PATH_POINTS.length - 1;
+
+          {GROWTH_POINTS.map(([x, y], i) => {
+            const last = i === GROWTH_POINTS.length - 1;
             return (
               <motion.circle
-                key={`${x}-${y}`}
+                key={`g-${x}-${y}`}
                 cx={x}
                 cy={y}
                 r={last ? 7 : 4.5}
@@ -203,25 +307,50 @@ export default function HeroAperture({ className = '' }: { className?: string })
                 transition={
                   reduce
                     ? { duration: 0 }
-                    : { duration: 0.5, delay: 0.7 + i * 0.16, ease: 'easeOut' }
+                    : { duration: 0.5, delay: 0.72 + i * 0.15, ease: 'easeOut' }
                 }
                 style={{ transformOrigin: `${x}px ${y}px` }}
               />
             );
           })}
-          {/* Halo on the final node, the only element that keeps moving */}
+
+          {/* End of the falling series, marked but understated */}
+          <motion.circle
+            cx={BURDEN_POINTS[4][0]}
+            cy={BURDEN_POINTS[4][1]}
+            r={4.5}
+            fill="none"
+            stroke="rgba(255,255,255,0.7)"
+            strokeWidth={2}
+            initial={reduce ? false : { opacity: 0, scale: 0.3 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={reduce ? { duration: 0 } : { duration: 0.5, delay: 1.35 }}
+            style={{
+              transformOrigin: `${BURDEN_POINTS[4][0]}px ${BURDEN_POINTS[4][1]}px`,
+            }}
+          />
+
+          {/* Halo on the growth endpoint, the only element that keeps moving */}
           {!reduce && (
             <motion.circle
-              cx={PATH_POINTS[4][0]}
-              cy={PATH_POINTS[4][1]}
+              cx={GROWTH_POINTS[4][0]}
+              cy={GROWTH_POINTS[4][1]}
               r={7}
               fill="none"
               stroke="#fff"
               strokeWidth={1.5}
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: [0, 0.45, 0], scale: [1, 2.2, 2.2] }}
-              transition={{ duration: 3.2, delay: 1.9, repeat: Infinity, repeatDelay: 1.6, ease: 'easeOut' }}
-              style={{ transformOrigin: `${PATH_POINTS[4][0]}px ${PATH_POINTS[4][1]}px` }}
+              transition={{
+                duration: 3.2,
+                delay: 1.9,
+                repeat: Infinity,
+                repeatDelay: 1.6,
+                ease: 'easeOut',
+              }}
+              style={{
+                transformOrigin: `${GROWTH_POINTS[4][0]}px ${GROWTH_POINTS[4][1]}px`,
+              }}
             />
           )}
         </motion.g>
@@ -295,6 +424,9 @@ function Glyph({ kind }: { kind: Chip['glyph'] }) {
       {kind === 'trend' && <path d="M3 14l4.5-4.5 3.5 3L17 6" {...common} />}
       {kind === 'check' && <path d="M4 10.5l4 4L16 6" {...common} />}
       {kind === 'arrow' && <path d="M10 16V5M5.5 9.5L10 5l4.5 4.5" {...common} />}
+      {kind === 'arrowDown' && (
+        <path d="M10 4v11M5.5 10.5L10 15l4.5-4.5" {...common} stroke="rgba(255,255,255,0.75)" />
+      )}
     </svg>
   );
 }

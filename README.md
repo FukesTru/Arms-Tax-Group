@@ -183,8 +183,9 @@ filed, dollars recovered — these tiles are the place for them.
 ## Hero visual
 
 The homepage hero uses `HeroAperture`, a self-contained animated component
-rather than a static asset. Concentric arcs sweep open, a path draws itself
-through them, and three metric chips settle around it.
+rather than a static asset. A ticked outer ring turns slowly, concentric arcs
+sweep open, and two series draw themselves inside: what you keep rising away
+from what you owe, with the widening gap between them filled.
 
 - **Motion:** Framer Motion. Arcs and path animate via `pathLength`; everything
   else is transform-only. Pointer parallax runs through motion values, so
@@ -192,17 +193,27 @@ through them, and three metric chips settle around it.
   37 DOM nodes, and zero long tasks across a 4-second idle window.
 - **Reactive:** the plane, the ring and each chip shift at their own depth on
   pointer move, and the ring rotates slightly toward the cursor.
-- **Idle:** one slow halo pulse on the end node and a 6.5s chip float. Nothing
-  else loops.
+- **Idle:** the outer ring turns once every 64 seconds, plus one slow halo
+  pulse on the growth endpoint and a 6.5s chip float. Nothing else loops. The
+  ring spins as a single group transform, so it composites rather than
+  repainting.
 - **Reduced motion:** `useReducedMotion` renders the settled state with
   `initial={false}` and zero-duration transitions. No animation runs at all.
 - **Responsive:** stacks below the copy under `lg` at full container width.
 - **Decorative:** `aria-hidden`, since the headline carries the meaning.
 
-**The chips carry no figures.** Labels and trend glyphs only, for the same
-reason the rest of the site publishes no unverified statistics. To show real
-numbers, add them to `CHIPS` in the component once the client has approved the
-values.
+**The chips and the graph carry no figures.** Directional labels and glyphs
+only, for the same reason the rest of the site publishes no unverified
+statistics. The falling series is labelled "Tax burden" rather than "Tax
+saved" deliberately: the site carries a no-guaranteed-outcomes stance for tax
+resolution, and a hero chart captioned as savings edges toward promising a
+result. To show real numbers, add them to `CHIPS` once the client has approved
+the values.
+
+**Do not add `strokeDasharray` to the burden series.** Framer drives the
+draw-on by animating `pathLength`, which sets dasharray and dashoffset itself,
+so any dash pattern is silently overridden. The two series are distinguished by
+weight and colour instead.
 
 Switching back to the static artwork is one prop: `visual="image"` with
 `image={images.heroLanding}` on the homepage `<Hero>`.

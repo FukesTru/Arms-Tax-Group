@@ -1,4 +1,4 @@
-import { officeAddress } from './address';
+import { officeAddress, officeGeo } from './address';
 import { site } from './site';
 import { allServices, categories } from './services';
 
@@ -85,14 +85,16 @@ export function localBusinessSchema() {
     telephone: site.phone.e164,
     faxNumber: site.fax.e164,
     email: site.email,
-    // Address and geo are omitted while the address conflict is open.
     ...(postalAddress ? { address: postalAddress } : {}),
-    ...(officeAddress
+    // geo is published only once the coordinates have been checked against a
+    // real map, see `geoVerified` in lib/site.ts. Google geocodes the postal
+    // address without it; a wrong pin is worse than no pin.
+    ...(officeGeo
       ? {
           geo: {
             '@type': 'GeoCoordinates',
-            latitude: officeAddress.latitude,
-            longitude: officeAddress.longitude,
+            latitude: officeGeo.latitude,
+            longitude: officeGeo.longitude,
           },
         }
       : {}),

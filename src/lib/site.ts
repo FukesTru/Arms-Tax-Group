@@ -44,32 +44,42 @@ export const site = {
   email: 'Lmoore@thearmscorp.com',
 
   /**
-   * ⚠️ ADDRESS CONFLICT — NOT RESOLVED. DO NOT PUBLISH EITHER ADDRESS.
+   * ADDRESS CONFLICT — RESOLVED 2026-08-28. The client confirmed the intake
+   * form address:
    *
-   * The client intake form and the client's current live site give different
-   * addresses, in two different cities:
+   *   1426 White Plains Road, Bronx, NY 10462
    *
-   *   intake    1426 White Plains Road, Bronx, NY 10462
-   *   live site 50 Main St, Suite 1000, White Plains, NY 10606
+   * The address on the client's current live site (50 Main St, Suite 1000,
+   * White Plains, NY 10606) is stale and is kept below only as a record of
+   * what was rejected. Do not publish it, and note that the live site will
+   * still be showing it until the client updates or retires that site.
    *
-   * While `status` is 'unconfirmed', the street address is suppressed
-   * everywhere it would otherwise appear — footer, Contact page, Bronx office
-   * page, LocalBusiness schema, and the Google Maps embed — and a visible
-   * review banner is shown instead. Nothing guesses between the two.
+   * With `status` set to 'confirmed', the street address publishes everywhere
+   * it belongs — footer, Contact page, Bronx office page, LocalBusiness
+   * schema, and the Google Maps embed — and the review banner is gone.
    *
-   * TO RESOLVE: set `status` to 'confirmed' and point `confirmed` at the
-   * correct candidate. Everything above re-enables automatically.
-   *
-   * NOTE ON SCOPE: the two candidates are in different cities, so this is not
-   * only a street-address swap. If the answer is White Plains, the
-   * /who-we-serve/bronx-ny page (slug, title, H1, body copy, its "tax
-   * preparation Bronx NY" SEO target) and every "Bronx, NY" reference across
-   * the site need rewriting. See the README.
+   * The confirmed city is Bronx, which is what the site was already written
+   * around: /who-we-serve/bronx-ny, the "tax preparation Bronx NY" SEO target,
+   * and every "Bronx, NY" reference all stand as written. No copy rewrite was
+   * needed. Had the answer been White Plains, all of that would have had to
+   * change.
    */
   address: {
-    status: 'unconfirmed' as 'unconfirmed' | 'confirmed',
+    status: 'confirmed' as 'unconfirmed' | 'confirmed',
     /** Which candidate is correct. Only read once status is 'confirmed'. */
-    confirmed: null as null | 'intake' | 'liveSite',
+    confirmed: 'intake' as null | 'intake' | 'liveSite',
+    /**
+     * The lat/long below are OUR estimate for the street, not surveyed values
+     * and not supplied by the client, and no geocoder is reachable from this
+     * build environment to check them. While this is false, `geo` is left out
+     * of the LocalBusiness schema entirely: Google geocodes the postal address
+     * on its own, whereas a wrong GeoCoordinates pin puts the business on the
+     * wrong corner, which is worse than saying nothing.
+     *
+     * TO ENABLE: open the office in Google Maps, right-click the pin, copy the
+     * coordinates into the candidate below, and set this to true.
+     */
+    geoVerified: false,
     candidates: {
       intake: {
         source: 'Client intake form',
@@ -83,6 +93,7 @@ export const site = {
         latitude: 40.8412,
         longitude: -73.8593,
       },
+      /** REJECTED. Kept as a record of the conflict, never published. */
       liveSite: {
         source: 'Current live site (thearmscorp.co)',
         street: '50 Main St, Suite 1000',

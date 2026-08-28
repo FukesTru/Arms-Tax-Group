@@ -27,6 +27,15 @@ export const officeAddress = isAddressConfirmed
 export const legalState = 'New York';
 export const legalStateCode = 'NY';
 
+/**
+ * Coordinates are published only once someone has checked them against a real
+ * map. See the note on `geoVerified` in lib/site.ts.
+ */
+export const officeGeo =
+  officeAddress && site.address.geoVerified
+    ? { latitude: officeAddress.latitude, longitude: officeAddress.longitude }
+    : null;
+
 /** Google Maps embed URL, or null while the address is unconfirmed. */
 export const mapsEmbedSrc = officeAddress
   ? `https://www.google.com/maps?q=${encodeURIComponent(officeAddress.full)}&output=embed`

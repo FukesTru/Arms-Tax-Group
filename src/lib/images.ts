@@ -58,13 +58,6 @@ export const images = {
     height: 600,
     isArtwork: true,
   },
-  nationwide: {
-    src: '/images/nationwide.svg',
-    alt: 'Illustration of a connected network radiating from a central point.',
-    width: 800,
-    height: 500,
-    isArtwork: true,
-  },
 } satisfies Record<string, SiteImageAsset>;
 
 export type ImageKey = keyof typeof images;

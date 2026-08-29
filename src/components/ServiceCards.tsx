@@ -5,25 +5,27 @@ import SiteImage from './SiteImage';
 import FadeUp from './FadeUp';
 import Icon from './Icon';
 
-/** Category cards used on the homepage and the services hub. */
+/**
+ * Category cards used on the homepage and the services hub.
+ *
+ * Two or more categories stack as vertical cards side by side. A single
+ * category turns the card on its side instead — artwork panel left, service
+ * list right — so it fills the section. Centring one narrow vertical card in a
+ * full-width slot left the row looking half empty.
+ */
 export function CategoryCards({ categories }: { categories: ServiceCategory[] }) {
+  const solo = categories.length === 1;
+
   return (
-    /* One category today, so a single card is centred rather than stretched
-       across the full grid width. Still a grid, since the taxonomy allows for
-       a second category being added back. */
-    <div
-      className={
-        categories.length > 1
-          ? 'grid gap-6 lg:grid-cols-2'
-          : 'mx-auto grid max-w-xl gap-6'
-      }
-    >
+    <div className={solo ? '' : 'grid gap-6 lg:grid-cols-2'}>
       {categories.map((category, index) => (
         <FadeUp
           as="article"
           key={category.key}
           delay={index * 0.1}
-          className="group flex flex-col overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover"
+          className={`group overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover ${
+            solo ? 'flex flex-col lg:grid lg:grid-cols-[0.95fr_1.05fr]' : 'flex flex-col'
+          }`}
         >
           <div className="relative overflow-hidden bg-ink-900">
             {/* Artwork sits behind the card header. Swap the manifest entry
@@ -37,30 +39,44 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
               className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/80 to-ink-900/25"
               aria-hidden="true"
             />
-            <div className="relative px-7 pb-9 pt-40">
+            <div
+              className={`relative px-7 pb-9 pt-40 ${
+                solo ? 'lg:flex lg:h-full lg:flex-col lg:justify-end lg:px-9 lg:pb-11 lg:pt-14' : ''
+              }`}
+            >
               <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-white">
                 <Icon name={category.services[0].icon} className="h-5 w-5" />
               </span>
-              <h3 className="mt-5 !text-white text-[1.35rem] leading-snug">
+              <h3
+                className={`mt-5 !text-white leading-snug ${
+                  solo ? 'text-[1.35rem] lg:text-[1.7rem]' : 'text-[1.35rem]'
+                }`}
+              >
                 {category.title}
               </h3>
-              <p className="mt-3 text-[0.96rem] leading-relaxed text-white/70">
+              <p
+                className={`mt-3 leading-relaxed text-white/70 ${
+                  solo ? 'text-[0.96rem] lg:max-w-sm lg:text-[1.02rem]' : 'text-[0.96rem]'
+                }`}
+              >
                 {category.blurb}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-1 flex-col p-7">
-            <ul className="flex-1 space-y-3">
+          <div className={`flex flex-1 flex-col p-7 ${solo ? 'lg:p-9' : ''}`}>
+            <ul className={`flex-1 ${solo ? 'divide-y divide-ink-900/[0.07]' : 'space-y-3'}`}>
               {category.services.map((service) => (
-                <li key={service.href}>
+                <li key={service.href} className={solo ? 'py-3.5 first:pt-0 last:pb-0' : ''}>
                   <Link
                     href={service.href}
-                    className="flex items-center gap-3 text-[0.96rem] font-medium text-ink-700 transition-colors hover:text-accent"
+                    className={`group/item flex gap-3 text-ink-700 transition-colors hover:text-accent ${
+                      solo ? 'items-start' : 'items-center'
+                    }`}
                   >
                     <svg
                       viewBox="0 0 16 16"
-                      className="h-3.5 w-3.5 shrink-0 text-accent"
+                      className={`h-3.5 w-3.5 shrink-0 text-accent ${solo ? 'mt-[0.42rem]' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2.2}
@@ -70,7 +86,21 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
                     >
                       <path d="m3 8.5 3.2 3.2L13 5" />
                     </svg>
-                    {service.title}
+                    {/* The solo layout has a full column to fill, so each
+                        service carries its blurb. Two side-by-side cards do
+                        not, and the blurbs would overflow them. */}
+                    {solo ? (
+                      <span>
+                        <span className="block font-medium text-[0.96rem] leading-snug lg:text-[1.02rem]">
+                          {service.title}
+                        </span>
+                        <span className="mt-1 block text-[0.9rem] leading-relaxed text-ink-600">
+                          {service.blurb}
+                        </span>
+                      </span>
+                    ) : (
+                      <span className="font-medium text-[0.96rem]">{service.title}</span>
+                    )}
                   </Link>
                 </li>
               ))}

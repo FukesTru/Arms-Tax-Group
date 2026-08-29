@@ -4,13 +4,12 @@ import FAQ from '@/components/FAQ';
 import FadeUp from '@/components/FadeUp';
 import Hero from '@/components/Hero';
 import JsonLd from '@/components/JsonLd';
+import NationwideNetwork from '@/components/NationwideNetwork';
 import ProcessSteps from '@/components/ProcessSteps';
 import Section, { SectionHeading } from '@/components/Section';
 import { CategoryCards } from '@/components/ServiceCards';
 import { homeFaqs, houseProcess } from '@/content/general';
 import { faqSchema } from '@/lib/schema';
-import { images } from '@/lib/images';
-import SiteImage from '@/components/SiteImage';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 import { addressPendingCopy, officeAddress } from '@/lib/address';
@@ -181,11 +180,7 @@ export default function HomePage() {
         />
 
         <FadeUp delay={0.06} className="mt-12 overflow-hidden rounded-2xl border border-white/10">
-          <SiteImage
-            asset={images.nationwide}
-            className="h-[220px] w-full object-cover md:h-[300px]"
-            sizes="100vw"
-          />
+          <NationwideNetwork className="block h-[220px] w-full md:h-[300px]" />
         </FadeUp>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -202,7 +197,7 @@ export default function HomePage() {
               title: 'Nationwide Remote Service',
               href: '/who-we-serve',
               body: 'Every service we offer is available remotely. Documents are shared securely online, consultations happen by phone or video, and returns are e-filed wherever you live.',
-              meta: 'Serving clients in all 50 states',
+              meta: 'Remote service, anywhere in the country',
               cta: 'How remote service works',
             },
           ].map((block, index) => (

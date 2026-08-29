@@ -198,6 +198,12 @@ nobody confirmed. That tile is now "Nationwide / Remote". Only "9 — Services u
 is a real, checkable number. If the client has genuine metrics — clients served, returns
 filed, dollars recovered — these tiles are the place for them.
 
+**It came back once.** The same fabricated claim survived in a second place,
+the Who We Serve card's `meta` line ("Serving clients in all 50 states"), and
+was only caught later while working on that section. If you remove an
+unsupported claim, grep the whole tree for it rather than fixing the instance
+you were looking at.
+
 ## Hero visual: the savings estimator
 
 The homepage hero carries `SavingsEstimator`, an interactive two-slider tax
@@ -267,6 +273,49 @@ rather than losing them between two pages.
 Switching back to the static artwork is one prop: `visual="image"` with
 `image={images.heroLanding}` on the homepage `<Hero>`.
 
+## Animated components
+
+Three pieces of the site are components rather than static assets, because
+each does something an image cannot.
+
+| Component | Where | Why |
+| --- | --- | --- |
+| `SavingsEstimator` | Homepage hero | Interactive, see the section above |
+| `NationwideNetwork` | Homepage "Who We Serve" | Nodes drift, edges follow them |
+| `FadeUp` | Everywhere | Scroll-in reveal |
+
+### NationwideNetwork
+
+Replaced `/images/nationwide.svg`, which was a flat `<img>` and so could not
+animate at all. Eight nodes drift and twelve edges recalculate their endpoints
+from the node positions every frame, so a line can never come off its dots.
+
+- **Motion shape:** each node follows a Lissajous figure, two sines at
+  frequencies that are not simple multiples of each other, so the path never
+  closes into an obvious loop or reads as mechanical. Amplitudes are 5 to 9
+  user units against an 800-unit viewBox (roughly 6 to 11 screen pixels at
+  render size) and periods run 15 to 23 seconds. Every node has its own
+  frequency pair and phase, so nothing moves in step.
+- **Hub pulse:** `(1 - cos)/2`, which is sinusoidal and therefore eases in and
+  out with no velocity discontinuity at the turn. Smoother than the two-stop
+  keyframe a CSS pulse would use.
+- **Render path:** one rAF loop writing straight to DOM nodes through refs.
+  React never re-renders, so there is no reconciliation per frame. Dots move by
+  `transform` (composited). Line endpoints must be attributes, since an SVG
+  line cannot follow a transformed sibling, but those are SVG geometry
+  properties: they repaint inside the SVG and never trigger document layout.
+  Per-frame allocation is zero; the scratch arrays are reused.
+- **Off-screen:** an IntersectionObserver stops the loop entirely when the
+  graphic is not visible, and rebases the clock on resume so it picks up where
+  it left off instead of jumping.
+- **Reduced motion:** the loop never starts and every element renders at its
+  base position, which is the original static artwork exactly.
+
+Measured: 8/8 dots and 12/12 edges animating, maximum gap between any line
+endpoint and its dot 0.000 units, peak drift 8.58 units, frame interval median
+16.70ms and worst 16.80ms over 120 frames, no long tasks, and under
+`prefers-reduced-motion` nothing changes across a 2 second window.
+
 ## Images
 
 Every image slot is declared in `src/lib/images.ts` and rendered through
@@ -284,7 +333,6 @@ illustrations drawn to match the logo geometry and palette.
 | `heroLanding` | Homepage hero (right column, hidden below `lg`) | `/images/hero-landing.svg` |
 | `taxAccounting` | Homepage category card, Services hub | `/images/tax-accounting.svg` |
 | `ourStory` | About page | `/images/our-story.svg` |
-| `nationwide` | Homepage "Who We Serve" | `/images/nationwide.svg` |
 
 **To use real photos:** drop the file in `/public/images/`, point the slot's
 `src` at it, and rewrite its `alt` to describe the actual photo. `SiteImage`

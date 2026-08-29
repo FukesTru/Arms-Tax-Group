@@ -13,14 +13,6 @@ const paths: Record<IconName, string> = {
   ledger: 'M5 4h13a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H5a2 2 0 0 1 0-4h14M9 8h6M9 12h6',
   // Tax planning — upward trend
   chart: 'M4 20V4M4 20h16M8 16l4-5 3 3 5-7',
-  // Funding — cash
-  cash: 'M3 7h18a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Zm9 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM6 10h.01M18 14h.01',
-  // Credit — a score gauge
-  gauge: 'M4 18a8 8 0 1 1 16 0M12 18l4.5-5',
-  // Unclaimed funds — search
-  search: 'M11 4a7 7 0 1 1 0 14 7 7 0 0 1 0-14Zm5.5 12.5L21 21',
-  // Consulting — direction
-  compass: 'M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18Zm3.5 5.5-2 5-5 2 2-5 5-2Z',
 };
 
 type IconProps = {

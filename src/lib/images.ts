@@ -51,13 +51,6 @@ export const images = {
     height: 500,
     isArtwork: true,
   },
-  businessFinancial: {
-    src: '/images/business-financial.svg',
-    alt: 'Illustration of an upward growth curve with funding and protection motifs.',
-    width: 800,
-    height: 500,
-    isArtwork: true,
-  },
   ourStory: {
     src: '/images/our-story.svg',
     alt: 'Illustration of a roof over columns, echoing The Arms Corporation logo.',

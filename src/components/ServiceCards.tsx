@@ -5,10 +5,19 @@ import SiteImage from './SiteImage';
 import FadeUp from './FadeUp';
 import Icon from './Icon';
 
-/** The two big side-by-side category cards used on the homepage and hub. */
+/** Category cards used on the homepage and the services hub. */
 export function CategoryCards({ categories }: { categories: ServiceCategory[] }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    /* One category today, so a single card is centred rather than stretched
+       across the full grid width. Still a grid, since the taxonomy allows for
+       a second category being added back. */
+    <div
+      className={
+        categories.length > 1
+          ? 'grid gap-6 lg:grid-cols-2'
+          : 'mx-auto grid max-w-xl gap-6'
+      }
+    >
       {categories.map((category, index) => (
         <FadeUp
           as="article"
@@ -20,11 +29,7 @@ export function CategoryCards({ categories }: { categories: ServiceCategory[] })
             {/* Artwork sits behind the card header. Swap the manifest entry
                 for a photograph and this becomes a photo card. */}
             <SiteImage
-              asset={
-                category.key === 'tax-accounting'
-                  ? images.taxAccounting
-                  : images.businessFinancial
-              }
+              asset={images.taxAccounting}
               className="absolute inset-0 h-full w-full object-cover opacity-90"
               sizes="(min-width: 1024px) 50vw, 100vw"
             />

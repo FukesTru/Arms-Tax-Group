@@ -6,7 +6,7 @@ import { legalContactLine, legalState } from '@/lib/address';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Terms of Service | The Arms Corporation',
+  title: 'Terms of Service',
   description:
     'The terms governing your use of The Arms Corporation website and services, including service descriptions, outcome disclaimers, and New York governing law.',
   path: '/terms',
@@ -16,9 +16,8 @@ export const metadata = pageMetadata({
   PLACEHOLDER LEGAL CONTENT. NOT ATTORNEY REVIEWED.
 
   Written to cover the services this site offers, with particular attention to
-  the no-guaranteed-outcome language required for tax resolution and credit
-  services. Must be reviewed by the client and qualified legal counsel before
-  publication.
+  the no-guaranteed-outcome language required for tax resolution. Must be
+  reviewed by the client and qualified legal counsel before publication.
 */
 
 const trail = [
@@ -37,7 +36,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Services Description',
     paragraphs: [
-      `${site.legalName}, operating as ${site.brandName}, provides tax preparation, tax resolution, bookkeeping and accounting, tax planning and consulting, business consulting, credit-related services, unclaimed funds recovery assistance, and referrals to third-party lending and funding partners.`,
+      `${site.legalName}, operating as ${site.brandName}, provides tax preparation for individuals and businesses, tax resolution and IRS representation, bookkeeping and accounting, and tax planning and consulting.`,
       'The content on this website is general information, not advice for your particular situation. Reading this site does not create a client relationship. A client relationship begins only when we have both agreed in writing to an engagement and its scope.',
     ],
   },
@@ -48,9 +47,6 @@ const sections: LegalSection[] = [
     ],
     bullets: [
       'Tax resolution: we do not guarantee any reduction in what you owe, any settlement amount, the removal of any lien or levy, or any specific timeline. Available options depend on your circumstances and applicable IRS and state procedures.',
-      'Credit services: we do not guarantee any credit score increase or the removal of any item from a credit report. Accurate and verifiable information generally cannot be removed. You have the right to dispute inaccurate information directly with the credit bureaus yourself, at no cost.',
-      'Lending and funding: we are not a direct lender. Approvals, funding amounts, rates, and terms are determined solely by third-party funding partners under their own underwriting criteria. Submitting an application does not guarantee approval.',
-      'Unclaimed funds recovery: we do not guarantee that a search will identify recoverable property, or that any claim filed will be approved by the holding agency.',
       'Tax preparation: returns are prepared based on the information and documentation you provide. We do not guarantee any particular refund amount or that a return will not be selected for examination.',
     ],
   },
@@ -70,7 +66,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Third-Party Partners & Links',
     paragraphs: [
-      'Some services involve third-party providers, including lending and funding partners, credit-related service providers, and government agencies. We are not responsible for the acts, omissions, decisions, or terms of any third party, and their involvement is governed by their own agreements with you.',
+      'Some services involve third parties, including tax authorities, e-filing systems, and the software providers we use to prepare and transmit returns. We are not responsible for the acts, omissions, decisions, or processing timelines of any third party.',
       'This website may link to third-party sites. We do not control and are not responsible for their content or practices.',
     ],
   },

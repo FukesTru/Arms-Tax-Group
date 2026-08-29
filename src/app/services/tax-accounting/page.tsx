@@ -15,7 +15,6 @@ export default function TaxAccountingPage() {
       content={content}
       subServices={categories[0].services}
       crossLinks={[
-        { label: 'Business & Financial Solutions', href: '/services/business-financial-solutions' },
         { label: 'About The Arms Corporation', href: '/about' },
         { label: 'Bronx, NY Office', href: '/who-we-serve/bronx-ny' },
       ]}

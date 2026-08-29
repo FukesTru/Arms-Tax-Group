@@ -18,9 +18,9 @@ import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title:
-    'Tax Preparation & Financial Services | Bronx, NY & Nationwide | The Arms Corporation',
+    'Tax Preparation & Accounting Services | Bronx, NY & Nationwide | The Arms Corporation',
   description:
-    'Personal and business tax prep, IRS resolution, bookkeeping, funding, and credit solutions from The Arms Corporation. Bronx, NY office, serving nationwide.',
+    'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from The Arms Corporation. Bronx, NY office, serving clients nationwide.',
   path: '/',
 });
 
@@ -35,11 +35,11 @@ export default function HomePage() {
         visual="estimator"
         title={
           <>
-            Tax &amp; Financial Solutions for Individuals and Businesses in{' '}
+            Tax &amp; Accounting Services for Individuals and Businesses in{' '}
             <span className="text-accent-bright">Bronx, NY &amp; Nationwide</span>
           </>
         }
-        subtitle="Reaching out to embrace YOUR needs, with personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions from a Bronx-based team serving clients nationwide."
+        subtitle="Reaching out to embrace YOUR needs, with personal and business tax preparation, IRS resolution, bookkeeping, and year-round tax planning from a Bronx-based team serving clients nationwide."
         trustPoints={[
           'Nationwide Remote Service',
           'Bronx, NY Office',
@@ -51,8 +51,8 @@ export default function HomePage() {
       <Section>
         <SectionHeading
           eyebrow="What We Do"
-          title="Two sides of the same financial picture"
-          intro="Tax and accounting work keeps you compliant and accurate. Funding, credit, and recovery work helps you grow and reclaim. Most clients need something from both."
+          title="Everything the tax side of your year asks for"
+          intro="Filing, resolution, and record-keeping handled by one team. Whether you are an individual with a return that got complicated or a business that needs books, payroll questions, and a corporate filing, it is the same practice from start to finish."
         />
         <div className="mt-12">
           <CategoryCards categories={categories} />
@@ -77,17 +77,16 @@ export default function HomePage() {
                 {site.brandName} was founded by {site.owner} to close a
                 specific gap. Most people building something are not short on
                 drive. They are short on access: to competent financial
-                advice, to the right products and services, and to someone who
-                has already done it and will tell them the truth.
+                advice, to books that hold up, and to someone who has already
+                done it and will tell them the truth.
               </p>
               <p>
                 So we work on both sides of that. We train and develop
                 independent business owners through real-world instruction and
-                mentor partnerships, and we run a full financial services
-                practice: tax preparation, IRS resolution, bookkeeping,
-                planning, funding, credit, and recovery, for the people
-                coming up through that network and for clients who simply need
-                the work done well.
+                mentor partnerships, and we run a full accounting practice:
+                tax preparation, IRS resolution, bookkeeping, and year-round
+                planning, for the people coming up through that network and for
+                clients who simply need the work done well.
               </p>
               <p>
                 The two halves reinforce each other. An entrepreneur we train
@@ -115,9 +114,9 @@ export default function HomePage() {
             <div className="grid gap-5 sm:grid-cols-2">
               {[
                 {
-                  stat: '9',
+                  stat: '5',
                   label: 'Services under one roof',
-                  detail: 'Tax, accounting, funding, credit, and recovery.',
+                  detail: 'Filing, corporate returns, resolution, books, and planning.',
                 },
                 {
                   // Deliberately not a number. The intake confirms a nationwide
@@ -131,7 +130,7 @@ export default function HomePage() {
                 {
                   stat: '1',
                   label: 'Network and practice',
-                  detail: 'Training and financial services, run as one thing.',
+                  detail: 'Training and accounting work, run as one thing.',
                 },
                 {
                   stat: '12',

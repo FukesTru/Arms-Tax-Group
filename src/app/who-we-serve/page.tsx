@@ -12,9 +12,9 @@ import { site } from '@/lib/site';
 import OfficeAddress from '@/components/OfficeAddress';
 
 export const metadata = pageMetadata({
-  title: 'Nationwide Tax & Financial Services | The Arms Corporation',
+  title: 'Nationwide Tax & Accounting Services',
   description:
-    'Tax, accounting, and financial services for clients nationwide, backed by a real office in Bronx, NY. The Arms Corporation, remote or in person, your choice.',
+    'Tax preparation and accounting for individuals, freelancers, and businesses nationwide, backed by a real office in Bronx, NY. Remote or in person, your choice.',
   path: '/who-we-serve',
 });
 
@@ -54,10 +54,9 @@ const clientTypes = [
   },
   {
     title: 'Corporations & Startups',
-    body: 'S-corps and C-corps with payroll, multi-state activity, entity questions, and growth plans that need funding behind them.',
+    body: 'S-corps and C-corps with payroll, multi-state activity, entity questions, and books that have to hold up under review.',
     services: [
       { label: 'Business & Corporate Tax Services', href: '/services/tax-accounting/business-tax-preparation' },
-      { label: 'Small Business Loans & Funding', href: '/services/business-financial-solutions/business-loans-funding' },
     ],
   },
 ];
@@ -68,9 +67,9 @@ export default function WhoWeServePage() {
       <JsonLd
         data={[
           serviceSchema({
-            name: 'Nationwide Tax & Financial Services',
+            name: 'Nationwide Tax & Accounting Services',
             description:
-              'Tax, accounting, and financial services delivered remotely to clients nationwide, backed by a physical office in Bronx, NY.',
+              'Tax preparation and accounting delivered remotely to clients nationwide, backed by a physical office in Bronx, NY.',
             path: '/who-we-serve',
           }),
           faqSchema(whoWeServeFaqs),
@@ -80,7 +79,7 @@ export default function WhoWeServePage() {
 
       <Hero
         eyebrow="Who We Serve"
-        title="Nationwide Tax & Financial Services, With a Real Local Office"
+        title="Nationwide Tax & Accounting Services, With a Real Local Office"
         subtitle="Work with us entirely online from anywhere in the country, or sit down with us in the Bronx. Same team, same standard, your choice."
         trustPoints={['All 50 States', 'Secure Document Sharing', 'Bronx, NY Walk-Ins']}
         breadcrumbs={trail}
@@ -98,8 +97,8 @@ export default function WhoWeServePage() {
               <p>
                 Every service we offer is available remotely, and the remote
                 version is not a lesser version: tax preparation, IRS
-                resolution, bookkeeping, planning, funding applications, credit
-                work, and unclaimed funds recovery are all handled for clients
+                resolution, bookkeeping, and year-round planning are all
+                handled for clients
                 across the country.
               </p>
               <p>

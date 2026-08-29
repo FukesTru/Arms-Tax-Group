@@ -15,9 +15,9 @@ import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 
 export const metadata = pageMetadata({
-  title: 'Tax, Accounting & Financial Services | The Arms Corporation',
+  title: 'All Services | Tax Preparation, IRS Resolution & Bookkeeping',
   description:
-    'Explore tax preparation, IRS resolution, bookkeeping, business funding, credit solutions, and more from The Arms Corporation. Bronx, NY and nationwide.',
+    'Every service in one place: personal and corporate tax preparation, IRS resolution and representation, monthly bookkeeping, and year-round tax planning.',
   path: '/services',
 });
 
@@ -31,7 +31,7 @@ export default function ServicesPage() {
     <>
       <JsonLd
         data={[
-          itemListSchema('Tax, Accounting & Financial Services'),
+          itemListSchema('Tax & Accounting Services'),
           faqSchema(servicesHubFaqs),
           breadcrumbSchema(trail),
         ]}
@@ -39,18 +39,18 @@ export default function ServicesPage() {
 
       <Hero
         eyebrow="Services"
-        title="Tax, Accounting & Financial Services"
+        title="Tax &amp; Accounting Services"
         subtitle="Everything you need to manage, protect, and grow your finances, under one roof."
-        trustPoints={['9 Services', 'Individuals & Businesses', 'Nationwide']}
+        trustPoints={['5 Services', 'Individuals & Businesses', 'Nationwide']}
         breadcrumbs={trail}
       />
 
       {/* Two large category blocks */}
       <Section>
         <SectionHeading
-          eyebrow="Two Categories"
-          title="Compliance on one side, growth on the other"
-          intro="Tax and accounting keeps you accurate and current. Business and financial solutions helps you access capital, repair what is limiting you, and recover what you are owed."
+          eyebrow="The Practice"
+          title="Accurate now, and ready for next year"
+          intro="Five services, one practice. Filing for individuals and businesses, representation when the IRS gets involved, books kept through the year, and planning so the next return holds no surprises."
         />
 
         <div className="mt-12 space-y-8">
@@ -64,11 +64,7 @@ export default function ServicesPage() {
               <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
                 <div className="relative overflow-hidden bg-ink-900 p-8 md:p-10">
                   <SiteImage
-                    asset={
-                      category.key === 'tax-accounting'
-                        ? images.taxAccounting
-                        : images.businessFinancial
-                    }
+                    asset={images.taxAccounting}
                     className="absolute inset-0 h-full w-full object-cover opacity-70"
                     sizes="(min-width: 1024px) 45vw, 100vw"
                   />
@@ -78,7 +74,7 @@ export default function ServicesPage() {
                   />
                   <div className="relative">
                     <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-accent">
-                      0{index + 1}. Category
+                      {categories.length > 1 ? `0${index + 1}. Category` : 'What We Do'}
                     </p>
                     <h3 className="mt-4 !text-white text-[1.6rem] leading-snug">
                       {category.title}

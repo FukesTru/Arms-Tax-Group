@@ -7,9 +7,9 @@ export const taxAccountingCategory: ServicePageContent = {
   heroSubtitle:
     'Filing, resolution, and record-keeping for individuals and businesses. Handled accurately, explained plainly, and available year-round.',
   metaTitle:
-    'Tax & Accounting Services | Bronx, NY & Nationwide | The Arms Corporation',
+    'Tax & Accounting Services | Bronx, NY & Nationwide',
   metaDescription:
-    'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from The Arms Corporation. Bronx, NY office, serving clients nationwide.',
+    'Five tax and accounting services under one roof: individual and corporate returns, IRS resolution, monthly bookkeeping, and planning. Bronx, NY and nationwide.',
   trustPoints: ['Individuals & Businesses', 'Nationwide Remote Filing', 'Year-Round Support'],
   introHeading: 'Tax work that accounts for the whole picture',
   intro: [
@@ -94,7 +94,7 @@ export const personalTaxPreparation: ServicePageContent = {
   heroSubtitle:
     'Individual and family returns prepared accurately, reviewed with you before filing, and backed by a team you can still reach in July.',
   metaTitle:
-    'Personal Tax Preparation | Bronx, NY & Nationwide | The Arms Corporation',
+    'Personal Tax Preparation | Bronx, NY & Nationwide',
   metaDescription:
     'Accurate, stress-free personal tax preparation for individuals and families from a Bronx, NY team serving clients nationwide. Free consultation, no pressure.',
   trustPoints: ['W-2 & Self-Employed', 'Multi-State Filing', 'Prior-Year Returns'],
@@ -175,7 +175,7 @@ export const businessTaxPreparation: ServicePageContent = {
   heroSubtitle:
     'Corporate tax services for C-corps and S-corps, plus returns for LLCs and partnerships. Filed accurately, with the deduction strategy your entity structure actually allows.',
   metaTitle:
-    'Corporate Tax Services & Business Tax Preparation | The Arms Corporation',
+    'Corporate Tax Services & Business Tax Preparation',
   metaDescription:
     'Corporate tax services for C-corps and S-corps, plus LLC and partnership tax preparation from The Arms Corporation. Bronx, NY office, serving nationwide.',
   trustPoints: ['Corporate Tax Services', 'C-Corp & S-Corp Compliance', 'Multi-State Filing'],
@@ -271,7 +271,7 @@ export const taxResolution: ServicePageContent = {
   heroSubtitle:
     'Back taxes, IRS notices, liens, and levies. Reviewed carefully, explained honestly, and worked through with you rather than around you.',
   metaTitle:
-    'IRS Tax Resolution Services | Bronx, NY & Nationwide | The Arms Corporation',
+    'IRS Tax Resolution Services | Bronx, NY & Nationwide',
   metaDescription:
     'Behind on taxes or facing an IRS notice? The Arms Corporation helps individuals and businesses resolve back taxes nationwide. Free consultation, no judgment.',
   trustPoints: ['Back Taxes & Unfiled Returns', 'Notices & Examinations', 'Payment Options'],
@@ -353,7 +353,7 @@ export const bookkeepingAccounting: ServicePageContent = {
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
     'Monthly books, clean reconciliations, and reporting that tells you how the business is doing, before the year is over.',
-  metaTitle: 'Bookkeeping & Accounting Services | The Arms Corporation',
+  metaTitle: 'Bookkeeping & Accounting Services',
   metaDescription:
     'Monthly bookkeeping, account reconciliation, and clean, tax-ready financial records for small businesses from The Arms Corporation. Bronx, NY and nationwide.',
   trustPoints: ['Monthly Bookkeeping', 'Cleanup & Catch-Up', 'Tax-Ready Books'],
@@ -434,7 +434,7 @@ export const taxPlanning: ServicePageContent = {
   eyebrow: 'Tax & Accounting Services',
   heroSubtitle:
     'Year-round strategy instead of an annual surprise, decisions made while you can still influence the outcome.',
-  metaTitle: 'Tax Planning & Consulting | The Arms Corporation',
+  metaTitle: 'Tax Planning & Consulting',
   metaDescription:
     'Year-round tax strategy to reduce liability and plan ahead, from The Arms Corporation. Serving individuals and businesses in Bronx, NY and nationwide.',
   trustPoints: ['Quarterly Strategy', 'Entity Structure Review', 'Year-End Planning'],

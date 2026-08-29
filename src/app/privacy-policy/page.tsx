@@ -6,19 +6,19 @@ import { legalContactLine } from '@/lib/address';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Privacy Policy | The Arms Corporation',
+  title: 'Privacy Policy',
   description:
-    'How The Arms Corporation collects, uses, protects, and shares the personal and financial information you provide to us. Your rights and how to contact us.',
+    'How The Arms Corporation collects, uses, protects, and shares the personal and tax information you provide to us, your rights over it, and how to contact us.',
   path: '/privacy-policy',
 });
 
 /*
   PLACEHOLDER LEGAL CONTENT. NOT ATTORNEY REVIEWED.
 
-  This is general financial-services privacy language written to cover the
-  services this site offers, including the lending and credit partner network.
-  It must be reviewed by the client and qualified legal counsel, and adjusted
-  for the client's actual data practices, before publication.
+  This is general accounting-practice privacy language written to cover the
+  services this site offers: tax preparation, IRS resolution, bookkeeping, and
+  planning. It must be reviewed by the client and qualified legal counsel, and
+  adjusted for the client's actual data practices, before publication.
 */
 
 const trail = [
@@ -38,7 +38,6 @@ const sections: LegalSection[] = [
       'Anything you submit through the contact form or the live chat widget on this site, both of which are hosted by our client management provider and delivered to us through it',
       'Tax and financial documents you share with us, which may include Social Security numbers, taxpayer identification numbers, income records, and account information',
       'Business information, including entity documents, financial statements, and payroll records',
-      'Credit report information, where you have engaged us for credit-related services',
       'Correspondence between you and our team',
       'Website usage data collected automatically, such as pages visited, referring source, browser type, and general location derived from IP address',
     ],
@@ -52,7 +51,7 @@ const sections: LegalSection[] = [
       'Preparing and filing tax returns and related submissions',
       'Communicating with tax authorities on your behalf where you have authorized us to do so',
       'Maintaining bookkeeping records and producing financial reports',
-      'Evaluating and submitting funding, credit, or recovery applications at your direction',
+      'Preparing and filing returns, and corresponding with tax authorities at your direction',
       'Responding to your inquiries and scheduling consultations',
       'Meeting our own legal, regulatory, and record-retention obligations',
       'Improving this website and understanding how visitors use it',
@@ -62,13 +61,10 @@ const sections: LegalSection[] = [
     heading: 'Third-Party Sharing',
     paragraphs: [
       'We do not sell your personal information. We share it only as necessary to deliver the services you have requested, or where we are required to by law.',
-      'Because some of our services involve outside providers, sharing may include the categories below. Where we work with a lending or funding partner, a credit-related service provider, or a claims agency, we share only the information that provider requires and only with your direction to proceed.',
+      'Because some of our services involve outside providers, sharing may include the categories below. In each case we share only the information that provider requires in order to do its part of the work.',
     ],
     bullets: [
       'Tax authorities and government agencies, when filing on your behalf or responding to a notice you have authorized us to handle',
-      'Lending and funding partners, where you have asked us to pursue a funding application on your behalf',
-      'Credit bureaus and credit-related service providers, in connection with credit services you have engaged us for',
-      'State agencies and unclaimed property administrators, in connection with recovery claims',
       'Our client management and communication provider (LeadConnector, operated by HighLevel), which processes contact form submissions and live chat messages on our behalf so we can respond to your enquiry',
       'Service providers who support our operations, such as secure document storage, e-filing systems, and communication tools, each bound to protect the information they handle',
       'Legal and regulatory authorities where disclosure is required by law, subpoena, or court order',
@@ -85,7 +81,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Data Retention',
     paragraphs: [
-      'We retain client records for as long as necessary to provide our services and to satisfy the legal, regulatory, and professional retention requirements that apply to tax and financial records. Retention periods vary by document type and by the requirements that apply to the engagement.',
+      'We retain client records for as long as necessary to provide our services and to satisfy the legal, regulatory, and professional retention requirements that apply to tax and accounting records. Retention periods vary by document type and by the requirements that apply to the engagement.',
     ],
   },
   {

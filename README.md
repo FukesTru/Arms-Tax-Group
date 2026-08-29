@@ -29,7 +29,6 @@ src/
   components/               # header, footer, hero, FAQ, CTA bands, cards, forms
   content/                  # all page copy, separated from layout
     tax-accounting.ts       # category + 5 service pages
-    business-financial.ts   # category + 4 service pages
     general.ts              # home, who-we-serve, contact, hub FAQs and process steps
   lib/
     site.ts                 # single source of truth for business info
@@ -56,18 +55,33 @@ value there updates it everywhere, including the structured data.
 | 7 | Tax Resolution & IRS Representation | `/services/tax-accounting/tax-resolution` |
 | 8 | Bookkeeping & Accounting | `/services/tax-accounting/bookkeeping-accounting` |
 | 9 | Tax Planning & Consulting | `/services/tax-accounting/tax-planning` |
-| 10 | Business & Financial Solutions (category) | `/services/business-financial-solutions` |
-| 11 | Small Business Loans & Funding | `/services/business-financial-solutions/business-loans-funding` |
-| 12 | Credit Solutions | `/services/business-financial-solutions/credit-solutions` |
-| 13 | Unclaimed Funds & Overpayment Recovery | `/services/business-financial-solutions/unclaimed-funds-recovery` |
-| 14 | Business Consulting | `/services/business-financial-solutions/business-consulting` |
-| 15 | Who We Serve (hub) | `/who-we-serve` |
-| 16 | Bronx, NY Office | `/who-we-serve/bronx-ny` |
-| 17 | Contact | `/contact` |
-| 18 | Privacy Policy | `/privacy-policy` |
-| 19 | Terms of Service | `/terms` |
+| 10 | Who We Serve (hub) | `/who-we-serve` |
+| 11 | Bronx, NY Office | `/who-we-serve/bronx-ny` |
+| 12 | Contact | `/contact` |
+| 13 | Privacy Policy | `/privacy-policy` |
+| 14 | Terms of Service | `/terms` |
 
 Plus a styled 404 at `not-found`.
+
+### Scope: accounting services only
+
+The site covers one service pillar. An earlier build carried a second,
+**Business & Financial Solutions** (small business loans and funding, credit
+solutions, unclaimed funds recovery, business consulting), which was removed on
+the client's instruction that this is an accounting practice's site.
+
+That removal was not just five deleted routes. It also took out the lending,
+credit-bureau, and unclaimed-property disclosures from the Terms and Privacy
+Policy, the no-guaranteed-outcome clauses for credit and lending, the
+two-column category framing on the homepage and services hub, and every "nine
+services" count. If any of those service lines come back, they need all of that
+restored, not just the pages — the legal pages especially. The removed content
+is recoverable from git history.
+
+`lib/services.ts` still models the taxonomy as a list of categories rather than
+a flat service array, and the header mega-menu, the category cards, and the
+services hub all branch on `categories.length`. Adding a second category back is
+a data change, not a layout change.
 
 ---
 
@@ -269,7 +283,6 @@ illustrations drawn to match the logo geometry and palette.
 |---|---|---|
 | `heroLanding` | Homepage hero (right column, hidden below `lg`) | `/images/hero-landing.svg` |
 | `taxAccounting` | Homepage category card, Services hub | `/images/tax-accounting.svg` |
-| `businessFinancial` | Homepage category card, Services hub | `/images/business-financial.svg` |
 | `ourStory` | About page | `/images/our-story.svg` |
 | `nationwide` | Homepage "Who We Serve" | `/images/nationwide.svg` |
 
@@ -352,9 +365,10 @@ carry legal exposure.
   were confirmed in the intake.
 - **No specific years-in-business claim.** Trust language is general until the client
   confirms a figure.
-- **No guaranteed outcomes.** Tax resolution and credit solutions carry visible disclosures,
-  and the Terms page states plainly that no result is guaranteed. Credit copy reflects the
-  Credit Repair Organizations Act; funding copy states we are not a direct lender.
+- **No guaranteed outcomes.** Tax resolution carries visible disclosures, and the Terms
+  page states plainly that no result is guaranteed. The Credit Repair Organizations Act and
+  direct-lender disclosures went with the financial services pillar; if those service lines
+  ever return, so must that language.
 - **EIN is not displayed** anywhere on the site or in structured data.
 - **Social icons** are a structured but empty slot — the footer row appears only once
   `site.social` has entries.
@@ -385,10 +399,10 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
       update or retire thearmscorp.co so the two do not disagree in search results.
 - [ ] **Owner name spelling** — intake says "Leval Moore"; the client's live site spells it
       "Laval". The site uses the intake spelling throughout. Confirm which is correct.
-- [ ] **Lending & credit** — confirm whether Arms Capital Partners and Arms Credit Solutions
-      are direct providers or referral partners. The funding page currently states we are
-      **not** a direct lender; correct it if that is wrong, as it changes required
-      disclosures.
+- [x] **Lending & credit** — moot. The client confirmed this is an accounting site, and the
+      lending, credit, and unclaimed-funds pages were removed along with their disclosures.
+      If those service lines return, the direct-lender and Credit Repair Organizations Act
+      questions come back with them.
 - [ ] **EIN** — confirm the client wants it kept off the public site (current behavior).
 - [x] **Founder photograph** — done. `public/images/leval-moore.png` is a 407x600
       RGBA cut-out with a genuinely transparent background (alpha 0 at all four

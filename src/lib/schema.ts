@@ -43,7 +43,7 @@ export function organizationSchema() {
     email: site.email,
     slogan: site.tagline,
     description:
-      'Personal and business tax preparation, IRS resolution, bookkeeping, tax planning, business funding, credit solutions, and unclaimed funds recovery from a New York firm serving clients nationwide.',
+      'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from a New York accounting firm serving clients nationwide.',
     ...(postalAddress ? { address: postalAddress } : {}),
     faxNumber: site.fax.e164,
     areaServed: [
@@ -56,7 +56,7 @@ export function organizationSchema() {
       : {}),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Tax, Accounting & Financial Services',
+      name: 'Tax & Accounting Services',
       itemListElement: categories.map((category) => ({
         '@type': 'OfferCatalog',
         name: category.title,

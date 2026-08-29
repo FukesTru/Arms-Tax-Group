@@ -14,6 +14,9 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
+  /** The taxonomy carries one category today; the menu adapts rather than
+      hard-coding it, so adding a second back needs no layout work. */
+  const soloCategory = categories.length === 1;
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -138,8 +141,22 @@ export default function Header() {
               </button>
 
               {openMenu === 'services' && (
-                <div className="absolute left-1/2 top-full z-50 w-[min(46rem,90vw)] -translate-x-1/2 pt-3">
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-1 rounded-xl border border-ink-900/10 bg-white p-5 shadow-card-hover">
+                /*
+                  With two categories the panel is a column each. With one it
+                  would otherwise render a single column in a 46rem box, half
+                  of it empty, so the panel narrows and the services themselves
+                  take the two columns instead.
+                */
+                <div
+                  className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 ${
+                    soloCategory ? 'w-[min(38rem,90vw)]' : 'w-[min(46rem,90vw)]'
+                  }`}
+                >
+                  <div
+                    className={`gap-x-6 gap-y-1 rounded-xl border border-ink-900/10 bg-white p-5 shadow-card-hover ${
+                      soloCategory ? 'block' : 'grid grid-cols-2'
+                    }`}
+                  >
                     {categories.map((category) => (
                       <div key={category.key}>
                         <Link
@@ -153,7 +170,7 @@ export default function Header() {
                             View all →
                           </span>
                         </Link>
-                        <ul>
+                        <ul className={soloCategory ? 'grid sm:grid-cols-2' : ''}>
                           {category.services.map((service) => (
                             <li key={service.href}>
                               <Link

@@ -22,9 +22,9 @@ import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
-  title: 'Contact Us | Free Consultation | The Arms Corporation',
+  title: 'Contact Us | Free Consultation',
   description:
-    'Contact The Arms Corporation for a free consultation on tax preparation, accounting, funding, or credit solutions. Bronx, NY office, serving clients nationwide.',
+    'Contact us for a free consultation on tax preparation, IRS resolution, bookkeeping, or tax planning. Bronx, NY office, serving clients nationwide. Call or text.',
   path: '/contact',
 });
 

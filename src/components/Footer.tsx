@@ -16,8 +16,8 @@ export default function Footer() {
               <Logo variant="onDark" size={72} />
             </Link>
             <p className="mt-5 max-w-xs text-[0.92rem] leading-relaxed">
-              Tax preparation, IRS resolution, bookkeeping, funding, and credit
-              solutions for individuals and businesses. Based in Bronx, NY
+              Tax preparation, IRS resolution, bookkeeping, and year-round tax
+              planning for individuals and businesses. Based in Bronx, NY,
               serving clients nationwide.
             </p>
             <p className="mt-4 font-display text-[0.98rem] font-bold text-accent">

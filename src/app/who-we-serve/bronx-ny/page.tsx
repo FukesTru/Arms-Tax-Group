@@ -17,9 +17,9 @@ import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
-  title: 'Tax Preparation Office in Bronx, NY | The Arms Corporation',
+  title: 'Tax Preparation Office in Bronx, NY',
   description:
-    "Visit The Arms Corporation Bronx, NY office for personal and business tax preparation, IRS resolution, bookkeeping, and financial services. Free consultation.",
+    "Visit The Arms Corporation Bronx, NY office for personal and business tax preparation, IRS resolution, bookkeeping, and tax planning. Free consultation.",
   path: '/who-we-serve/bronx-ny',
 });
 
@@ -38,9 +38,9 @@ export default function BronxOfficePage() {
 
       <Hero
         eyebrow="Bronx, New York"
-        title="Tax & Financial Services in the Bronx"
-        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, funding, and credit solutions. In person at our New York office, or remotely if that is easier."
-        trustPoints={['Walk-In Appointments', 'All 9 Services On Site', 'Free Consultation']}
+        title="Tax & Accounting Services in the Bronx"
+        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, and year-round tax planning. In person at our New York office, or remotely if that is easier."
+        trustPoints={['Walk-In Appointments', 'All 5 Services On Site', 'Free Consultation']}
         breadcrumbs={trail}
       />
 
@@ -67,8 +67,8 @@ export default function BronxOfficePage() {
                 Everything we offer is available here in person. Personal and
                 business tax preparation. Tax resolution for back taxes and
                 notices. Monthly bookkeeping and year-end close. Planning
-                sessions before the year runs out. Funding applications, credit
-                reviews, unclaimed funds searches, and consulting for owners
+                sessions before the year runs out. Bookkeeping catch-ups,
+                entity questions, and planning conversations for owners
                 deciding what to do next.
               </p>
               <p>
@@ -179,7 +179,7 @@ export default function BronxOfficePage() {
         <SectionHeading
           eyebrow="Available Here"
           title="Every service, in person or remotely"
-          intro="All nine services are available at the Bronx office. Nothing is remote-only."
+          intro="All five services are available at the Bronx office. Nothing is remote-only."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">

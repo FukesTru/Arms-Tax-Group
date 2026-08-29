@@ -23,11 +23,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Tax Preparation & Financial Services | Bronx, NY & Nationwide | ${site.brandName}`,
+    default: `Tax Preparation & Accounting Services | Bronx, NY & Nationwide | ${site.brandName}`,
     template: `%s | ${site.brandName}`,
   },
   description:
-    'Personal and business tax prep, IRS resolution, bookkeeping, funding, and credit solutions from The Arms Corporation. Bronx, NY office, serving nationwide.',
+    'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from The Arms Corporation. Bronx, NY office, serving nationwide.',
   applicationName: site.brandName,
   authors: [{ name: site.legalName }],
   creator: site.legalName,

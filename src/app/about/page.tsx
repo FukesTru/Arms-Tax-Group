@@ -13,9 +13,9 @@ import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'About The Arms Corporation | Bronx, NY Tax & Financial Experts',
+  title: 'About Our Bronx, NY Tax & Accounting Team',
   description:
-    'Meet the team behind The Arms Corporation. Bronx, NY-based tax, accounting, IRS resolution, and financial services for individuals and businesses nationwide.',
+    'Meet the team behind The Arms Corporation. Bronx, NY-based tax preparation, accounting, IRS resolution, and planning for individuals and businesses nationwide.',
   path: '/about',
 });
 
@@ -48,9 +48,9 @@ export default function AboutPage() {
                 empower entrepreneurs. That word gets used loosely, so here is
                 what it means in practice: most people who set out to build
                 something are not short on drive. They are short on access
-                to competent financial advice, to the right products and
-                services, and to someone who has already walked the path and
-                will tell them the truth about it.
+                to competent financial advice, to books and filings that hold
+                up, and to someone who has already walked the path and will
+                tell them the truth about it.
               </p>
               <p>
                 Closing that gap is the work. We do it two ways, and they
@@ -58,10 +58,9 @@ export default function AboutPage() {
                 develop independent business owners through real-world
                 instruction rather than theory, pairing each of them with
                 mentors who have built businesses themselves. The second is
-                financial services: tax preparation, IRS resolution,
-                bookkeeping, planning, funding, credit, and recovery work,
-                delivered by a team that understands what a growing business
-                actually runs into.
+                the accounting practice: tax preparation, IRS resolution,
+                bookkeeping, and year-round planning, delivered by a team that
+                understands what a growing business actually runs into.
               </p>
               <p>
                 The two halves are not separate offerings that happen to share
@@ -128,12 +127,11 @@ export default function AboutPage() {
               items={[
                 'A training network that develops independent business owners, not just a client list',
                 'Real-world instruction and mentor partnerships, rather than theory and a handbook',
-                'Access to competent financial advice, products, and services in one place',
+                'Access to competent financial advice, in plain language rather than jargon',
                 'Personal and business tax handled together, so the two returns agree',
                 'IRS resolution in-house. Back taxes and notices are not somebody else’s problem',
                 'Bookkeeping that feeds directly into your return instead of arriving as a surprise',
-                'Funding and credit support for when compliance is not the constraint, capital is',
-                'Unclaimed funds recovery. Money you are already owed, found and claimed',
+                'Tax planning through the year, so decisions get made before the deadline',
                 'Nationwide remote service backed by a real local office',
                 'Year-round availability, not a storefront that closes on April 16',
               ]}
@@ -171,16 +169,16 @@ export default function AboutPage() {
                   {site.owner} founded {site.brandName} to give entrepreneurs
                   something that is genuinely hard to find: access to competent
                   financial advice, and the training to eventually not need to
-                  ask for it. The firm reflects that: a financial services
-                  practice and a development network for independent business
-                  owners, run as one thing.
+                  ask for it. The firm reflects that: an accounting practice and
+                  a development network for independent business owners, run as
+                  one thing.
                 </p>
                 <p>
                   He leads the practice directly, working with clients on tax
-                  preparation, resolution, and the funding and credit questions
-                  that follow, and with the owners coming up through the
-                  network. Clients describe the same thing consistently: that
-                  he explains the numbers rather than just delivering them.
+                  preparation, resolution, and the planning questions that
+                  follow, and with the owners coming up through the network.
+                  Clients describe the same thing consistently: that he explains
+                  the numbers rather than just delivering them.
                 </p>
               </div>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -210,7 +208,7 @@ export default function AboutPage() {
           {[
             {
               title: 'Our Services',
-              body: 'All nine services, grouped into the two sides of the practice.',
+              body: 'All five tax and accounting services, in one place.',
               href: '/services',
             },
             {

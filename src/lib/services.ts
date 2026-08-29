@@ -1,6 +1,11 @@
 /**
  * Service taxonomy — drives the header mega-menu, footer columns, category
- * card grids, the contact form's service dropdown, and the sitemap.
+ * card grids, and the sitemap.
+ *
+ * The firm is an accounting practice, so there is one category. The type is
+ * still a list rather than a bare object because the mega-menu, the footer,
+ * and the sitemap all iterate it, and because a second category (advisory,
+ * say) would otherwise mean touching every one of those again.
  */
 
 export type ServiceLink = {
@@ -12,7 +17,7 @@ export type ServiceLink = {
 };
 
 export type ServiceCategory = {
-  key: 'tax-accounting' | 'business-financial-solutions';
+  key: 'tax-accounting';
   title: string;
   shortTitle: string;
   href: string;
@@ -25,11 +30,7 @@ export type IconName =
   | 'building'
   | 'shield'
   | 'ledger'
-  | 'chart'
-  | 'cash'
-  | 'gauge'
-  | 'search'
-  | 'compass';
+  | 'chart';
 
 export const categories: ServiceCategory[] = [
   {
@@ -75,44 +76,6 @@ export const categories: ServiceCategory[] = [
         href: '/services/tax-accounting/tax-planning',
         blurb: 'Year-round strategy so filing season holds no surprises.',
         icon: 'chart',
-      },
-    ],
-  },
-  {
-    key: 'business-financial-solutions',
-    title: 'Business & Financial Solutions',
-    shortTitle: 'Business & Financial',
-    href: '/services/business-financial-solutions',
-    blurb:
-      'Funding, credit, and recovery support that goes beyond filing, helping you grow what you have and reclaim what you are owed.',
-    services: [
-      {
-        title: 'Small Business Loans & Funding',
-        shortTitle: 'Loans & Funding',
-        href: '/services/business-financial-solutions/business-loans-funding',
-        blurb: 'Working capital and expansion funding through our lending network.',
-        icon: 'cash',
-      },
-      {
-        title: 'Credit Solutions',
-        shortTitle: 'Credit Solutions',
-        href: '/services/business-financial-solutions/credit-solutions',
-        blurb: 'Personal and business credit review, strategy, and guidance.',
-        icon: 'gauge',
-      },
-      {
-        title: 'Unclaimed Funds & Overpayment Recovery',
-        shortTitle: 'Unclaimed Funds',
-        href: '/services/business-financial-solutions/unclaimed-funds-recovery',
-        blurb: 'Find and claim property and overpayments the state is holding.',
-        icon: 'search',
-      },
-      {
-        title: 'Business Consulting',
-        shortTitle: 'Business Consulting',
-        href: '/services/business-financial-solutions/business-consulting',
-        blurb: 'Entity structure, financial strategy, and growth planning.',
-        icon: 'compass',
       },
     ],
   },

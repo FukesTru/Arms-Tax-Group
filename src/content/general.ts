@@ -12,7 +12,7 @@ export const houseProcess: ProcessStep[] = [
   },
   {
     title: 'We Handle It',
-    body: 'Preparation, filing, resolution, bookkeeping, or a funding application, our team does the work and keeps you posted as it moves.',
+    body: 'Preparation, filing, resolution, or bookkeeping, our team does the work and keeps you posted as it moves.',
   },
   {
     title: 'Results & Ongoing Support',
@@ -24,7 +24,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Do you work with clients outside New York?',
     answer:
-      'Yes, we serve clients nationwide. Tax preparation, resolution, bookkeeping, funding, and credit work are all handled remotely: documents are shared securely online and we review everything with you by phone or video. Our Bronx office serves clients who prefer to meet in person, but it is an option rather than a requirement.',
+      'Yes, we serve clients nationwide. Tax preparation, resolution, bookkeeping, and planning are all handled remotely: documents are shared securely online and we review everything with you by phone or video. Our Bronx office serves clients who prefer to meet in person, but it is an option rather than a requirement.',
   },
   {
     question: 'What documents do I need to get started?',
@@ -49,7 +49,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'What makes you different from a seasonal tax office?',
     answer:
-      'We are here after April. Notices arrive in July, funding opportunities appear in September, and planning decisions that matter have to be made before December. Being available year-round (and offering funding, credit, and recovery services alongside tax work) means you are not starting over with a new provider every time something comes up.',
+      'We are here after April. Notices arrive in July, quarterly estimates come due through the year, and planning decisions that matter have to be made before December. Being available year-round means you are not starting over with a new provider every time something comes up.',
   },
 ];
 
@@ -80,7 +80,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: 'How quickly will I hear back?',
     answer:
-      'We aim to respond to consultation requests promptly during business days. If your matter is time-sensitive (an IRS notice with a response deadline, or a funding application on a clock) say so in your message or call directly, and we will prioritize it.',
+      'We aim to respond to consultation requests promptly during business days. If your matter is time-sensitive (an IRS notice with a response deadline, or a filing extension running out) say so in your message or call directly, and we will prioritize it.',
   },
   {
     question: 'How do I send documents securely?',
@@ -103,7 +103,7 @@ export const servicesHubFaqs: FaqItem[] = [
   {
     question: 'Can I use more than one service at a time?',
     answer:
-      'Yes, and many clients do. Bookkeeping feeding into tax preparation, credit work ahead of a funding application, or planning alongside filing. These combinations work well precisely because the same team is handling both sides.',
+      'Yes, and many clients do. Bookkeeping feeding into tax preparation, a personal return alongside the business one, or planning that runs through the year and into the filing. These combinations work well precisely because the same team handles all of it.',
   },
   {
     question: 'Do you work with both individuals and businesses?',
@@ -126,7 +126,7 @@ export const bronxFaqs: FaqItem[] = [
   {
     question: 'Which services are available at the Bronx office?',
     answer:
-      'All of them. Tax preparation, resolution, bookkeeping, planning, funding, credit solutions, unclaimed funds recovery, and consulting are all available in person here, or remotely if that is easier for you.',
+      'All of them. Tax preparation, corporate returns, IRS resolution, bookkeeping, and tax planning are all available in person here, or remotely if that is easier for you.',
   },
   {
     question: 'Where exactly are you located?',

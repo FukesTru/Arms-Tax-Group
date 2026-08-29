@@ -29,16 +29,30 @@ export default function HomePage() {
       {/* AccountingService schema is emitted org-wide from the root layout. */}
       <JsonLd data={faqSchema(homeFaqs)} />
 
+      {/*
+        The H1 is a hook, not a service label. It used to read "Tax &
+        Accounting Services for Individuals and Businesses in Bronx, NY &
+        Nationwide", which described the firm accurately and landed on nobody.
+
+        An H1 is still a ranking signal, so the keywords it gave up did not
+        just disappear: they moved to the eyebrow directly above it, and they
+        remain in the subheadline, the page title, and the schema. The hook
+        earns the reader; the eyebrow and subhead tell search engines and
+        skimmers what this is.
+      */}
       <Hero
         size="large"
         visual="estimator"
+        eyebrow="Tax & Accounting · Bronx, NY & Nationwide"
         title={
           <>
-            Tax &amp; Accounting Services for Individuals and Businesses in{' '}
-            <span className="text-accent-bright">Bronx, NY &amp; Nationwide</span>
+            Taxes are complicated.{' '}
+            <span className="text-accent-bright">
+              Knowing where you stand shouldn&rsquo;t be.
+            </span>
           </>
         }
-        subtitle="Reaching out to embrace YOUR needs, with personal and business tax preparation, IRS resolution, bookkeeping, and year-round tax planning from a Bronx-based team serving clients nationwide."
+        subtitle="Reaching out to embrace YOUR needs. Personal and business tax preparation, IRS resolution, bookkeeping, and year-round planning from a Bronx-based team serving clients nationwide."
         trustPoints={[
           'Nationwide Remote Service',
           'Bronx, NY Office',

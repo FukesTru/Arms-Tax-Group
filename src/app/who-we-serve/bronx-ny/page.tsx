@@ -14,6 +14,7 @@ import { categories } from '@/lib/services';
 import { mapsDirectionsUrl } from '@/lib/address';
 import { site } from '@/lib/site';
 import { areaGroups } from '@/lib/areas';
+import { slugForArea } from '@/content/locations';
 import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
 
@@ -217,14 +218,27 @@ export default function BronxOfficePage() {
                 {group.note}
               </p>
               <ul className="mt-5 flex flex-wrap gap-2">
-                {group.areas.map((area) => (
-                  <li
-                    key={area}
-                    className="rounded-full border border-ink-900/10 bg-white px-3 py-1.5 text-[0.85rem] font-medium text-ink-700"
-                  >
-                    {area}
-                  </li>
-                ))}
+                {group.areas.map((area) => {
+                  // Areas with a page of their own link to it; the rest stay
+                  // plain chips rather than becoming empty routes.
+                  const slug = slugForArea(area);
+                  return (
+                    <li key={area}>
+                      {slug ? (
+                        <Link
+                          href={`/who-we-serve/${slug}`}
+                          className="inline-flex rounded-full border border-accent/30 bg-accent-50 px-3 py-1.5 text-[0.85rem] font-medium text-accent transition-colors hover:border-accent hover:bg-accent hover:text-white"
+                        >
+                          {area}
+                        </Link>
+                      ) : (
+                        <span className="inline-flex rounded-full border border-ink-900/10 bg-white px-3 py-1.5 text-[0.85rem] font-medium text-ink-700">
+                          {area}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </FadeUp>
           ))}

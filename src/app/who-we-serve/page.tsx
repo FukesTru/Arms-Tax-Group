@@ -9,6 +9,7 @@ import { whoWeServeFaqs } from '@/content/general';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
+import { locations } from '@/content/locations';
 import OfficeAddress from '@/components/OfficeAddress';
 
 export const metadata = pageMetadata({
@@ -171,6 +172,43 @@ export default function WhoWeServePage() {
               Visit the Bronx office page
             </Link>
           </FadeUp>
+        </div>
+      </Section>
+
+      {/* Surrounding municipalities, each with its own page */}
+      <Section>
+        <SectionHeading
+          eyebrow="Around the Bronx"
+          title="Westchester towns we work with"
+          intro="Each of these has its own page, because filing from Yonkers is not the same as filing from Scarsdale. One office in the Bronx, and every service also available remotely."
+        />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {locations.map((location, index) => (
+            <FadeUp
+              as="article"
+              key={location.slug}
+              delay={Math.min(index, 5) * 0.06}
+              className="group rounded-2xl border border-ink-900/10 bg-white p-6 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
+            >
+              <Link href={`/who-we-serve/${location.slug}`} className="block">
+                <h3 className="text-[1.1rem] leading-snug transition-colors group-hover:text-accent">
+                  {location.cityState}
+                </h3>
+                <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-600">
+                  {location.introHeading}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 font-display text-[0.85rem] font-bold text-accent">
+                  Tax &amp; accounting in {location.city}
+                  <span
+                    className="transition-transform duration-200 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </span>
+              </Link>
+            </FadeUp>
+          ))}
         </div>
       </Section>
 

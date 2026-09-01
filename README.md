@@ -420,12 +420,39 @@ City. The list lives in `lib/areas.ts` and feeds both the rendered section and
 the `areaServed` array in the Bronx `AccountingService` schema, so the page and
 the structured data cannot drift apart.
 
-**Deliberately not a page per neighborhood.** The obvious move is
-`/tax-preparation-parkchester`, `/tax-preparation-pelham-bay`, and so on. Do
-not do that. Near-duplicate pages that differ only by place name are doorway
-pages, named explicitly in Google's spam policies, and they get sites demoted
-rather than ranked. One substantive page naming the areas honestly, backed by
-matching structured data, is what earns local visibility.
+### City pages
+
+Ten surrounding municipalities have their own page under
+`/who-we-serve/<slug>`, driven by `content/locations.ts` through a single
+`[city]` dynamic route: Mount Vernon, Yonkers, New Rochelle, Pelham,
+Eastchester, Bronxville, Scarsdale, White Plains, Larchmont and Mamaroneck.
+
+**These are not doorway pages, and keeping them that way takes work.** The line
+between a legitimate location page and a doorway page is whether each one says
+something the others do not, so every entry carries a different route to the
+office, a different local economy, and above all a different tax situation:
+Yonkers has its own resident income tax surcharge, Scarsdale filers deal with
+household employees and equity compensation, someone who moved from the Bronx
+to Pelham mid-year has a part-year residency question. Measured: ~750 to 860
+words of unique prose per page and a worst pairwise 6-gram overlap of **10.1%**
+across all 45 pairs. A `dupe.mjs` check in the scratchpad reproduces it.
+
+If you add a city and find yourself copying an entry and swapping the name,
+stop. That page will hurt the site rather than help it. Put the name in the
+area list on the Bronx page instead.
+
+`dynamicParams = false`, so an unknown slug 404s rather than rendering a thin
+auto-generated shell for a city nobody has written about.
+
+**No rates, thresholds, or dollar figures appear in this copy, deliberately.**
+Those change, and a stale number on a tax firm's own site is worse than no
+number. The copy describes situations. The structural facts it does rely on are
+listed at the top of `content/locations.ts`.
+
+**Neighborhood pages are still a bad idea.** `/tax-preparation-parkchester`,
+`/tax-preparation-pelham-bay` and so on would be near-duplicates with nothing
+genuinely different to say, which is exactly what the spam policies name. The
+Bronx neighborhoods stay as an area list on one substantive page.
 
 These are service areas, not locations. The firm has one office, and copy
 rendering this list must never imply otherwise.

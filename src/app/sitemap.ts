@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { locations } from '@/content/locations';
 import { allServices, categories } from '@/lib/services';
 import { site } from '@/lib/site';
 
@@ -28,7 +29,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes].map((route) => ({
+  const locationRoutes = locations.map((location) => ({
+    path: `/who-we-serve/${location.slug}`,
+    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...serviceRoutes,
+    ...locationRoutes,
+  ].map((route) => ({
     url: `${site.url}${route.path === '/' ? '' : route.path}`,
     lastModified,
     changeFrequency: route.changeFrequency,

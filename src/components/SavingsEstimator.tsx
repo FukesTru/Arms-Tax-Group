@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { animate, useMotionValue, useReducedMotion } from 'framer-motion';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import {
   DEDUCTIONS,
   INCOME,
@@ -23,19 +23,22 @@ import {
  * dismissible. The maths lives in lib/estimateSavings.ts so the multiplier is
  * a single named constant the client can tune. See README launch checklist.
  *
- * Motion: the figure counts between values through a motion value written
- * straight to the DOM node, so dragging a slider never re-renders on every
- * animation frame. Under prefers-reduced-motion the number is set outright.
+ * Motion: the figure counts between values in a rAF loop that writes straight
+ * to the DOM node, so dragging a slider never re-renders on an animation
+ * frame. This was framer-motion's `animate`; it is hand-rolled now because
+ * that was the last thing on the homepage pulling in the library, and 40KB of
+ * animation runtime for one count-up is a bad trade on mobile. Under
+ * prefers-reduced-motion the number is set outright.
  */
 
 /** Where "Get your exact number" sends the visitor. */
 const BOOKING_PATH = '/contact';
 const BOOKING_HASH = 'consultation-form';
 
-const COUNT_UP_MS = 0.5;
+const COUNT_UP_MS = 500;
 
 export default function SavingsEstimator({ className = '' }: { className?: string }) {
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
   const uid = useId();
   const incomeId = `${uid}-income`;
   const deductionsId = `${uid}-deductions`;
@@ -49,33 +52,53 @@ export default function SavingsEstimator({ className = '' }: { className?: strin
   );
 
   const figureRef = useRef<HTMLSpanElement>(null);
-  const displayed = useMotionValue(savings);
+  /** Where the last run finished, so a new drag eases from the visible value. */
+  const fromRef = useRef(savings);
 
   useEffect(() => {
     const node = figureRef.current;
     if (!node) return;
 
-    const paint = (v: number) => {
-      node.textContent = formatUsd(Math.round(v));
+    const paint = (value: number) => {
+      node.textContent = formatUsd(Math.round(value));
     };
 
     if (reduce) {
-      displayed.set(savings);
+      fromRef.current = savings;
       paint(savings);
       return;
     }
 
-    const unsubscribe = displayed.on('change', paint);
-    const controls = animate(displayed, savings, {
-      duration: COUNT_UP_MS,
-      ease: [0.16, 1, 0.3, 1],
-    });
+    const from = fromRef.current;
+    const to = savings;
+    if (from === to) {
+      paint(to);
+      return;
+    }
 
-    return () => {
-      controls.stop();
-      unsubscribe();
+    // Quartic ease-out: quick departure, long settle. Close to the
+    // cubic-bezier(0.16, 1, 0.3, 1) this replaced.
+    const ease = (t: number) => 1 - Math.pow(1 - t, 4);
+
+    let raf = 0;
+    let start = 0;
+
+    const step = (now: number) => {
+      if (!start) start = now;
+      const t = Math.min((now - start) / COUNT_UP_MS, 1);
+      const value = from + (to - from) * ease(t);
+      fromRef.current = value;
+      paint(value);
+      if (t < 1) {
+        raf = requestAnimationFrame(step);
+      } else {
+        fromRef.current = to;
+      }
     };
-  }, [savings, displayed, reduce]);
+
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [savings, reduce]);
 
   const bookingHref = `${BOOKING_PATH}?income=${income}&deductions=${deductions}#${BOOKING_HASH}`;
 

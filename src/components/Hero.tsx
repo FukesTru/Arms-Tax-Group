@@ -68,6 +68,7 @@ export default function Hero({
           }
         >
         <FadeUp
+          immediate
           className={
             image || visual === 'estimator'
               ? ''
@@ -143,12 +144,12 @@ export default function Hero({
 
         {visual === 'estimator' ? (
           /* Stacks below the copy on small screens rather than hiding. */
-          <FadeUp delay={0.12} className="w-full max-w-[520px] self-center lg:mt-0">
+          <FadeUp immediate className="w-full max-w-[520px] self-center lg:mt-0">
             <SavingsEstimator />
           </FadeUp>
         ) : (
           image && (
-            <FadeUp delay={0.12} className="hidden lg:block">
+            <FadeUp immediate className="hidden lg:block">
               <SiteImage
                 asset={image}
                 priority

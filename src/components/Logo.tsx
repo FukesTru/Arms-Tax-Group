@@ -45,6 +45,12 @@ export default function Logo({
       width={512}
       height={512}
       priority={priority}
+      /*
+        Without this, next/image has no idea the slot is small and serves a
+        1080px candidate for a 72px header logo. Telling it the real rendered
+        width drops that to the next size up from 2x DPR.
+      */
+      sizes={`${size}px`}
       className="h-full w-full object-contain"
     />
   );

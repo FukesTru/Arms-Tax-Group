@@ -273,6 +273,52 @@ rather than losing them between two pages.
 Switching back to the static artwork is one prop: `visual="image"` with
 `image={images.heroLanding}` on the homepage `<Hero>`.
 
+## Performance
+
+Mobile Lighthouse, median of three runs against a production build on
+localhost, before and after the optimization pass:
+
+| | Before | After |
+| --- | --- | --- |
+| Performance score | 95 | **98** |
+| LCP | 2840ms | **2479ms** |
+| Total blocking time | 83ms | **46ms** |
+| JS bootup | 1105ms | **861ms** |
+| JS transferred | 174 KiB | **134 KiB** |
+
+Single Lighthouse runs vary by several points; every figure above is a median
+of three, and the before-numbers were taken by stashing the changes and
+rebuilding rather than from memory.
+
+**Localhost flatters this site.** `widgets.leadconnectorhq.com` is unreachable
+from the build environment, so the chat widget never loads in any local run.
+The deployed score is lower, and the gap is mostly that widget. It is now
+`strategy="lazyOnload"` rather than `afterInteractive`, so it waits for browser
+idle instead of competing with hydration for a throttled mobile main thread.
+If mobile performance still needs work after that, the widget is the first
+thing to look at, not the site's own code.
+
+What changed:
+
+- **framer-motion is gone**, all 40KB of it. Three components used it:
+  `FadeUp` for one opacity-and-translate transition, `SavingsEstimator` for a
+  count-up, and `NationwideNetwork` for a media query. All three are now native
+  code, and no route ships an animation library. First Load JS per route went
+  from 154 kB to 113 kB.
+- **`FadeUp` is an IntersectionObserver plus a CSS transition.** Same 24px
+  rise, same 0.55s, same cubic-bezier, same `-80px` margin, but the browser
+  composites it instead of JavaScript driving each frame.
+- **Above-the-fold content renders immediately.** The hero sat inside a
+  `FadeUp`, so the LCP element started at `opacity: 0` and LCP could not fire
+  until the reveal finished. `<FadeUp immediate>` skips the reveal; there is no
+  scroll to trigger on up there anyway.
+- **The logo was being served at 1080px for a 72px slot.** `next/image` had no
+  `sizes`, so it picked a device-width candidate. Now 128px, 9 KiB down to
+  2 KiB, on the critical path in the header.
+
+The no-JavaScript case is handled: a `<noscript>` style in the layout unhides
+every `.fade-up`, so a failed observer never leaves the page blank.
+
 ## Animated components
 
 Three pieces of the site are components rather than static assets, because
@@ -282,7 +328,7 @@ each does something an image cannot.
 | --- | --- | --- |
 | `SavingsEstimator` | Homepage hero | Interactive, see the section above |
 | `NationwideNetwork` | Homepage "Who We Serve" | Nodes drift, edges follow them |
-| `FadeUp` | Everywhere | Scroll-in reveal |
+| `FadeUp` | Everywhere | Scroll-in reveal, CSS-driven |
 
 ### NationwideNetwork
 

@@ -74,21 +74,38 @@ gtag('config', '${ga4Id}');`}
             </Script>
           </>
         )}
+        {/*
+          Without JavaScript the IntersectionObserver in FadeUp never runs, so
+          every revealed section would stay at opacity 0. Content first.
+        */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: '.fade-up{opacity:1!important;transform:none!important}',
+            }}
+          />
+        </noscript>
       </head>
       <body>
         <JsonLd data={organizationSchema()} />
 
         {/*
-          LeadConnector chat widget. Loaded after hydration so it never blocks
-          first paint. It renders its own bottom-right launcher and is now the
-          only floating element on the page.
+          LeadConnector chat widget. It renders its own bottom-right launcher
+          and is the only floating element on the page.
+
+          strategy="lazyOnload", not "afterInteractive". A third-party chat
+          bundle is the heaviest thing this site loads and nobody needs it in
+          the first seconds of a visit, so it waits for browser idle after
+          everything else has settled rather than competing with hydration for
+          a throttled mobile main thread. The launcher appears a beat later;
+          that is the trade, and it is the right way round.
         */}
         <Script
           id="leadconnector-chat-widget"
           src="https://widgets.leadconnectorhq.com/loader.js"
           data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
           data-widget-id={site.leadConnector.chatWidgetId}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <Header />

@@ -1,7 +1,7 @@
 'use client';
 
-import { useReducedMotion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 /**
  * The "practice without borders" network graphic on the homepage.
@@ -86,7 +86,7 @@ const RINGS = [
 const PULSE_PERIOD = 4.6;
 
 export default function NationwideNetwork({ className = '' }: { className?: string }) {
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
 
   const svgRef = useRef<SVGSVGElement>(null);
   const dotRefs = useRef<(SVGCircleElement | null)[]>([]);

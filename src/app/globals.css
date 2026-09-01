@@ -70,6 +70,24 @@
     @apply btn border border-ink-900/15 bg-white text-ink-900 hover:border-ink-900/40 hover:bg-ink-900/[0.03];
   }
 
+  /*
+    Scroll reveal used by FadeUp. JavaScript adds .is-visible when the element
+    enters the viewport; the rest of this is the safety net, so a failed
+    observer or a reduced-motion preference never leaves content invisible.
+  */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
   .prose-body p {
     @apply text-[1.05rem] leading-[1.75] text-ink-600;
   }
@@ -167,5 +185,12 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Show, do not race to show. */
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

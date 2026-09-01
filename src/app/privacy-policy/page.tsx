@@ -31,7 +31,7 @@ const sections: LegalSection[] = [
     heading: 'Information We Collect',
     paragraphs: [
       `${site.legalName}, operating as ${site.brandName} ("we," "us," or "our"), collects information you provide directly to us and information generated automatically when you use this website.`,
-      'Information you provide directly includes what you submit through our contact and consultation forms, send by email or text message, or share with us in the course of an engagement.',
+      'Information you provide directly includes what you submit through our contact and consultation forms, send by email, or share with us in the course of an engagement.',
     ],
     bullets: [
       'Contact details. Name, phone number, email address, and mailing address',
@@ -119,7 +119,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Contact Us',
     paragraphs: [
-      `If you have questions about this policy or about how your information is handled, contact us at ${site.email}, call ${site.phone.display}, or fax ${site.fax.display}. Postal address: ${legalContactLine}.`,
+      `If you have questions about this policy or about how your information is handled, contact us at ${site.email} or call ${site.phone.display}. Postal address: ${legalContactLine}.`,
     ],
   },
 ];

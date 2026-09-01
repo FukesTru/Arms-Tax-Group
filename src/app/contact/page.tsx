@@ -24,7 +24,7 @@ import { AddressConflictFlag } from '@/components/ReviewFlag';
 export const metadata = pageMetadata({
   title: 'Contact Us | Free Consultation',
   description:
-    'Contact us for a free consultation on tax preparation, IRS resolution, bookkeeping, or tax planning. Bronx, NY office, serving clients nationwide. Call or text.',
+    'Contact us for a free consultation on tax preparation, IRS resolution, bookkeeping, or tax planning. Bronx, NY office, serving clients nationwide. Call today.',
   path: '/contact',
 });
 
@@ -41,22 +41,10 @@ const contactMethods = [
     detail: 'Fastest for anything time-sensitive.',
   },
   {
-    label: 'Text',
-    value: site.text.display,
-    href: site.text.href,
-    detail: 'Good for quick questions and scheduling.',
-  },
-  {
     label: 'Email',
     value: site.email,
     href: `mailto:${site.email}`,
     detail: 'Please do not attach tax documents, we will send a secure link.',
-  },
-  {
-    label: 'Fax',
-    value: site.fax.display,
-    href: null,
-    detail: 'For documents you would rather not send electronically.',
   },
 ];
 
@@ -232,7 +220,7 @@ export default async function ContactPage({
       <CTABand
         tone="dark"
         title="One conversation is all it takes to know where you stand"
-        body={`Call ${site.phone.display}, text ${site.text.display}, or send the form above.`}
+        body={`Call ${site.phone.display} or send the form above.`}
         badges={[
           'Bronx, NY Based',
           'Nationwide Service',

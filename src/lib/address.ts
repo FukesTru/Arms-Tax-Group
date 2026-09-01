@@ -52,7 +52,7 @@ export const mapsDirectionsUrl = officeAddress
  */
 export const addressPendingCopy = {
   short: 'Office address confirmation pending',
-  long: 'Our office address is being updated. Call or text us and we will confirm exactly where to meet.',
+  long: 'Our office address is being updated. Call us and we will confirm exactly where to meet.',
 };
 
 /** Postal mailing line for legal pages, falling back to contact details. */

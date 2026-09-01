@@ -131,6 +131,6 @@ export const bronxFaqs: FaqItem[] = [
   {
     question: 'Where exactly are you located?',
     answer:
-      'We are in New York, and we are finalizing our published office address. Call or text us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
+      'We are in New York, and we are finalizing our published office address. Call us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
   },
 ];

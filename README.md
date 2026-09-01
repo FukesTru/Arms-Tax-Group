@@ -398,6 +398,38 @@ want shown, so it is reproduced exactly rather than restyled. Do not
 find-and-replace it. If the em dash matters more than the exact wording, ask
 before changing it, since it is the compliance line under a dollar figure.
 
+## Contact details: one number only
+
+The site publishes **one** phone number, the business line `(718) 518-0110`,
+and one email. It previously also carried an SMS number and a fax; the client
+asked for both to come off, so they are gone from the copy, the footer, the
+contact page, the Bronx office page, and the `telephone`/`faxNumber` fields in
+structured data.
+
+`lib/site.ts` is the single place this lives and it carries a note saying so.
+Do not reintroduce a personal mobile. If a second number is ever added, check
+the footer, `/contact`, `/who-we-serve/bronx-ny`, `MapEmbed`, the Privacy
+Policy contact clause, and `lib/schema.ts` — those are the six places the old
+ones had reached.
+
+## Local SEO: areas served
+
+`/who-we-serve/bronx-ny` names roughly fifty neighborhoods and towns around the
+office, grouped into the Bronx, lower Westchester, and the rest of New York
+City. The list lives in `lib/areas.ts` and feeds both the rendered section and
+the `areaServed` array in the Bronx `AccountingService` schema, so the page and
+the structured data cannot drift apart.
+
+**Deliberately not a page per neighborhood.** The obvious move is
+`/tax-preparation-parkchester`, `/tax-preparation-pelham-bay`, and so on. Do
+not do that. Near-duplicate pages that differ only by place name are doorway
+pages, named explicitly in Google's spam policies, and they get sites demoted
+rather than ranked. One substantive page naming the areas honestly, backed by
+matching structured data, is what earns local visibility.
+
+These are service areas, not locations. The firm has one office, and copy
+rendering this list must never imply otherwise.
+
 ## Content guardrails
 
 These were applied deliberately. **Do not undo them without client sign-off** — several

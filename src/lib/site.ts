@@ -32,15 +32,12 @@ export const site = {
     href: 'tel:+17185180110',
     e164: '+1-718-518-0110',
   },
-  text: {
-    display: '(347) 805-8290',
-    href: 'sms:+13478058290',
-    e164: '+1-347-805-8290',
-  },
-  fax: {
-    display: '(347) 293-6733',
-    e164: '+1-347-293-6733',
-  },
+  /*
+    ONE NUMBER ONLY. The site previously published an SMS number and a fax
+    alongside the business line; the client asked for both to come off, so the
+    business line above is the only number anywhere on the site or in its
+    structured data. Do not reintroduce a personal mobile or the fax.
+  */
   email: 'Lmoore@thearmscorp.com',
 
   /**

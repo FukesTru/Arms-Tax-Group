@@ -114,21 +114,12 @@ export default function Footer() {
             </h2>
             <ul className="mt-5 space-y-3.5 text-[0.92rem]">
               <li>
-                {/* Suppressed while the address conflict is open, see lib/site.ts */}
                 <OfficeAddress tone="dark" />
               </li>
               <li>
                 <a href={site.phone.href} className="transition-colors hover:text-accent">
                   Call {site.phone.display}
                 </a>
-              </li>
-              <li>
-                <a href={site.text.href} className="transition-colors hover:text-accent">
-                  Text {site.text.display}
-                </a>
-              </li>
-              <li>
-                <span>Fax {site.fax.display}</span>
               </li>
               <li>
                 <a

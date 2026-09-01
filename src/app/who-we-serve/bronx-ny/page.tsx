@@ -13,13 +13,14 @@ import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 import { mapsDirectionsUrl } from '@/lib/address';
 import { site } from '@/lib/site';
+import { areaGroups } from '@/lib/areas';
 import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
   title: 'Tax Preparation Office in Bronx, NY',
   description:
-    "Visit The Arms Corporation Bronx, NY office for personal and business tax preparation, IRS resolution, bookkeeping, and tax planning. Free consultation.",
+    'Tax preparation and accounting at our Bronx, NY office, serving Parkchester, Morris Park, Throgs Neck, Pelham Bay, and lower Westchester. Free consultation.',
   path: '/who-we-serve/bronx-ny',
 });
 
@@ -39,7 +40,7 @@ export default function BronxOfficePage() {
       <Hero
         eyebrow="Bronx, New York"
         title="Tax & Accounting Services in the Bronx"
-        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, and year-round tax planning. In person at our New York office, or remotely if that is easier."
+        subtitle="Personal and business tax preparation, IRS resolution, bookkeeping, and year-round tax planning. In person at our East Bronx office, serving Parkchester, Morris Park, Throgs Neck, Pelham Bay and lower Westchester, or remotely if that is easier."
         trustPoints={['Walk-In Appointments', 'All 5 Services On Site', 'Free Consultation']}
         breadcrumbs={trail}
       />
@@ -122,22 +123,6 @@ export default function BronxOfficePage() {
                 </div>
                 <div>
                   <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
-                    Text
-                  </dt>
-                  <dd className="mt-1.5">
-                    <a href={site.text.href} className="text-white/85 transition-colors hover:text-accent">
-                      {site.text.display}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
-                    Fax
-                  </dt>
-                  <dd className="mt-1.5 text-white/85">{site.fax.display}</dd>
-                </div>
-                <div>
-                  <dt className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
                     Email
                   </dt>
                   <dd className="mt-1.5">
@@ -213,6 +198,48 @@ export default function BronxOfficePage() {
             </FadeUp>
           ))}
         </div>
+      </Section>
+
+      {/* Areas served. One page naming the areas honestly, not a page per
+          neighborhood: see the note in lib/areas.ts on doorway pages. */}
+      <Section>
+        <SectionHeading
+          eyebrow="Areas We Serve"
+          title="Bronx neighborhoods, lower Westchester, and the rest of the city"
+          intro="One office, a wide catchment. Come to us in person from anywhere in the list below, or work with us entirely online from anywhere in the country."
+        />
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-3">
+          {areaGroups.map((group, index) => (
+            <FadeUp key={group.key} delay={index * 0.08}>
+              <h3 className="text-[1.15rem] leading-snug">{group.label}</h3>
+              <p className="mt-2 text-[0.92rem] leading-relaxed text-ink-600">
+                {group.note}
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {group.areas.map((area) => (
+                  <li
+                    key={area}
+                    className="rounded-full border border-ink-900/10 bg-white px-3 py-1.5 text-[0.85rem] font-medium text-ink-700"
+                  >
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </FadeUp>
+          ))}
+        </div>
+
+        <FadeUp delay={0.3} className="mt-10">
+          <p className="text-[0.95rem] leading-relaxed text-ink-600">
+            Not on the list? Every service is available remotely, so where you
+            live does not decide whether we can work together.{' '}
+            <Link href="/contact" className="font-semibold text-accent hover:underline">
+              Ask us
+            </Link>
+            .
+          </p>
+        </FadeUp>
       </Section>
 
       <FAQ

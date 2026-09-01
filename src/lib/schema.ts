@@ -1,4 +1,5 @@
 import { officeAddress, officeGeo } from './address';
+import { allAreas } from './areas';
 import { site } from './site';
 import { allServices, categories } from './services';
 
@@ -45,7 +46,6 @@ export function organizationSchema() {
     description:
       'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from a New York accounting firm serving clients nationwide.',
     ...(postalAddress ? { address: postalAddress } : {}),
-    faxNumber: site.fax.e164,
     areaServed: [
       { '@type': 'Country', name: 'United States' },
       ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
@@ -83,7 +83,6 @@ export function localBusinessSchema() {
     parentOrganization: { '@id': ORG_ID },
     url: `${site.url}/who-we-serve/bronx-ny`,
     telephone: site.phone.e164,
-    faxNumber: site.fax.e164,
     email: site.email,
     ...(postalAddress ? { address: postalAddress } : {}),
     // geo is published only once the coordinates have been checked against a
@@ -98,8 +97,12 @@ export function localBusinessSchema() {
           },
         }
       : {}),
+    // Mirrors the areas named on the page itself. Structured data that claims
+    // reach the page does not back up is the kind of mismatch that gets a
+    // local listing distrusted, so both read from lib/areas.ts.
     areaServed: [
       ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
+      ...allAreas.map((area) => ({ '@type': area.schemaType, name: area.name })),
       { '@type': 'Country', name: 'United States' },
     ],
     // NOTE: openingHoursSpecification is intentionally omitted until the

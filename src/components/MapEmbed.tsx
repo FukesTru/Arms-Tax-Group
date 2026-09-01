@@ -38,10 +38,6 @@ export default function MapEmbed({
           {addressPendingCopy.long}{' '}
           <a href={site.phone.href} className="font-semibold text-accent hover:underline">
             Call {site.phone.display}
-          </a>{' '}
-          or{' '}
-          <a href={site.text.href} className="font-semibold text-accent hover:underline">
-            text {site.text.display}
           </a>
           .
         </p>

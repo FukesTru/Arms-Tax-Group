@@ -13,8 +13,6 @@ import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
 import { mapsDirectionsUrl } from '@/lib/address';
 import { site } from '@/lib/site';
-import { areaGroups } from '@/lib/areas';
-import { slugForArea } from '@/content/locations';
 import OfficeAddress from '@/components/OfficeAddress';
 import { AddressConflictFlag } from '@/components/ReviewFlag';
 
@@ -199,61 +197,6 @@ export default function BronxOfficePage() {
             </FadeUp>
           ))}
         </div>
-      </Section>
-
-      {/* Areas served. One page naming the areas honestly, not a page per
-          neighborhood: see the note in lib/areas.ts on doorway pages. */}
-      <Section>
-        <SectionHeading
-          eyebrow="Areas We Serve"
-          title="Bronx neighborhoods, lower Westchester, and the rest of the city"
-          intro="One office, a wide catchment. Come to us in person from anywhere in the list below, or work with us entirely online from anywhere in the country."
-        />
-
-        <div className="mt-12 grid gap-10 lg:grid-cols-3">
-          {areaGroups.map((group, index) => (
-            <FadeUp key={group.key} delay={index * 0.08}>
-              <h3 className="text-[1.15rem] leading-snug">{group.label}</h3>
-              <p className="mt-2 text-[0.92rem] leading-relaxed text-ink-600">
-                {group.note}
-              </p>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {group.areas.map((area) => {
-                  // Areas with a page of their own link to it; the rest stay
-                  // plain chips rather than becoming empty routes.
-                  const slug = slugForArea(area);
-                  return (
-                    <li key={area}>
-                      {slug ? (
-                        <Link
-                          href={`/who-we-serve/${slug}`}
-                          className="inline-flex rounded-full border border-accent/30 bg-accent-50 px-3 py-1.5 text-[0.85rem] font-medium text-accent transition-colors hover:border-accent hover:bg-accent hover:text-white"
-                        >
-                          {area}
-                        </Link>
-                      ) : (
-                        <span className="inline-flex rounded-full border border-ink-900/10 bg-white px-3 py-1.5 text-[0.85rem] font-medium text-ink-700">
-                          {area}
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </FadeUp>
-          ))}
-        </div>
-
-        <FadeUp delay={0.3} className="mt-10">
-          <p className="text-[0.95rem] leading-relaxed text-ink-600">
-            Not on the list? Every service is available remotely, so where you
-            live does not decide whether we can work together.{' '}
-            <Link href="/contact" className="font-semibold text-accent hover:underline">
-              Ask us
-            </Link>
-            .
-          </p>
-        </FadeUp>
       </Section>
 
       <FAQ

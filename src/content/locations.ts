@@ -630,19 +630,3 @@ export function locationBySlug(slug: string): LocationContent | undefined {
 /** Slugs of cities with their own page, for linking from area chips. */
 export const locationSlugs = locations.map((l) => l.slug);
 
-/**
- * Area names that should link to a page covering them without being an exact
- * match. The Eastchester page covers Tuckahoe, and the Pelham page covers
- * Pelham Manor, so those chips link rather than sitting dead.
- */
-const ALIASES: Record<string, string> = {
-  tuckahoe: 'eastchester-ny',
-  'pelham manor': 'pelham-ny',
-};
-
-/** The page covering a named area, if one exists. */
-export function slugForArea(name: string): string | undefined {
-  const key = name.trim().toLowerCase();
-  const exact = locations.find((l) => l.city.toLowerCase() === key);
-  return exact?.slug ?? ALIASES[key];
-}

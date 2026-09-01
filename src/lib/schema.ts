@@ -1,5 +1,5 @@
 import { officeAddress, officeGeo } from './address';
-import { allAreas } from './areas';
+import { locations } from '@/content/locations';
 import { site } from './site';
 import { allServices, categories } from './services';
 
@@ -97,12 +97,14 @@ export function localBusinessSchema() {
           },
         }
       : {}),
-    // Mirrors the areas named on the page itself. Structured data that claims
-    // reach the page does not back up is the kind of mismatch that gets a
-    // local listing distrusted, so both read from lib/areas.ts.
+    // Only areas the site actually has content for. Structured data claiming
+    // reach the site does not back up is the kind of mismatch that gets a
+    // local listing distrusted, so this reads from the same city pages the
+    // navigation links to. When the long area chip list came off the page,
+    // those names came out of here with it.
     areaServed: [
       ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
-      ...allAreas.map((area) => ({ '@type': area.schemaType, name: area.name })),
+      ...locations.map((location) => ({ '@type': 'City', name: location.city })),
       { '@type': 'Country', name: 'United States' },
     ],
     // NOTE: openingHoursSpecification is intentionally omitted until the

@@ -412,15 +412,7 @@ the footer, `/contact`, `/who-we-serve/bronx-ny`, `MapEmbed`, the Privacy
 Policy contact clause, and `lib/schema.ts` — those are the six places the old
 ones had reached.
 
-## Local SEO: areas served
-
-`/who-we-serve/bronx-ny` names roughly fifty neighborhoods and towns around the
-office, grouped into the Bronx, lower Westchester, and the rest of New York
-City. The list lives in `lib/areas.ts` and feeds both the rendered section and
-the `areaServed` array in the Bronx `AccountingService` schema, so the page and
-the structured data cannot drift apart.
-
-### City pages
+## Local SEO: city pages
 
 Ten surrounding municipalities have their own page under
 `/who-we-serve/<slug>`, driven by `content/locations.ts` through a single
@@ -451,8 +443,20 @@ listed at the top of `content/locations.ts`.
 
 **Neighborhood pages are still a bad idea.** `/tax-preparation-parkchester`,
 `/tax-preparation-pelham-bay` and so on would be near-duplicates with nothing
-genuinely different to say, which is exactly what the spam policies name. The
-Bronx neighborhoods stay as an area list on one substantive page.
+genuinely different to say, which is exactly what the spam policies name.
+
+The Bronx neighborhoods were once a long chip list on the office page. That
+came off at the client's request, and `lib/areas.ts` went with it. The
+neighborhood names that remain are in the Bronx page's own meta description and
+hero subtitle, which is where they carry weight anyway. `areaServed` in the
+schema was trimmed at the same time to the cities that actually have pages:
+structured data claiming reach the site does not back up is the kind of
+mismatch that gets a local listing distrusted, so when the names left the page
+they left the schema too.
+
+The city pages are reachable from the header's Who We Serve dropdown, which is
+a two-column panel for that reason. Twelve entries in the original single
+22rem column would have run most of the way down the viewport.
 
 These are service areas, not locations. The firm has one office, and copy
 rendering this list must never imply otherwise.

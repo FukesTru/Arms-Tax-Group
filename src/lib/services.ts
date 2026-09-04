@@ -98,15 +98,15 @@ export function siblingsOf(href: string): ServiceLink[] {
   return category.services.filter((s) => s.href !== href);
 }
 
+/**
+ * The practice is digital only, so there is no office page and no city pages.
+ * Kept as a list because the header and footer iterate it, and because the
+ * audience-based sections on /who-we-serve may earn pages of their own.
+ */
 export const whoWeServeLinks = [
   {
-    title: 'Nationwide Remote Services',
+    title: 'Who We Serve',
     href: '/who-we-serve',
-    blurb: 'Secure, fully remote service for clients anywhere in the U.S.',
-  },
-  {
-    title: 'Bronx, NY Office',
-    href: '/who-we-serve/bronx-ny',
-    blurb: 'Walk-in appointments at our New York office.',
+    blurb: 'Individuals, the self-employed, small businesses, and corporations.',
   },
 ];

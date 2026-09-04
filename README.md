@@ -1,7 +1,7 @@
 # Arms Tax Group Inc — The Arms Corporation
 
 Nineteen-page marketing site for **Arms Tax Group Inc**, operating as **The Arms Corporation** —
-a Bronx, NY tax, accounting, and financial services firm serving clients nationwide.
+a fully remote tax and accounting practice serving clients in all 50 states.
 
 Built with Next.js (App Router), TypeScript, Tailwind CSS, and Framer Motion.
 
@@ -51,15 +51,14 @@ value there updates it everywhere, including the structured data.
 | 3 | Services Hub | `/services` |
 | 4 | Tax & Accounting (category) | `/services/tax-accounting` |
 | 5 | Personal Tax Preparation | `/services/tax-accounting/personal-tax-preparation` |
-| 6 | Business Tax Preparation | `/services/tax-accounting/business-tax-preparation` |
+| 6 | Business & Corporate Tax Services | `/services/tax-accounting/business-tax-preparation` |
 | 7 | Tax Resolution & IRS Representation | `/services/tax-accounting/tax-resolution` |
 | 8 | Bookkeeping & Accounting | `/services/tax-accounting/bookkeeping-accounting` |
 | 9 | Tax Planning & Consulting | `/services/tax-accounting/tax-planning` |
-| 10 | Who We Serve (hub) | `/who-we-serve` |
-| 11 | Bronx, NY Office | `/who-we-serve/bronx-ny` |
-| 12 | Contact | `/contact` |
-| 13 | Privacy Policy | `/privacy-policy` |
-| 14 | Terms of Service | `/terms` |
+| 10 | Who We Serve | `/who-we-serve` |
+| 11 | Contact | `/contact` |
+| 12 | Privacy Policy | `/privacy-policy` |
+| 13 | Terms of Service | `/terms` |
 
 Plus a styled 404 at `not-found`.
 
@@ -141,53 +140,48 @@ bubble routed to the SMS line. All animation respects `prefers-reduced-motion`.
 
 Every page has a unique title, a unique meta description of 150–160 characters, a canonical
 URL, Open Graph and Twitter tags, exactly one `<h1>`, and 3+ in-body internal links.
-Structured data: `AccountingService` site-wide, `Service` on each service page, `FAQPage`
-wherever an FAQ block appears, `LocalBusiness` on the Bronx office and contact pages, and
-`BreadcrumbList` on every inner page.
+Structured data: `AccountingService` site-wide (with no address or geo, see "Digital only"
+below), `Service` on each service page, `FAQPage` wherever an FAQ block appears,
+`ContactPage` on Contact, `AboutPage` on About, and `BreadcrumbList` on every inner page.
 
 ---
 
-## Office address — resolved
+## Digital only: no office, no local positioning
 
-**The client confirmed the intake-form address on 2026-08-28.**
+**The firm is a fully remote practice.** No walk-in traffic, no in-person
+appointments, and it is deliberately not marketed as a Bronx business. This is
+the single most load-bearing fact about the site's positioning, and a lot of
+structure follows from it.
 
-| Source | Address | Status |
-|---|---|---|
-| Client intake form | 1426 White Plains Road, Bronx, NY 10462 | **confirmed, published** |
-| Current live site (thearmscorp.co) | 50 Main St, Suite 1000, White Plains, NY 10606 | rejected, never rendered |
+What that means in code:
 
-`site.address.status` is `'confirmed'` and `address.confirmed` is `'intake'`, so
-the address now publishes in the footer sitewide, on the Contact page, on the
-Bronx office page, in the `AccountingService` and organization schema, and the
-Google Maps embed is live on `/contact` and `/who-we-serve/bronx-ny`. The amber
-review flag is gone from every page.
+- **No public address anywhere.** Not in the footer, not on the contact page,
+  not in a map embed, and above all not in structured data. The address lives
+  in `site.legalAddress` and is reachable only through `legalContactLine` in
+  `lib/address.ts`, which feeds the contact clauses of the Privacy Policy and
+  Terms. Nothing else may read it. `OfficeAddress`, `MapEmbed` and the
+  `officeAddress` / `mapsEmbedSrc` / `mapsDirectionsUrl` / `officeGeo` exports
+  are gone, not deprecated.
+- **No LocalBusiness address in schema.** `AccountingService` is a
+  `LocalBusiness` subtype, and a `LocalBusiness` carrying a `PostalAddress`
+  tells Google this is a place customers travel to. The organization schema
+  publishes no address, no `geo`, no `openingHoursSpecification`, and states
+  `areaServed: United States` plus an `availableChannel`, which is how a
+  service-area business describes itself. The type stays `AccountingService`
+  because it is an accurate description of the work;
+  `ProfessionalService` is the swap if a strictly non-local type is ever
+  wanted, and the address stays out either way.
+- **No location pages.** All eleven are gone: the Bronx office page and the ten
+  Westchester city pages. See the note below.
+- **Hours are availability, not opening hours.** `site.hours` describes when
+  the team responds and holds calls. Nobody visits.
 
-The rejected address is still in `site.address.candidates.liveSite` as a record
-of what the conflict was. It is not reachable through `lib/address.ts` and never
-renders. Note that the client's own live site will keep showing it until they
-update or retire that site — worth raising with them.
-
-**No copy rewrite was needed.** The confirmed city is Bronx, which is what the
-site was already written around: `/who-we-serve/bronx-ny`, the "tax preparation
-Bronx NY" SEO target, the hero trust points, the CTA badges, the meta
-descriptions, and the About copy all stand as written. Had the answer been White
-Plains, every one of those would have had to change.
-
-### One thing still held back: the coordinates
-
-`geo` is deliberately **not** in the published schema. The lat/long in
-`site.address.candidates.intake` (40.8412, -73.8593) are our own estimate for the
-street, not surveyed values and not client-supplied, and no geocoder is reachable
-from this build environment to check them. Google geocodes the `PostalAddress`
-by itself, so omitting `geo` costs nothing, whereas a wrong `GeoCoordinates` pin
-would put the business on the wrong corner.
-
-To publish them: open the office in Google Maps, right-click the pin, copy the
-real coordinates into that candidate, and set `site.address.geoVerified` to
-`true`. The schema picks them up with no other change.
-
-The Maps embed is unaffected — it uses a `?q=<full address>&output=embed` URL
-that Google geocodes from the text, so it points at the right place already.
+A `remote.mjs` check in the scratchpad enforces this against a production
+build: it fails if any marketing page renders the address, the word "Bronx",
+walk-in or in-person language, a map, or any JSON-LD carrying `address`, `geo`,
+`openingHoursSpecification` or a raw `LocalBusiness` type. It allows the
+address on the two legal pages and allows FAQ copy that explicitly denies an
+in-person option, since saying "there is no office to visit" is the point.
 
 ## A note on the homepage stat tiles
 
@@ -414,7 +408,7 @@ Two deliberate departures from the vendor snippet:
   vanishes.
 - **The Text Us bubble was removed entirely.** The chat widget covers the same
   job, and two floating launchers were clutter. The SMS number still appears in
-  the footer, on the Contact page, and on the Bronx office page.
+  the footer and on the Contact page.
 
 Submissions no longer touch this app — the previous in-app form and its
 `/api/contact` route were removed rather than left as dead code. The Privacy
@@ -449,7 +443,7 @@ before changing it, since it is the compliance line under a dollar figure.
 The site publishes **one** phone number, the business line `(718) 518-0110`,
 and one email. It previously also carried an SMS number and a fax; the client
 asked for both to come off, so they are gone from the copy, the footer, the
-contact page, the Bronx office page, and the `telephone`/`faxNumber` fields in
+contact page, and the `telephone`/`faxNumber` fields in
 structured data.
 
 `lib/site.ts` is the single place this lives and it carries a note saying so.
@@ -458,54 +452,36 @@ the footer, `/contact`, `/who-we-serve/bronx-ny`, `MapEmbed`, the Privacy
 Policy contact clause, and `lib/schema.ts` — those are the six places the old
 ones had reached.
 
-## Local SEO: city pages
+## SEO: national, not local
 
-Ten surrounding municipalities have their own page under
-`/who-we-serve/<slug>`, driven by `content/locations.ts` through a single
-`[city]` dynamic route: Mount Vernon, Yonkers, New Rochelle, Pelham,
-Eastchester, Bronxville, Scarsdale, White Plains, Larchmont and Mamaroneck.
+The site previously carried eleven location pages — a Bronx office page and ten
+Westchester city pages, each built around drive times, Metro-North routes and
+"come see us". **All eleven were removed** when the practice was confirmed as
+digital only. Their premise was proximity to an office that clients are not
+invited to.
 
-**These are not doorway pages, and keeping them that way takes work.** The line
-between a legitimate location page and a doorway page is whether each one says
-something the others do not, so every entry carries a different route to the
-office, a different local economy, and above all a different tax situation:
-Yonkers has its own resident income tax surcharge, Scarsdale filers deal with
-household employees and equity compensation, someone who moved from the Bronx
-to Pelham mid-year has a part-year residency question. Measured: ~750 to 860
-words of unique prose per page and a worst pairwise 6-gram overlap of **10.1%**
-across all 45 pairs. A `dupe.mjs` check in the scratchpad reproduces it.
+That was roughly 7,500 words of genuinely differentiated content (the Yonkers
+resident income tax surcharge, co-op maintenance deductions, Scarsdale
+household employees), and it is recoverable from git history if a
+location-flavoured angle is ever wanted again. It should not come back as
+location pages. A remote firm ranking for "tax preparation in Yonkers" while
+telling that visitor there is nowhere to go is a bad experience and a thin
+signal.
 
-If you add a city and find yourself copying an entry and swapping the name,
-stop. That page will hurt the site rather than help it. Put the name in the
-area list on the Bronx page instead.
+**Where the SEO effort belongs now:** service and situation pages rather than
+place pages. "S-corp reasonable compensation", "part-year residency after
+moving out of NYC", "what to do about an IRS CP2000" — problems people search
+for, which the practice can answer from anywhere. `/who-we-serve` is already
+organised around audiences (individuals, self-employed, small business owners,
+corporations) rather than geography, and those audience blocks are the natural
+seeds for that.
 
-`dynamicParams = false`, so an unknown slug 404s rather than rendering a thin
-auto-generated shell for a city nobody has written about.
-
-**No rates, thresholds, or dollar figures appear in this copy, deliberately.**
-Those change, and a stale number on a tax firm's own site is worse than no
-number. The copy describes situations. The structural facts it does rely on are
-listed at the top of `content/locations.ts`.
-
-**Neighborhood pages are still a bad idea.** `/tax-preparation-parkchester`,
-`/tax-preparation-pelham-bay` and so on would be near-duplicates with nothing
-genuinely different to say, which is exactly what the spam policies name.
-
-The Bronx neighborhoods were once a long chip list on the office page. That
-came off at the client's request, and `lib/areas.ts` went with it. The
-neighborhood names that remain are in the Bronx page's own meta description and
-hero subtitle, which is where they carry weight anyway. `areaServed` in the
-schema was trimmed at the same time to the cities that actually have pages:
-structured data claiming reach the site does not back up is the kind of
-mismatch that gets a local listing distrusted, so when the names left the page
-they left the schema too.
-
-The city pages are reachable from the header's Who We Serve dropdown, which is
-a two-column panel for that reason. Twelve entries in the original single
-22rem column would have run most of the way down the viewport.
-
-These are service areas, not locations. The firm has one office, and copy
-rendering this list must never imply otherwise.
+**Do not open a Google Business Profile with a published address.** Earlier
+notes in this file recommended claiming one; that advice assumed walk-in
+traffic. For a service-area business with no customer-visiting location, a GBP
+listing must hide the address and declare a service area, or not exist at all.
+Publishing a storefront address for a firm nobody visits is the exact mismatch
+that gets a listing suspended.
 
 ## Content guardrails
 
@@ -544,8 +520,10 @@ Each item below maps to a `UNCONFIRMED` or `PRE-LAUNCH` comment in the code.
 - [ ] **Years in business / experience claim** — publish a number only once confirmed.
 - [ ] **Credentials** — is Leval Moore a CPA, Enrolled Agent, or licensed preparer? This
       determines what the site may legally claim, and what disclaimers it needs.
-- [x] **Office address** — RESOLVED 2026-08-28. Client confirmed the intake-form
-      address, 1426 White Plains Road, Bronx, NY 10462. Publishing sitewide.
+- [x] **Office address** — SUPERSEDED 2026-09-04. The address was confirmed on
+      2026-08-28 and published sitewide, then removed again when the client
+      confirmed the practice is digital only. It now appears solely in the
+      Privacy Policy and Terms contact lines. See "Digital only" above.
 - [ ] **Office coordinates** — `geo` is withheld from the schema because the lat/long
       are our estimate, not verified, and no geocoder is reachable from this build
       environment. Read the real pin off Google Maps into

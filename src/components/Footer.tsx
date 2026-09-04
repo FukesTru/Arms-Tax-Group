@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { categories, whoWeServeLinks } from '@/lib/services';
 import { site } from '@/lib/site';
 import Logo from './Logo';
-import OfficeAddress from './OfficeAddress';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -17,8 +16,8 @@ export default function Footer() {
             </Link>
             <p className="mt-5 max-w-xs text-[0.92rem] leading-relaxed">
               Tax preparation, IRS resolution, bookkeeping, and year-round tax
-              planning for individuals and businesses. Based in Bronx, NY,
-              serving clients nationwide.
+              planning for individuals and businesses. A fully remote practice,
+              serving clients in all 50 states.
             </p>
             <p className="mt-4 font-display text-[0.98rem] font-bold text-accent">
               {site.brandLine}
@@ -113,8 +112,8 @@ export default function Footer() {
               Contact
             </h2>
             <ul className="mt-5 space-y-3.5 text-[0.92rem]">
-              <li>
-                <OfficeAddress tone="dark" />
+              <li className="text-white/60">
+                Remote nationwide, in all 50 states
               </li>
               <li>
                 <a href={site.phone.href} className="transition-colors hover:text-accent">

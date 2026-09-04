@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import { locations } from '@/content/locations';
 import { allServices, categories } from '@/lib/services';
 import { site } from '@/lib/site';
 
@@ -11,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/who-we-serve', priority: 0.8, changeFrequency: 'monthly' },
-    { path: '/who-we-serve/bronx-ny', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/contact', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
@@ -29,17 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
-  const locationRoutes = locations.map((location) => ({
-    path: `/who-we-serve/${location.slug}`,
-    priority: 0.7,
-    changeFrequency: 'monthly' as const,
-  }));
-
   return [
     ...staticRoutes,
     ...categoryRoutes,
     ...serviceRoutes,
-    ...locationRoutes,
   ].map((route) => ({
     url: `${site.url}${route.path === '/' ? '' : route.path}`,
     lastModified,

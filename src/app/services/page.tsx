@@ -151,7 +151,7 @@ export default function ServicesPage() {
         title="One conversation, and you'll know where you stand"
         body="Call, text, or send us a note. We'll tell you what your situation actually involves."
         badges={[
-          'Bronx, NY Based',
+          'Fully Remote',
           'Nationwide Service',
           'Personal & Business Tax Experts',
           'Free Consultation',

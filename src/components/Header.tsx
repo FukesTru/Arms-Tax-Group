@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { locations } from '@/content/locations';
 import { categories, whoWeServeLinks } from '@/lib/services';
 import { site } from '@/lib/site';
 import Icon from './Icon';
@@ -221,49 +220,24 @@ export default function Header() {
               </button>
 
               {openMenu === 'who' && (
-                /*
-                  Two columns: how we work on the left, where we work on the
-                  right. Twelve entries in the old single 22rem column would
-                  have run most of the way down the viewport.
-                */
-                <div className="absolute left-1/2 top-full z-50 w-[min(42rem,92vw)] -translate-x-1/2 pt-3">
-                  <div className="grid grid-cols-[1.05fr_1fr] gap-x-5 rounded-xl border border-ink-900/10 bg-white p-4 shadow-card-hover">
-                    <ul>
-                      {whoWeServeLinks.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className="block rounded-lg px-3 py-3 transition-colors hover:bg-accent-50"
-                          >
-                            <span className="block font-display text-[0.92rem] font-semibold text-ink-900">
-                              {link.title}
-                            </span>
-                            <span className="mt-0.5 block text-[0.82rem] leading-snug text-ink-600">
-                              {link.blurb}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="border-l border-ink-900/10 pl-5">
-                      <p className="mb-2 px-2 font-display text-[0.72rem] font-bold uppercase tracking-[0.14em] text-accent">
-                        Westchester County
-                      </p>
-                      <ul className="grid grid-cols-2 gap-x-2">
-                        {locations.map((location) => (
-                          <li key={location.slug}>
-                            <Link
-                              href={`/who-we-serve/${location.slug}`}
-                              className="block rounded-lg px-2 py-1.5 font-display text-[0.85rem] font-medium leading-snug text-ink-700 transition-colors hover:bg-accent-50 hover:text-accent"
-                            >
-                              {location.city}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                <div className="absolute left-1/2 top-full z-50 w-[22rem] -translate-x-1/2 pt-3">
+                  <ul className="rounded-xl border border-ink-900/10 bg-white p-3 shadow-card-hover">
+                    {whoWeServeLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="block rounded-lg px-3 py-3 transition-colors hover:bg-accent-50"
+                        >
+                          <span className="block font-display text-[0.92rem] font-semibold text-ink-900">
+                            {link.title}
+                          </span>
+                          <span className="mt-0.5 block text-[0.82rem] leading-snug text-ink-600">
+                            {link.blurb}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
@@ -389,21 +363,6 @@ export default function Header() {
                 ))}
               </ul>
 
-              <p className="mb-1 mt-3 font-display text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink-600">
-                Westchester County
-              </p>
-              <ul className="grid grid-cols-2 gap-x-3">
-                {locations.map((location) => (
-                  <li key={location.slug}>
-                    <Link
-                      href={`/who-we-serve/${location.slug}`}
-                      className="block rounded-lg py-2 text-[0.9rem] font-medium text-ink-700"
-                    >
-                      {location.city}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <ul className="mb-7 space-y-0.5 border-t border-ink-900/10 pt-4">

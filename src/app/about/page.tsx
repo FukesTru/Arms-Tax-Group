@@ -13,9 +13,9 @@ import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'About Our Bronx, NY Tax & Accounting Team',
+  title: 'About Our Tax & Accounting Team',
   description:
-    'Meet the team behind The Arms Corporation. Bronx, NY-based tax preparation, accounting, IRS resolution, and planning for individuals and businesses nationwide.',
+    'Meet the team behind The Arms Corporation. Online tax preparation, accounting, IRS resolution, and planning for individuals and businesses in all 50 states.',
   path: '/about',
 });
 
@@ -32,8 +32,8 @@ export default function AboutPage() {
       <Hero
         eyebrow="About Us"
         title="About The Arms Corporation"
-        subtitle="A Bronx-based team helping individuals and businesses keep more of what they earn."
-        trustPoints={['Bronx, NY Office', 'Nationwide Service', 'Year-Round Availability']}
+        subtitle="A digital practice helping individuals and businesses keep more of what they earn, wherever they file from."
+        trustPoints={['Fully Remote', 'Nationwide Service', 'Year-Round Availability']}
         breadcrumbs={trail}
       />
 
@@ -213,7 +213,7 @@ export default function AboutPage() {
             },
             {
               title: 'Who We Serve',
-              body: 'How nationwide remote service works, and what the Bronx office offers.',
+              body: 'Who we work with, and how the remote practice runs end to end.',
               href: '/who-we-serve',
             },
             {
@@ -247,7 +247,7 @@ export default function AboutPage() {
         title="Ready to work with us?"
         body="Get a free consultation. We'll tell you what your situation involves, honestly, and before you commit to anything."
         badges={[
-          'Bronx, NY Based',
+          'Fully Remote',
           'Nationwide Service',
           'Personal & Business Tax Experts',
           'Free Consultation',

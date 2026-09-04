@@ -12,14 +12,13 @@ import { homeFaqs, houseProcess } from '@/content/general';
 import { faqSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 import { categories } from '@/lib/services';
-import { addressPendingCopy, officeAddress } from '@/lib/address';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title:
-    'Tax Preparation & Accounting Services | Bronx, NY & Nationwide | The Arms Corporation',
+    'Online Tax Preparation & Accounting | Nationwide | The Arms Corporation',
   description:
-    'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from The Arms Corporation. Bronx, NY office, serving clients nationwide.',
+    'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning, handled entirely online for clients in all 50 states. Free consultation.',
   path: '/',
 });
 
@@ -30,9 +29,9 @@ export default function HomePage() {
       <JsonLd data={faqSchema(homeFaqs)} />
 
       {/*
-        The H1 is a hook, not a service label. It used to read "Tax &
-        Accounting Services for Individuals and Businesses in Bronx, NY &
-        Nationwide", which described the firm accurately and landed on nobody.
+        The H1 is a hook, not a service label. It used to be a list of
+        services and places, which described the firm accurately and landed on
+        nobody.
 
         An H1 is still a ranking signal, so the keywords it gave up did not
         just disappear: they moved to the eyebrow directly above it, and they
@@ -43,7 +42,7 @@ export default function HomePage() {
       <Hero
         size="large"
         visual="estimator"
-        eyebrow="Tax & Accounting · Bronx, NY & Nationwide"
+        eyebrow="Online Tax & Accounting · All 50 States"
         title={
           <>
             Taxes are complicated.{' '}
@@ -52,10 +51,10 @@ export default function HomePage() {
             </span>
           </>
         }
-        subtitle="Reaching out to embrace YOUR needs. Personal and business tax preparation, IRS resolution, bookkeeping, and year-round planning from a Bronx-based team serving clients nationwide."
+        subtitle="Reaching out to embrace YOUR needs. Personal and business tax preparation, IRS resolution, bookkeeping, and year-round planning, handled entirely online for clients across the country."
         trustPoints={[
-          'Nationwide Remote Service',
-          'Bronx, NY Office',
+          'Fully Remote, All 50 States',
+          'Secure Document Sharing',
           'Personal & Business Tax Experts',
         ]}
       />
@@ -188,8 +187,8 @@ export default function HomePage() {
       <Section tone="dark">
         <SectionHeading
           eyebrow="Who We Serve"
-          title="A real local office, and a practice without borders"
-          intro="Come sit down with us in the Bronx, or work with us entirely online from anywhere in the country. The work is the same either way."
+          title="A practice without borders"
+          intro="A digital practice, not a local firm that also takes remote clients. The same person handles your return from the first conversation to the e-file confirmation, wherever you happen to live."
           tone="dark"
         />
 
@@ -200,19 +199,18 @@ export default function HomePage() {
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           {[
             {
-              title: 'Bronx, NY Office',
-              href: '/who-we-serve/bronx-ny',
-              body: 'Walk-in appointments at our New York office. In-person tax preparation, document drop-off, and face-to-face consultations for clients who prefer them.',
-              // Address suppressed while the conflict is open — see lib/site.ts
-              meta: officeAddress ? officeAddress.full : addressPendingCopy.short,
-              cta: 'Visit the Bronx office',
+              title: 'Anywhere in the country',
+              href: '/who-we-serve',
+              body: 'Every service is delivered online. Documents are shared through a secure link, consultations happen by phone or video, and returns are e-filed federally and in whichever states you owe in.',
+              meta: 'All 50 states, no office visit needed',
+              cta: 'How it works',
             },
             {
-              title: 'Nationwide Remote Service',
-              href: '/who-we-serve',
-              body: 'Every service we offer is available remotely. Documents are shared securely online, consultations happen by phone or video, and returns are e-filed wherever you live.',
-              meta: 'Remote service, anywhere in the country',
-              cta: 'How remote service works',
+              title: 'Whatever your return looks like',
+              href: '/services',
+              body: 'Individuals with a return that got complicated, self-employed people juggling 1099 income, small business owners, and corporations with payroll and multi-state activity.',
+              meta: 'Individuals, self-employed, and businesses',
+              cta: 'See all services',
             },
           ].map((block, index) => (
             <FadeUp
@@ -272,7 +270,7 @@ export default function HomePage() {
         title="Ready to keep more of what you make?"
         body="Start with a free consultation. Call, text, or send us a note, whichever is easiest."
         badges={[
-          'Bronx, NY Based',
+          'Fully Remote',
           'Nationwide Service',
           'Personal & Business Tax Experts',
           'Free Consultation',

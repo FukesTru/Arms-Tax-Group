@@ -181,7 +181,7 @@ export default function ServicePageTemplate({
         title="Let's start with a conversation"
         body="A free consultation costs you nothing and usually shortens the list of things you are worried about."
         badges={[
-          'Bronx, NY Based',
+          'Fully Remote',
           'Nationwide Service',
           'Personal & Business Tax Experts',
           'Free Consultation',

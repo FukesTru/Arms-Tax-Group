@@ -41,77 +41,39 @@ export const site = {
   email: 'Lmoore@thearmscorp.com',
 
   /**
-   * ADDRESS CONFLICT — RESOLVED 2026-08-28. The client confirmed the intake
-   * form address:
+   * NOT A PUBLIC-FACING ADDRESS.
    *
-   *   1426 White Plains Road, Bronx, NY 10462
+   * The firm is digital only: no walk-in traffic, no in-person appointments,
+   * and it is deliberately not marketed as a Bronx business. This address is
+   * kept for one reason, the contact lines in the Privacy Policy and Terms,
+   * where a business address is normally expected. It is reachable only
+   * through `legalContactLine` in lib/address.ts.
    *
-   * The address on the client's current live site (50 Main St, Suite 1000,
-   * White Plains, NY 10606) is stale and is kept below only as a record of
-   * what was rejected. Do not publish it, and note that the live site will
-   * still be showing it until the client updates or retires that site.
+   * Do not put it in the footer, on the contact page, in a map embed, or in
+   * structured data. There is no LocalBusiness address any more, on purpose:
+   * publishing one tells Google this is a place people visit, which is the
+   * opposite of how the practice works.
    *
-   * With `status` set to 'confirmed', the street address publishes everywhere
-   * it belongs — footer, Contact page, Bronx office page, LocalBusiness
-   * schema, and the Google Maps embed — and the review banner is gone.
-   *
-   * The confirmed city is Bronx, which is what the site was already written
-   * around: /who-we-serve/bronx-ny, the "tax preparation Bronx NY" SEO target,
-   * and every "Bronx, NY" reference all stand as written. No copy rewrite was
-   * needed. Had the answer been White Plains, all of that would have had to
-   * change.
+   * The client confirmed this address on 2026-08-28, over the stale
+   * White Plains address on the old live site, and that is still the right one
+   * for legal use.
    */
-  address: {
-    status: 'confirmed' as 'unconfirmed' | 'confirmed',
-    /** Which candidate is correct. Only read once status is 'confirmed'. */
-    confirmed: 'intake' as null | 'intake' | 'liveSite',
-    /**
-     * The lat/long below are OUR estimate for the street, not surveyed values
-     * and not supplied by the client, and no geocoder is reachable from this
-     * build environment to check them. While this is false, `geo` is left out
-     * of the LocalBusiness schema entirely: Google geocodes the postal address
-     * on its own, whereas a wrong GeoCoordinates pin puts the business on the
-     * wrong corner, which is worse than saying nothing.
-     *
-     * TO ENABLE: open the office in Google Maps, right-click the pin, copy the
-     * coordinates into the candidate below, and set this to true.
-     */
-    geoVerified: false,
-    candidates: {
-      intake: {
-        source: 'Client intake form',
-        street: '1426 White Plains Road',
-        city: 'Bronx',
-        state: 'NY',
-        stateName: 'New York',
-        zip: '10462',
-        country: 'US',
-        full: '1426 White Plains Road, Bronx, NY 10462',
-        latitude: 40.8412,
-        longitude: -73.8593,
-      },
-      /** REJECTED. Kept as a record of the conflict, never published. */
-      liveSite: {
-        source: 'Current live site (thearmscorp.co)',
-        street: '50 Main St, Suite 1000',
-        city: 'White Plains',
-        state: 'NY',
-        stateName: 'New York',
-        zip: '10606',
-        country: 'US',
-        full: '50 Main St, Suite 1000, White Plains, NY 10606',
-        latitude: 41.0339,
-        longitude: -73.7629,
-      },
-    },
+  legalAddress: {
+    street: '1426 White Plains Road',
+    city: 'Bronx',
+    state: 'NY',
+    stateName: 'New York',
+    zip: '10462',
+    country: 'US',
+    full: '1426 White Plains Road, Bronx, NY 10462',
   },
 
-  // UNCONFIRMED: business hours were not supplied in the intake. This
-  // placeholder is intentionally vague — replace with real hours, and add
-  // openingHoursSpecification to the LocalBusiness schema at the same time.
+  // UNCONFIRMED: working hours were not supplied in the intake. These are the
+  // hours we respond and hold calls, not opening hours: nobody visits.
+  // Replace with real hours, and add
   hours: 'Mon–Fri, by appointment',
 
-  serviceArea: 'Nationwide (remote), with a walk-in office in New York',
+  serviceArea: 'Nationwide, remote only, all 50 states',
 
   /**
    * Social profiles are not set up yet. The footer renders a structured but
@@ -159,5 +121,8 @@ export const site = {
   },
 } as const;
 
-/** True while any content on the site is awaiting client confirmation. */
-export const hasOpenReviewFlags = site.address.status === 'unconfirmed';
+/**
+ * True while any content on the site is awaiting client confirmation. Nothing
+ * is currently gated on this; it stays as the hook for the next open item.
+ */
+export const hasOpenReviewFlags = false;

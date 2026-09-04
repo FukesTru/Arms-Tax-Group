@@ -8,7 +8,7 @@ export const houseProcess: ProcessStep[] = [
   },
   {
     title: 'Document Review',
-    body: 'Share your tax and financial documents securely online from anywhere, or bring them to our Bronx office. We tell you exactly what we need.',
+    body: 'Share your tax documents securely online from anywhere, on a phone or a desktop. We tell you exactly what we need rather than sending a generic list.',
   },
   {
     title: 'We Handle It',
@@ -24,7 +24,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Do you work with clients outside New York?',
     answer:
-      'Yes, we serve clients nationwide. Tax preparation, resolution, bookkeeping, and planning are all handled remotely: documents are shared securely online and we review everything with you by phone or video. Our Bronx office serves clients who prefer to meet in person, but it is an option rather than a requirement.',
+      'Yes. The practice is entirely remote, and that is the only way we work: documents are shared securely online, we review everything with you by phone or video, and returns are e-filed federally and in whichever states you owe in. There is no office to visit, which is what lets us take clients in every state rather than one neighbourhood.',
   },
   {
     question: 'What documents do I need to get started?',
@@ -57,7 +57,7 @@ export const whoWeServeFaqs: FaqItem[] = [
   {
     question: 'How do I send documents securely?',
     answer:
-      'We provide secure electronic document sharing. You upload from your computer or phone and the files transmit encrypted. Please avoid sending tax documents as ordinary email attachments; if you would rather not send anything electronically at all, you are welcome to bring physical documents to our Bronx office.',
+      'We provide secure electronic document sharing. You upload from your computer or phone and the files transmit encrypted. Please avoid sending tax documents as ordinary email attachments, which are not a secure channel. If you have paper documents, a clear photo of each page uploaded through the secure link is fine.',
   },
   {
     question: 'Do you serve clients outside New York?',
@@ -65,14 +65,14 @@ export const whoWeServeFaqs: FaqItem[] = [
       'Yes. We work with individuals and businesses across the country and prepare federal and state filings for the states where you have an obligation. Being in another state does not change the process or how accessible we are.',
   },
   {
-    question: 'Is remote service the same quality as meeting in person?',
+    question: 'Is a fully remote firm as good as a local one?',
     answer:
-      'The work is identical. The same team, the same review process, the same walkthrough before anything is filed. The only difference is whether the conversation happens across a desk or over a call. Many clients find remote service faster, since it does not require anyone to schedule travel.',
+      'The work is identical, and being remote is what makes some of it better. The same person handles your return start to finish, with the same review process and the same walkthrough before anything is filed. What changes is that nobody has to schedule travel, documents arrive the moment you upload them, and we are not limited to whoever happens to be within driving distance of an office.',
   },
   {
-    question: 'Can I start remotely and come in later if I need to?',
+    question: 'How do we actually talk things through?',
     answer:
-      'Absolutely. Plenty of clients handle most of the year remotely and come in for a longer sit-down when something warrants it. Use the office when it helps and skip it when it does not.',
+      'By phone or video, at a time you pick. We go through your return with you line by line if that is what you want, share a screen when it helps, and answer questions as they come up. A call is not a downgrade from a meeting, it is just a meeting you did not have to drive to.',
   },
 ];
 
@@ -85,12 +85,12 @@ export const contactFaqs: FaqItem[] = [
   {
     question: 'How do I send documents securely?',
     answer:
-      'Once we connect, we send you a secure upload link, please do not attach tax documents to a regular email. You can also bring physical documents to our Bronx office if you prefer to hand them over in person.',
+      'Once we connect, we send you a secure upload link. Please do not attach tax documents to a regular email. Photos of paper documents are fine as long as every page is legible and uploaded through that link.',
   },
   {
-    question: 'Can we meet in person, or is everything remote?',
+    question: 'Is everything really handled online?',
     answer:
-      'Either. Our New York office is available for in-person appointments, and everything we do can also be handled entirely remotely. Tell us which you prefer and we will work that way.',
+      'Yes. This is a digital practice: there is no office to visit and no in-person appointment to book. Documents move through a secure link, consultations happen by phone or video, and returns are e-filed. That is not a limitation we work around, it is what lets us take clients in every state.',
   },
 ];
 
@@ -113,24 +113,7 @@ export const servicesHubFaqs: FaqItem[] = [
   {
     question: 'Are all of these services available remotely?',
     answer:
-      'Yes. Every service listed here is available to clients nationwide, handled through secure document sharing and phone or video consultations. Our Bronx office is there for anyone who would rather do it in person.',
+      'Yes. Every service listed here is available to clients in all 50 states, handled through secure document sharing and phone or video consultations. The practice is digital only, so remote is not a fallback option, it is how the work is done.',
   },
 ];
 
-export const bronxFaqs: FaqItem[] = [
-  {
-    question: 'Do I need an appointment to come in?',
-    answer:
-      'We recommend calling ahead so we can set aside proper time for you and tell you what to bring. That way your visit is one productive conversation rather than a trip that ends in a list of documents to go find.',
-  },
-  {
-    question: 'Which services are available at the Bronx office?',
-    answer:
-      'All of them. Tax preparation, corporate returns, IRS resolution, bookkeeping, and tax planning are all available in person here, or remotely if that is easier for you.',
-  },
-  {
-    question: 'Where exactly are you located?',
-    answer:
-      'We are in New York, and we are finalizing our published office address. Call us and we will confirm exactly where to meet and what to bring. Every service we offer is also available remotely if that is easier.',
-  },
-];

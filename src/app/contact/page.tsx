@@ -5,26 +5,21 @@ import FAQ from '@/components/FAQ';
 import FadeUp from '@/components/FadeUp';
 import Hero from '@/components/Hero';
 import JsonLd from '@/components/JsonLd';
-import MapEmbed from '@/components/MapEmbed';
 import Section, { SectionHeading } from '@/components/Section';
 import { contactFaqs } from '@/content/general';
 import {
   breadcrumbSchema,
   contactPageSchema,
   faqSchema,
-  localBusinessSchema,
 } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
-import { mapsDirectionsUrl } from '@/lib/address';
 import { parseEstimateParams } from '@/lib/estimateSavings';
 import { site } from '@/lib/site';
-import OfficeAddress from '@/components/OfficeAddress';
-import { AddressConflictFlag } from '@/components/ReviewFlag';
 
 export const metadata = pageMetadata({
   title: 'Contact Us | Free Consultation',
   description:
-    'Contact us for a free consultation on tax preparation, IRS resolution, bookkeeping, or tax planning. Bronx, NY office, serving clients nationwide. Call today.',
+    'Contact us for a free consultation on tax preparation, IRS resolution, bookkeeping, or tax planning. Fully remote, serving all 50 states. Call or send the form.',
   path: '/contact',
 });
 
@@ -66,7 +61,6 @@ export default async function ContactPage({
       <JsonLd
         data={[
           contactPageSchema(),
-          localBusinessSchema(),
           faqSchema(contactFaqs),
           breadcrumbSchema(trail),
         ]}
@@ -76,15 +70,13 @@ export default async function ContactPage({
         eyebrow="Contact"
         title="Get in Touch"
         subtitle="Free consultation. Real answers, no pressure."
-        trustPoints={['Free Consultation', 'Nationwide', 'Bronx, NY Office']}
+        trustPoints={['Free Consultation', 'Nationwide', 'Fully Remote']}
         breadcrumbs={trail}
         primaryCta={{ label: 'Jump to the form', href: '#consultation-form' }}
       />
 
       {/* Form + contact details */}
       <Section>
-        <AddressConflictFlag className="mb-12" />
-
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div id="consultation-form" className="scroll-mt-28">
             <SectionHeading
@@ -155,33 +147,25 @@ export default async function ContactPage({
 
             <FadeUp delay={0.14} className="mt-8 rounded-2xl bg-ink-900 p-7">
               <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-accent">
-                Visit Us
+                How We Work
               </p>
-              <div className="mt-4 text-[1.02rem] leading-relaxed text-white/85">
-                {/* Suppressed while the address conflict is open, see lib/site.ts */}
-                <OfficeAddress tone="dark" />
-              </div>
+              <p className="mt-4 text-[1.02rem] leading-relaxed text-white/85">
+                Everything is handled online. You share documents through a
+                secure link, we review them together by phone or video, and your
+                return is e-filed. There is no office to visit and no
+                appointment to travel to.
+              </p>
               <div className="mt-5 border-t border-white/10 pt-5">
                 {/* UNCONFIRMED hours, see src/lib/site.ts */}
                 <p className="font-display text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white/45">
-                  Hours
+                  When we are available
                 </p>
                 <p className="mt-1.5 text-[0.98rem] text-white/85">{site.hours}</p>
                 <p className="mt-2 text-[0.86rem] leading-relaxed text-white/50">
-                  Please call ahead so we can set aside proper time and tell you
-                  what to bring.
+                  Send the form or call and we will book a time that suits you,
+                  wherever you are.
                 </p>
               </div>
-              {mapsDirectionsUrl && (
-                <a
-                  href={mapsDirectionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline-light mt-6 w-full"
-                >
-                  Get Directions
-                </a>
-              )}
             </FadeUp>
 
             <FadeUp delay={0.18} className="mt-6">
@@ -202,15 +186,6 @@ export default async function ContactPage({
         </div>
       </Section>
 
-      {/* Map */}
-      <section className="pb-16 md:pb-20">
-        <div className="container-x">
-          <FadeUp>
-            <MapEmbed />
-          </FadeUp>
-        </div>
-      </section>
-
       <FAQ
         faqs={contactFaqs}
         title="Before you reach out"
@@ -222,7 +197,7 @@ export default async function ContactPage({
         title="One conversation is all it takes to know where you stand"
         body={`Call ${site.phone.display} or send the form above.`}
         badges={[
-          'Bronx, NY Based',
+          'Fully Remote',
           'Nationwide Service',
           'Personal & Business Tax Experts',
           'Free Consultation',

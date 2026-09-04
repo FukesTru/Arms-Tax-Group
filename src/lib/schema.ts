@@ -1,32 +1,22 @@
-import { officeAddress, officeGeo } from './address';
-import { locations } from '@/content/locations';
 import { site } from './site';
 import { allServices, categories } from './services';
 
 const ORG_ID = `${site.url}/#organization`;
-const BRONX_ID = `${site.url}/who-we-serve/bronx-ny#localbusiness`;
-
-/**
- * PostalAddress, or null while the address conflict is unresolved.
- *
- * Structured data is exactly where a wrong address does the most damage — it
- * is what feeds map results and business listings — so we emit no address at
- * all rather than guess between the intake and the live site. Resolving the
- * conflict in lib/site.ts restores it everywhere automatically.
- */
-const postalAddress = officeAddress
-  ? {
-      '@type': 'PostalAddress',
-      streetAddress: officeAddress.street,
-      addressLocality: officeAddress.city,
-      addressRegion: officeAddress.state,
-      postalCode: officeAddress.zip,
-      addressCountry: officeAddress.country,
-    }
-  : null;
 
 /**
  * Organization-level AccountingService. Rendered once, in the root layout.
+ *
+ * ── NO ADDRESS, NO GEO, ON PURPOSE ───────────────────────────────────────
+ * `AccountingService` is a LocalBusiness subtype, and a LocalBusiness with a
+ * PostalAddress tells Google this is a place customers travel to. The firm is
+ * digital only, so it publishes no address, no coordinates, no map and no
+ * opening hours. What it publishes instead is `areaServed: United States`,
+ * which is how a service-area business describes itself.
+ *
+ * The type stays `AccountingService` because it is the accurate description of
+ * the work and it carries the industry signal. If a strictly non-local type is
+ * ever wanted, `ProfessionalService` is the swap; the address must stay out
+ * either way.
  *
  * Deliberately omits aggregateRating / review. The site carries no reviews or
  * testimonials at all, and the Google Business Profile is not live. Never add
@@ -45,11 +35,20 @@ export function organizationSchema() {
     slogan: site.tagline,
     description:
       'Personal and business tax preparation, IRS resolution, bookkeeping, and tax planning from a New York accounting firm serving clients nationwide.',
-    ...(postalAddress ? { address: postalAddress } : {}),
-    areaServed: [
-      { '@type': 'Country', name: 'United States' },
-      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
-    ],
+    areaServed: { '@type': 'Country', name: 'United States' },
+    /* Remote-only delivery, stated rather than implied. */
+    serviceType: 'Tax preparation and accounting',
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: `${site.url}/contact`,
+      servicePhone: {
+        '@type': 'ContactPoint',
+        telephone: site.phone.e164,
+        contactType: 'customer service',
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
+    },
     founder: { '@type': 'Person', name: site.owner },
     ...(site.social.length > 0
       ? { sameAs: site.social.map((s) => s.href) }
@@ -73,46 +72,6 @@ export function organizationSchema() {
   };
 }
 
-/** LocalBusiness for the physical Bronx office page. */
-export function localBusinessSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'AccountingService',
-    '@id': BRONX_ID,
-    name: `${site.brandName}. Bronx, NY Office`,
-    parentOrganization: { '@id': ORG_ID },
-    url: `${site.url}/who-we-serve/bronx-ny`,
-    telephone: site.phone.e164,
-    email: site.email,
-    ...(postalAddress ? { address: postalAddress } : {}),
-    // geo is published only once the coordinates have been checked against a
-    // real map, see `geoVerified` in lib/site.ts. Google geocodes the postal
-    // address without it; a wrong pin is worse than no pin.
-    ...(officeGeo
-      ? {
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: officeGeo.latitude,
-            longitude: officeGeo.longitude,
-          },
-        }
-      : {}),
-    // Only areas the site actually has content for. Structured data claiming
-    // reach the site does not back up is the kind of mismatch that gets a
-    // local listing distrusted, so this reads from the same city pages the
-    // navigation links to. When the long area chip list came off the page,
-    // those names came out of here with it.
-    areaServed: [
-      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
-      ...locations.map((location) => ({ '@type': 'City', name: location.city })),
-      { '@type': 'Country', name: 'United States' },
-    ],
-    // NOTE: openingHoursSpecification is intentionally omitted until the
-    // client confirms real business hours. Do not guess them here.
-    priceRange: '$$',
-  };
-}
-
 export function serviceSchema({
   name,
   description,
@@ -130,10 +89,7 @@ export function serviceSchema({
     url: `${site.url}${path}`,
     serviceType: name,
     provider: { '@id': ORG_ID },
-    areaServed: [
-      { '@type': 'Country', name: 'United States' },
-      ...(officeAddress ? [{ '@type': 'City', name: officeAddress.city }] : []),
-    ],
+    areaServed: { '@type': 'Country', name: 'United States' },
   };
 }
 

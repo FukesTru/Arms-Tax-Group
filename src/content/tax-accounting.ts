@@ -7,15 +7,15 @@ export const taxAccountingCategory: ServicePageContent = {
   heroSubtitle:
     'Filing, resolution, and record-keeping for individuals and businesses. Handled accurately, explained plainly, and available year-round.',
   metaTitle:
-    'Tax & Accounting Services | Bronx, NY & Nationwide',
+    'Tax & Accounting Services | Online, Nationwide',
   metaDescription:
-    'Five tax and accounting services under one roof: individual and corporate returns, IRS resolution, monthly bookkeeping, and planning. Bronx, NY and nationwide.',
+    'Five tax and accounting services under one roof: individual and corporate returns, IRS resolution, monthly bookkeeping, and planning. Online, in all 50 states.',
   trustPoints: ['Individuals & Businesses', 'Nationwide Remote Filing', 'Year-Round Support'],
   introHeading: 'Tax work that accounts for the whole picture',
   intro: [
     'Most people meet their tax preparer once a year, hand over a folder, and hope for the best. We work differently. Whether you are filing a straightforward W-2 return or closing the books on a multi-member LLC, we start by understanding how you actually earn, spend, and plan. Because that context is what separates a return that is merely filed from one that is filed correctly.',
     'Our tax and accounting practice covers the full arc of the work: preparing and filing individual and business returns, cleaning up years you fell behind on, representing you when the IRS sends a notice, keeping your books current month to month, and building a strategy so next April is predictable rather than stressful. Because all of it happens under one roof, nothing gets lost between a bookkeeper who does not talk to your preparer and a preparer who has never seen your ledger.',
-    'We serve clients from our Bronx office and remotely across the country. You will always know what we are doing, why it matters for your situation, and what it means for the number at the bottom of the page.',
+    'We serve clients across the country, entirely online. You will always know what we are doing, why it matters for your situation, and what it means for the number at the bottom of the page.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -42,7 +42,7 @@ export const taxAccountingCategory: ServicePageContent = {
     },
     {
       title: 'Document Collection',
-      body: 'You share your documents securely, online from anywhere, or in person at our Bronx office. We tell you exactly what is required and what is not.',
+      body: 'You share your documents securely, online from anywhere, on a phone or a desktop. We tell you exactly what is required and what is not.',
     },
     {
       title: 'Preparation & Filing',
@@ -55,9 +55,9 @@ export const taxAccountingCategory: ServicePageContent = {
   ],
   faqs: [
     {
-      question: 'Do I need to come to the Bronx office to work with you?',
+      question: 'Do I need to meet you in person to work with you?',
       answer:
-        'No. Everything in our tax and accounting practice can be handled remotely. Documents are shared securely online, and we review your return with you by phone or video before filing. Our Bronx office is there for clients who prefer to sit down in person, not a requirement for the rest.',
+        'No, and there is no office to come to. Everything in our tax and accounting practice is handled remotely: documents are shared securely online, and we review your return with you by phone or video before filing. That is how the practice runs for every client, in every state.',
     },
     {
       question: 'Can you handle both my personal return and my business return?',
@@ -94,15 +94,15 @@ export const personalTaxPreparation: ServicePageContent = {
   heroSubtitle:
     'Individual and family returns prepared accurately, reviewed with you before filing, and backed by a team you can still reach in July.',
   metaTitle:
-    'Personal Tax Preparation | Bronx, NY & Nationwide',
+    'Personal Tax Preparation | Online, Nationwide',
   metaDescription:
-    'Accurate, stress-free personal tax preparation for individuals and families from a Bronx, NY team serving clients nationwide. Free consultation, no pressure.',
+    'Accurate, stress-free personal tax preparation for individuals and families, handled entirely online in all 50 states. Free consultation, no pressure.',
   trustPoints: ['W-2 & Self-Employed', 'Multi-State Filing', 'Prior-Year Returns'],
   introHeading: 'Your return, prepared by someone who read it',
   intro: [
     'A personal tax return looks simple until your life stops being simple. You picked up 1099 work on the side. You moved states in June. A child started college, a parent moved in, a rental property came into the picture, or you cashed out an investment and are not sure what it did to your bill. Any one of those turns a fifteen-minute filing into something that deserves real attention.',
     'We prepare individual and family returns for clients in every one of those situations. That means gathering the right documents rather than every document, applying the credits and deductions you actually qualify for, and catching the mismatches (a missing form, an incorrect basis, a state you owe in and did not realize) before the IRS catches them for you.',
-    'Before anything is filed, we walk you through the return: what you owe or are getting back, where the number came from, and what you could do differently next year. If a notice shows up months later, you call us and we handle it. We file for clients across the country from our Bronx, New York office, so where you live has no bearing on whether we can help.',
+    'Before anything is filed, we walk you through the return: what you owe or are getting back, where the number came from, and what you could do differently next year. If a notice shows up months later, you call us and we handle it. The whole practice runs online, so where you live has no bearing on whether we can help.',
   ],
   handleHeading: 'What we handle',
   handleIntro:
@@ -119,11 +119,11 @@ export const personalTaxPreparation: ServicePageContent = {
   ],
   processHeading: 'Three steps to a filed return',
   processIntro:
-    'No office visit required, though you are welcome to come by if you prefer to do it in person.',
+    'No office visit required, because there is no office visit. Everything is handled online.',
   process: [
     {
       title: 'Share Your Documents',
-      body: 'We send you a short, specific checklist based on your situation. Upload securely from anywhere, or bring the folder to our Bronx office.',
+      body: 'We send you a short, specific checklist based on your situation. Upload securely from anywhere, on a phone or a desktop, whenever suits you.',
     },
     {
       title: 'We Prepare & Review',
@@ -177,7 +177,7 @@ export const businessTaxPreparation: ServicePageContent = {
   metaTitle:
     'Corporate Tax Services & Business Tax Preparation',
   metaDescription:
-    'Corporate tax services for C-corps and S-corps, plus LLC and partnership tax preparation from The Arms Corporation. Bronx, NY office, serving nationwide.',
+    'Corporate tax services for C-corps and S-corps, plus LLC and partnership tax preparation from The Arms Corporation. Handled entirely online, all 50 states.',
   trustPoints: ['Corporate Tax Services', 'C-Corp & S-Corp Compliance', 'Multi-State Filing'],
   introHeading: 'Corporate tax services, and everything below them',
   intro: [
@@ -271,7 +271,7 @@ export const taxResolution: ServicePageContent = {
   heroSubtitle:
     'Back taxes, IRS notices, liens, and levies. Reviewed carefully, explained honestly, and worked through with you rather than around you.',
   metaTitle:
-    'IRS Tax Resolution Services | Bronx, NY & Nationwide',
+    'IRS Tax Resolution Services | Online, Nationwide',
   metaDescription:
     'Behind on taxes or facing an IRS notice? The Arms Corporation helps individuals and businesses resolve back taxes nationwide. Free consultation, no judgment.',
   trustPoints: ['Back Taxes & Unfiled Returns', 'Notices & Examinations', 'Payment Options'],
@@ -355,7 +355,7 @@ export const bookkeepingAccounting: ServicePageContent = {
     'Monthly books, clean reconciliations, and reporting that tells you how the business is doing, before the year is over.',
   metaTitle: 'Bookkeeping & Accounting Services',
   metaDescription:
-    'Monthly bookkeeping, account reconciliation, and clean, tax-ready financial records for small businesses from The Arms Corporation. Bronx, NY and nationwide.',
+    'Monthly bookkeeping, account reconciliation, and clean, tax-ready financial records for small businesses from The Arms Corporation. Online, all 50 states.',
   trustPoints: ['Monthly Bookkeeping', 'Cleanup & Catch-Up', 'Tax-Ready Books'],
   introHeading: 'Books you can make decisions from',
   intro: [
@@ -436,7 +436,7 @@ export const taxPlanning: ServicePageContent = {
     'Year-round strategy instead of an annual surprise, decisions made while you can still influence the outcome.',
   metaTitle: 'Tax Planning & Consulting',
   metaDescription:
-    'Year-round tax strategy to reduce liability and plan ahead, from The Arms Corporation. Serving individuals and businesses in Bronx, NY and nationwide.',
+    'Year-round tax strategy that lowers what you owe and removes surprises, from The Arms Corporation. For individuals and businesses online, in all 50 states.',
   trustPoints: ['Quarterly Strategy', 'Entity Structure Review', 'Year-End Planning'],
   introHeading: 'By April, most of the decisions have already been made',
   intro: [
